@@ -10,6 +10,7 @@
   "license": "MIT",
   "dependencies": {
     "angular": "^1.6.4",
+    "bootstrap": "^3.3.7",
     "d3": "^4.8.0",
     "d3-scale-chromatic": "^1.1.1",
     "express": "^4.15.2",
