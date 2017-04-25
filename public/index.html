@@ -8,8 +8,10 @@
 </head>
 <body ng-controller="mainController">
 <input type="text" class="" name="location" placeholder="Search for a city" ng-autocomplete ng-model="location" options="options" details="details" ng-required="true"/>
-{{ location }}
-<button type="button" ng-click="search(location)">Console.log that location</button>
+<button type="button" ng-click="search(location)"></button>
+<div class="row">
+  <h1>{{ weatherDB.name }}</h1>
+</div>
 
 <!-- Scripts -->
   <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyDQX1NwXDMRS8EEfA_bHLoB5N3NkB1e5a0"></script>
