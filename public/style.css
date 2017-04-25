@@ -4,4 +4,18 @@ html {
 
 body {
   height: 100%;
+  font-family: 'Varela Round', sans-serif;
+}
+
+.search-box {
+  font-size: 40px;
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid grey;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.wi {
+  font-size: 30px;
 }
