@@ -7,9 +7,39 @@
   <title>City Pulse</title>
 </head>
 <body ng-controller="mainController">
-<input type="text" class="" name="location" placeholder="Search for a city" ng-autocomplete ng-model="location" options="options" details="details" ng-required="true"/>
-{{ location }}
-<button type="button" ng-click="search(location)">Console.log that location</button>
+  <div class="row">
+    <div class="search">
+      <div class="col-sm-12">
+        <input type="text" class="search-box col-sm-12" name="location" placeholder="Search for a city" ng-autocomplete ng-model="location" options="options" details="details" ng-required="true"/>
+        <button type="button" class="btn" ng-click="search(location)">Search</button>
+      </div>
+    </div>
+  </div>
+  <!-- Weather data -->
+  <div class="row">
+    <div class="container">
+      <h1>{{ weatherDB.name }}</h1>
+      <p>Temp: {{ weatherDB.main.temp }} F</p>
+    </div>
+  </div>
+  <!-- Foursquare data -->
+  <div class="row">
+    <div class="container">
+      <h1>Popular restaurants</h1>
+      <div ng-repeat="venues in fourDB | limitTo: 4">
+       <div class="col-sm-3">{{ venues.venue.name }}</div>
+      </div>
+    </div>
+  </div>
+  <!-- Twitter -->
+  <div class="row">
+    <div class="container">
+      <h1>Tweets</h1>
+      <div ng-repeat="venues in fourDB | limitTo: 4">
+       <div class="col-sm-3">{{ venues.venue.name }}</div>
+      </div>
+    </div>
+  </div>
 
 <!-- Scripts -->
   <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyDQX1NwXDMRS8EEfA_bHLoB5N3NkB1e5a0"></script>

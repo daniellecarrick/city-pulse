@@ -6,6 +6,7 @@ var apiFactory = {};
     apiFactory.getWeather = function(location) {
         return $http.get('http://api.openweathermap.org/data/2.5/weather?',
           { params: { q: location,
+            units: 'imperial',
             appid: 'b51ff059850fb59ef5b5085a6e089a74' } })
             .then(function(response) {
                 console.log(response.data);
@@ -16,7 +17,7 @@ var apiFactory = {};
 //  get something cool from the FourSquare API
     apiFactory.getFourSq = function(location) {
         return $http.get('https://api.foursquare.com/v2/venues/explore?',
-          { params: { 
+          { params: {
             section: 'food',
             near: location,
             limit: 5,

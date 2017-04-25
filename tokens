@@ -1,0 +1,5 @@
+// what I put into terminal to get access token
+$ curl -F 'client_id=0e1912d97c3a43499ddf11d6bf532a9f' -F 'client_secret=15d994aeebad4fb6afc62e990f7bd433' -F 'grant_type=authorization_code' -F 'redirect_uri=https://github.com/daniellecarrick/city-pulse' -F 'code=4df548102541477c8c12ba2281eadbe0' https://api.instagram.com/oauth/access_token
+
+// The Result!
+{"access_token": "10961617.0e1912d.e947e90b67b94edda8e32aa5d29dff6e", "user": {"id": "10961617", "username": "danielleadar", "profile_picture": "https://scontent.cdninstagram.com/t51.2885-19/11024184_1722332561326595_520399226_a.jpg", "full_name": "Danielle Carrick", "bio": "Ready.", "website": "http://www.daniellecarrick.com"}}
