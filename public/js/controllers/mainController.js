@@ -9,6 +9,9 @@ app.controller('mainController', function($scope, apiFactory) {
     // pass along to the factory
     apiFactory.getWeather(location).then(function (weatherDB) {
             $scope.weatherDB = weatherDB;
-        });
+    });
+    apiFactory.getFourSq(location).then(function (fourDB) {
+            $scope.fourDB = fourDB;
+    });
   }
 });
