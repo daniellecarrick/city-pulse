@@ -12,7 +12,8 @@ app.controller('mainController', function($scope, apiFactory) {
             console.log(weatherDB);
     });
     apiFactory.getFourSq(location).then(function (fourDB) {
-            $scope.fourDB = fourDB;
+            $scope.fourDB = fourDB.response.groups[0].items;
+            //console.log(fourDB.response.groups[0].items);
     });
   }
 

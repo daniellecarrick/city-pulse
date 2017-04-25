@@ -21,6 +21,14 @@
       <p>{{ weatherDB.main.temp }}</p>
     </div>
   </div>
+  <div class="row">
+    <div class="container">
+      <h1>Venues</h1>
+      <div ng-repeat="venues in fourDB | limitTo: 4">
+       <div class="col-sm-3">{{ venues.venue.name }}</div>
+      </div>
+    </div>
+  </div>
 
 <!-- Scripts -->
   <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyDQX1NwXDMRS8EEfA_bHLoB5N3NkB1e5a0"></script>
