@@ -6,13 +6,17 @@
   <link rel="stylesheet" type="text/css" href="/style.css">
   <title>City Pulse</title>
 </head>
-<body>
+<body ng-controller="mainController">
 <input type="text" class="" name="location" placeholder="Search for a city" ng-autocomplete ng-model="location" options="options" details="details" ng-required="true"/>
+{{ location }}
 
 <!-- Scripts -->
   <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyDQX1NwXDMRS8EEfA_bHLoB5N3NkB1e5a0"></script>
   <script src="/angular/angular.js"></script>
   <script src="/js/app.js"></script>
+  <script src="/js/services/apiFactory.js"></script>
+  <script src="/js/controllers/mainController.js"></script>
+  <script src="/js/directives/weatherDirective.js"></script>
   <script src="/ng-autocomplete/src/ngAutocomplete.js"></script>
 </body>
 </html>
