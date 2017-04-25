@@ -24,7 +24,7 @@ app.service('apiFactory', function($http) {
 
 var apiFactory = {};
 
-//  get the weather
+//  get the weather from the Open Weather API
     apiFactory.getWeather = function(location) {
         return $http.get('http://api.openweathermap.org/data/2.5/weather?',
           { params: { q: location,
