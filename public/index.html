@@ -8,9 +8,12 @@
 </head>
 <body ng-controller="mainController">
 <input type="text" class="" name="location" placeholder="Search for a city" ng-autocomplete ng-model="location" options="options" details="details" ng-required="true"/>
-<button type="button" ng-click="search(location)"></button>
+<button type="button" ng-click="search(location)">Search</button>
 <div class="row">
-  <h1>{{ weatherDB.name }}</h1>
+  <div class="container">
+    <h1>{{ weatherDB.name }}</h1>
+    <p>{{ weatherDB.main.temp }}</p>
+  </div>
 </div>
 
 <!-- Scripts -->
