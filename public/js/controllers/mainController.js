@@ -1,6 +1,6 @@
 app.controller('mainController', function($scope, apiFactory) {
 
-  $scope.location;
+  $scope.location = 'New York';
 
   //search triggered on button click
   $scope.search = function(location) {
@@ -15,4 +15,7 @@ app.controller('mainController', function($scope, apiFactory) {
             $scope.fourDB = fourDB;
     });
   }
+
+  $scope.search($scope.location);
+
 });
