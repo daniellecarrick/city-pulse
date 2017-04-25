@@ -12,34 +12,28 @@ var T = new Twit({
   // T.get('search/tweets', { q: 'banana since:2011-07-11', count: 100 }, function(err, data, response) {
   //   console.log(data)
 //
-var params = {
-  q: 'London',
-  count: 5
-  // geocode: latitude/longitude
-}
-
-T.get('search/tweets', params, gotData);
 
 
-
-
-
+// T.get('search/tweets', params, gotData);
+// search(params);
 
 function gotData(err, data, response) {
-  console.log(data)
 
   var tweets = data.statuses;
   for (var i = 0; i < tweets.length; i++) {
     console.log(i + "----" + tweets[i].text);
   }
-
-
 };
 
+function search(params) {
+  return T.get('search/tweets', params)
+        .then((result) => {
+          return result.data.statuses;
+        })
+        .catch((err) => console.log('error', err))
+
+}
 
 
-
-
-
-
+module.exports = search;
 // var config = require ('./config')

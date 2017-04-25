@@ -10,13 +10,12 @@
   "license": "MIT",
   "dependencies": {
     "angular": "^1.6.4",
+    "body-parser": "^1.17.1",
+    "bootstrap": "^3.3.7",
     "d3": "^4.8.0",
     "d3-scale-chromatic": "^1.1.1",
     "express": "^4.15.2",
-<<<<<<< HEAD
+    "ng-autocomplete": "^1.0.0",
     "twit": "^2.2.5"
-=======
-    "ng-autocomplete": "^1.0.0"
->>>>>>> b5249f9702743c2d0b5fdd761aaf3032f3e8b713
   }
 }
