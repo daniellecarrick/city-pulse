@@ -13,6 +13,7 @@ app.controller('mainController', function($scope, apiFactory) {
     });
     apiFactory.getFourSq(location).then(function (fourDB) {
             $scope.fourDB = fourDB.response.groups[0].items;
+            //$scope.fourDB = fourDB;
             //console.log(fourDB.response.groups[0].items);
     });
   }
