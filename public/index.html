@@ -10,10 +10,12 @@
 </head>
 <body ng-controller="mainController">
   <div class="row">
-    <div class="search">
-      <div class="col-sm-12">
-        <input type="text" class="search-box col-sm-12" name="location" placeholder="Search for a city" ng-autocomplete ng-model="location" options="{types: '(cities)'}" details="details" ng-required="true"/>
-        <button type="button" class="btn" ng-click="search(location)">Search</button>
+    <div class="container">
+      <div class="search">
+        <div class="col-sm-12">
+          <input type="text" class="search-box col-sm-12" name="location" placeholder="Search for a city" ng-autocomplete ng-model="location" options="{types: '(cities)'}" details="details" ng-required="true" ng-blur="search(location)"/>
+          <!-- <button type="button" class="btn" ng-click="search(location)">Search</button> -->
+        </div>
       </div>
     </div>
   </div>
