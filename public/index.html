@@ -2,6 +2,8 @@
 <html ng-app="cityPulse">
 <head>
   <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <script type="text/javascript" src="/d3/build/d3.js"></script>
+  <script type="text/javascript" src="/d3-scale-chromatic/build/d3-scale-chromatic.js"></script>
   <link href="/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="/style.css">
   <title>City Pulse</title>
@@ -10,7 +12,7 @@
   <div class="row">
     <div class="search">
       <div class="col-sm-12">
-        <input type="text" class="search-box col-sm-12" name="location" placeholder="Search for a city" ng-autocomplete ng-model="location" options="options" details="details" ng-required="true"/>
+        <input type="text" class="search-box col-sm-12" name="location" placeholder="Search for a city" ng-autocomplete ng-model="location" options="{types: '(cities)'}" details="details" ng-required="true"/>
         <button type="button" class="btn" ng-click="search(location)">Search</button>
       </div>
     </div>
