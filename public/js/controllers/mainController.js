@@ -6,6 +6,9 @@ app.controller('mainController', function($scope, apiFactory) {
   $scope.search = function(location) {
     $scope.location = location;
     console.log(location);
-
+    // pass along to the factory
+    apiFactory.getWeather(location).then(function (weatherDB) {
+            $scope.weatherDB = weatherDB;
+        });
   }
 });
