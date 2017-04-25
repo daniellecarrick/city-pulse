@@ -2,15 +2,17 @@
   "name": "city-pulse",
   "version": "1.0.0",
   "description": "Experience a city with all 5 senses",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Danielle Carrick",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
+    "angular": "^1.6.4",
     "d3": "^4.8.0",
     "d3-scale-chromatic": "^1.1.1",
-    "express": "^4.15.2"
+    "express": "^4.15.2",
+    "ng-autocomplete": "^1.0.0"
   }
 }
