@@ -13,6 +13,8 @@ var apiFactory = {};
             }, function(err) {});
     };
 
+// this is a test from nate's branch
+
     apiFactory.TESTFUNCTION = function(location) {
         return $http.get('http://api.openweathermap.org/data/2.5/weather?',
           { params: { q: location,
