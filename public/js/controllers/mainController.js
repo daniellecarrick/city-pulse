@@ -18,6 +18,14 @@ app.controller('mainController', function($scope, apiFactory) {
     });
   }
 
+  /* Background color is based on temperature */
+  var colors = function(weatherDB) {
+    var temp = weatherDB.main.temp;
+    var colorScale = d3.scaleLinear().domain([0,100]).range([1,0]);
+    var bgColor = d3.interpolateRdYlBu(colorScale(temp));
+    d3.select('body').style('background-color', bgColor);
+    }
+
   $scope.search($scope.location);
 
 });
