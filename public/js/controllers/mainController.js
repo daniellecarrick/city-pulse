@@ -10,6 +10,7 @@ app.controller('mainController', function($scope, apiFactory) {
     apiFactory.getWeather(location).then(function (weatherDB) {
             $scope.weatherDB = weatherDB;
             console.log(weatherDB);
+            colors(weatherDB);
     });
     apiFactory.getFourSq(location).then(function (fourDB) {
             $scope.fourDB = fourDB.response.groups[0].items;
@@ -24,7 +25,9 @@ app.controller('mainController', function($scope, apiFactory) {
     var colorScale = d3.scaleLinear().domain([0,100]).range([1,0]);
     var bgColor = d3.interpolateRdYlBu(colorScale(temp));
     d3.select('body').style('background-color', bgColor);
+        console.log(bgColor);
     }
+
 
   $scope.search($scope.location);
 
