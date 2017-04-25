@@ -1,2 +1,3 @@
-app.factory('apiFactory', function($http) {
+app.service('apiFactory', function($http) {
+
 });
