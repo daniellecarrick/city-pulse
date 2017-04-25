@@ -10,7 +10,8 @@ app.controller('mainController', function($scope, apiFactory) {
     apiFactory.getWeather(location).then(function (weatherDB) {
             $scope.weatherDB = weatherDB;
             console.log(weatherDB);
-            colors(weatherDB);
+            //set the background color based on temp
+            setBackground(weatherDB);
     });
     apiFactory.getFourSq(location).then(function (fourDB) {
             $scope.fourDB = fourDB.response.groups[0].items;
@@ -20,11 +21,12 @@ app.controller('mainController', function($scope, apiFactory) {
   }
 
   /* Background color is based on temperature */
-  var colors = function(weatherDB) {
+  var setBackground = function(weatherDB) {
     var temp = weatherDB.main.temp;
     var colorScale = d3.scaleLinear().domain([0,100]).range([1,0]);
     var bgColor = d3.interpolateRdYlBu(colorScale(temp));
-    d3.select('body').style('background-color', bgColor);
+    var bgColor1 = d3.interpolateRdYlBu(colorScale(temp+10));
+    d3.select('body').style('background', 'linear-gradient(to bottom,'+ bgColor + ',' + bgColor1);
         console.log(bgColor);
     }
 
