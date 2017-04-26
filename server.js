@@ -18,6 +18,7 @@ app.post('/api/tweets', function(req, res, next){
   });
 })
 
+
 app.listen(8000, function() {
   console.log("Let's find some cities on 8000");
 });

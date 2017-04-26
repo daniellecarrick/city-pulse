@@ -1,6 +1,7 @@
 app.controller('mainController', function($scope, apiFactory, $http) {
 
   $scope.location = 'New York';
+  $scope.coord = {};
 
   //search triggered on button click
   $scope.search = function(location) {
@@ -10,7 +11,8 @@ app.controller('mainController', function($scope, apiFactory, $http) {
     // pass along to the factory
     apiFactory.getWeather(location).then(function (weatherDB) {
             $scope.weatherDB = weatherDB;
-            console.log(weatherDB);
+            $scope.coord = weatherDB.coord;
+            console.log($scope.coord.lon);
             //set the background color based on temp
             setBackground(weatherDB);
     });
@@ -23,8 +25,12 @@ app.controller('mainController', function($scope, apiFactory, $http) {
     var params = {
     q: $scope.location,
     count: 5,
-    result_type: 'popular'
-    // geocode: latitude/longitude
+    result_type: 'popular recent',
+    lang: 'en',
+/*    lat: $scope.coord.lat,
+    long: $scope.coord.lon*/
+    //geocode: '40.7,-74.01,100mi'
+    //geocode: $scope.coord.lat $scope.coord.lon 50mi
     }
 
     $http.post('/api/tweets', params)

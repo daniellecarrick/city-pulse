@@ -4,6 +4,19 @@ body {
   color: white;
 }
 
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+    outline: none;
+}
+
+.super-container {
+  background-color: rgba(255,255,255,.2);
+  margin: 30px;
+  border-radius: 3px;
+}
+
 .navbar-custom {
   background-color: rgba(255,255,255,.1);
 }

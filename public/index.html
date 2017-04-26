@@ -29,6 +29,7 @@
       </div>
     </div>
   </div>
+
   <!-- General stats like weather and time -->
   <div class="row">
     <div class="container">
@@ -45,11 +46,10 @@
       </div>
     </div>
   </div>
-
+<div class="super-container">
   <!-- Foursquare data -->
   <div class="row">
     <div class="container">
-    <hr />
       <h2>Popular restaurants</h2>
       <div ng-repeat="venues in fourDB | limitTo: 4">
         <div class="col-sm-3">
@@ -77,11 +77,13 @@
             <p class="tweet-username"><strong>{{ tweet.user.name }}</strong></p>
             <p class="tweet-text">{{ tweet.text }}</p>
           </div>
+         <!--  <img src="{{ tweet.extended_entities.media[0].media_url }}" class="img-tweet"/> -->
         </div>
       </div>
       </div>
     </div>
   </div>
+</div> <!-- END OF CONTAINER -->
 
 <!-- Scripts -->
   <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyDQX1NwXDMRS8EEfA_bHLoB5N3NkB1e5a0"></script>
