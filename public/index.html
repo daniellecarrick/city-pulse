@@ -57,8 +57,8 @@
   <div class="row">
     <div class="container">
       <h1>Tweets</h1>
-      <div ng-repeat="venues in fourDB | limitTo: 4">
-       <div class="col-sm-3">{{ venues.venue.name }}</div>
+      <div ng-repeat="tweet in tweets">
+       <div class="col-sm-3">{{ tweet.text }}</div>
       </div>
     </div>
   </div>

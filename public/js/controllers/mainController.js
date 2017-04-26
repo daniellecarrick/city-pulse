@@ -1,4 +1,4 @@
-app.controller('mainController', function($scope, apiFactory) {
+app.controller('mainController', function($scope, apiFactory, $http) {
 
   $scope.location = 'New York';
 
@@ -18,6 +18,20 @@ app.controller('mainController', function($scope, apiFactory) {
             //$scope.fourDB = fourDB;
             //console.log(fourDB.response.groups[0].items);
     });
+
+    var params = {
+    q: $scope.location,
+    count: 5
+    // geocode: latitude/longitude
+    }
+
+    $http.post('/api/tweets', params)
+    .then(function (result) {
+    $scope.tweets = result.data;
+    console.log(result.data);
+  }, function(err) {
+    console.log(err);
+  })
   }
 
   /* Background color is based on temperature */
@@ -29,6 +43,10 @@ app.controller('mainController', function($scope, apiFactory) {
     d3.select('body').style('background', 'linear-gradient(to bottom,'+ bgColor + ',' + bgColor1);
         console.log(bgColor);
     }
+
+//* Tweet stuff */
+  $scope.tweets=[]
+
 
 
   $scope.search($scope.location);
