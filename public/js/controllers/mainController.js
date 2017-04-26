@@ -6,6 +6,7 @@ app.controller('mainController', function($scope, apiFactory, $http) {
   $scope.search = function(location) {
     $scope.location = location;
     console.log(location);
+    //console.log(autocomplete.getplace());
     // pass along to the factory
     apiFactory.getWeather(location).then(function (weatherDB) {
             $scope.weatherDB = weatherDB;

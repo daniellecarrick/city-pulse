@@ -35,5 +35,36 @@ body {
 }
 
 p.tweet-username {
-  margin-bottom: none;
+  margin-bottom: 0px;
+}
+
+.tweet-container {
+  background-color: rgba(255,255,255,.1);
+  padding: 20px 0px;
+  border: 2px solid white;
+  border-radius: 3px;
+}
+
+.img-tweet {
+  border: 2px solid white;
+  border-radius: 3px;
+}
+
+/* FOURSQUARE STUFF */
+
+.img-thumbnail {
+  background-color: transparent;
+  border: 2px solid white;
+}
+
+.fq-venue-name-container {
+/*  height: 40px;
+  width: 100%;
+  background-color: rgba(50,50,50,.5);
+  position: absolute;
+  top: 50%;*/
+}
+
+.fq-venue-name {
+  text-align: center;
 }
