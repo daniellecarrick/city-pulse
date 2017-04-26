@@ -1,10 +1,28 @@
-html {
-  height: 100%;
-}
-
 body {
   height: 100%;
   font-family: 'Varela Round', sans-serif;
+  color: white;
+}
+
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+    outline: none;
+}
+
+.super-container {
+  background-color: rgba(255,255,255,.2);
+  margin: 30px;
+  border-radius: 3px;
+}
+
+.navbar-custom {
+  background-color: rgba(255,255,255,.1);
+}
+
+.navbar-brand {
+  color: white;
 }
 
 .search-box {
@@ -16,6 +34,57 @@ body {
   text-transform: uppercase;
 }
 
+.weather-container {
+  margin-top: 30px;
+}
+
+.icon-wrap {
+  margin-bottom: 20px;
+}
+
 .wi {
-  font-size: 30px;
+  font-size: 70px;
+}
+
+.temp {
+  font-size: 24px;
+}
+
+.tweet-container {
+  margin: 10px 0px;
+}
+
+p.tweet-username {
+  margin-bottom: 0px;
+}
+
+.tweet-container {
+  background-color: rgba(255,255,255,.1);
+  padding: 20px 0px;
+  border: 2px solid white;
+  border-radius: 3px;
+}
+
+.img-tweet {
+  border: 2px solid white;
+  border-radius: 3px;
+}
+
+/* FOURSQUARE STUFF */
+
+.img-thumbnail {
+  background-color: transparent;
+  border: 2px solid white;
+}
+
+.fq-venue-name-container {
+/*  height: 40px;
+  width: 100%;
+  background-color: rgba(50,50,50,.5);
+  position: absolute;
+  top: 50%;*/
+}
+
+.fq-venue-name {
+  text-align: center;
 }
