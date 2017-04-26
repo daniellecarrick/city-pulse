@@ -11,7 +11,7 @@
   <title>City Pulse</title>
 </head>
 <body ng-controller="mainController">
-  <nav class="navbar navbar-default">
+  <nav class="navbar navbar-custom">
     <div class="container-fluid">
       <!-- Brand and toggle get grouped for better mobile display -->
       <div class="navbar-header">
@@ -23,7 +23,7 @@
     <div class="container">
       <div class="search">
         <div class="col-sm-12">
-          <input type="text" class="search-box col-sm-12" name="location" placeholder="Search for a city" ng-autocomplete ng-model="location" options="{types: '(cities)'}" details="details" ng-required="true" ng-blur="search(location)"/> {{ location }}
+          <input type="text" class="search-box col-sm-12" name="location" placeholder="Search for a city" ng-autocomplete ng-model="location" options="{types: '(cities)'}" details="details" ng-required="true" ng-blur="search(location)"/>
           <!-- <button type="button" class="btn" ng-click="search(location)">Search</button> -->
         </div>
       </div>
@@ -49,7 +49,8 @@
   <!-- Foursquare data -->
   <div class="row">
     <div class="container">
-      <h1>Popular restaurants</h1>
+    <hr />
+      <h2>Popular restaurants</h2>
       <div ng-repeat="venues in fourDB | limitTo: 4">
         <div class="col-sm-3">
           <div class="fq-venue-name-container">
@@ -64,7 +65,8 @@
   <!-- Twitter -->
   <div class="row">
     <div class="container">
-      <h1>Tweets</h1>
+      <hr />
+      <h2>Tweets</h2>
       <div ng-repeat="tweet in tweets">
        <div class="col-sm-12 tweet-container"">
         <div>

@@ -39,9 +39,11 @@ app.controller('mainController', function($scope, apiFactory, $http) {
   /* Background color is based on temperature */
   var setBackground = function(weatherDB) {
     var temp = weatherDB.main.temp;
-    var colorScale = d3.scaleLinear().domain([0,130]).range([1,0]);
-    var bgColor = d3.interpolateRdYlBu(colorScale(temp));
-    var bgColor1 = d3.interpolateRdYlBu(colorScale(temp+20));
+    var colorScale = d3.scaleLinear().domain([0, 50, 100]).range(['#1e3c72', '#6190E8', '#DC2424']);
+    /*var bgColor = d3.interpolateRdYlBu(colorScale(temp));
+    var bgColor1 = d3.interpolateRdYlBu(colorScale(temp+20));*/
+    var bgColor = colorScale(temp);
+    var bgColor1 = colorScale(temp+10);
     d3.select('body').style('background', 'linear-gradient(to bottom,'+ bgColor + ',' + bgColor1);
         console.log(bgColor);
     }
