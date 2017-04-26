@@ -16,6 +16,18 @@ body {
   text-transform: uppercase;
 }
 
+.weather-container {
+  margin-top: 30px;
+}
+
+.icon-wrap {
+  margin-bottom: 20px;
+}
+
 .wi {
-  font-size: 30px;
+  font-size: 70px;
+}
+
+.temp {
+  font-size: 24px;
 }
