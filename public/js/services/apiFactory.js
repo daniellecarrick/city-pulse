@@ -20,6 +20,7 @@ var apiFactory = {};
           { params: {
             section: 'food',
             near: location,
+            venuePhotos: 1,
             limit: 5,
             client_id: 'QLJUKUZ0FU0NVLOWLUZJOOJHB1MTWSYMPHQBSKJ5FXKJH102',
             client_secret: '5L3IZX1VKHONEULQBYLDSIC4HTZWEXVJFQRL4FE4ZIAWNS20',
