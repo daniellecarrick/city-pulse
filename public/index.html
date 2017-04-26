@@ -65,9 +65,13 @@
       <div ng-repeat="tweet in tweets">
        <div class="col-sm-12">
         <div class="tweet-container">
-          <img src="{{ tweet.user.profile_image_url }}" />
-          <p>{{ tweet.user.name }}</p>
-          <p>{{ tweet.text }}</p>
+          <div class="col-sm-1">
+            <img src="{{ tweet.user.profile_image_url }}" />
+          </div>
+          <div class="col-sm-11">
+            <p>{{ tweet.user.name }}</p>
+            <p>{{ tweet.text }}</p>
+          </div>
         </div>
       </div>
       </div>
