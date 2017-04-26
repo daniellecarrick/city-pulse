@@ -9,7 +9,7 @@ var apiFactory = {};
             units: 'imperial',
             appid: 'b51ff059850fb59ef5b5085a6e089a74' } })
             .then(function(response) {
-                console.log(response.data);
+                //console.log(response.data);
                 return response.data
             }, function(err) {});
     };
@@ -27,7 +27,7 @@ var apiFactory = {};
             m: 'foursquare'
          } })
             .then(function(response) {
-                console.log(response.data);
+               // console.log(response.data);
                 return response.data
             }, function(err) {});
     };
