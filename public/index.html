@@ -51,7 +51,7 @@
     <div class="container">
       <h1>Popular restaurants</h1>
       <div ng-repeat="venues in fourDB | limitTo: 4">
-        <div class="col-sm-3">{{ venues.venue.name }}
+        <div class="col-sm-3">{{ venues.venue.name | limitTo: 20 }}
  <!--          <div style="background-image: url('{{venues.tips[0].photourl}}'); width:100%; height:100px; background-position:center;">&nbsp;</div> -->
           <img class="img-responsive img-thumbnail" src="{{venues.venue.photos.groups[0].items[0].prefix}}200x200{{venues.venue.photos.groups[0].items[0].suffix}}" />
           </div>
@@ -70,8 +70,8 @@
             <img src="{{ tweet.user.profile_image_url }}" />
           </div>
           <div class="col-sm-11">
-            <p>{{ tweet.user.name }}</p>
-            <p>{{ tweet.text }}</p>
+            <p class="tweet-username">{{ tweet.user.name }}</p>
+            <p class="tweet-text">{{ tweet.text }}</p>
           </div>
         </div>
       </div>

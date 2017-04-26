@@ -33,3 +33,7 @@ body {
 .tweet-container {
   margin: 10px 0px;
 }
+
+p.tweet-username {
+  margin-bottom: none;
+}
