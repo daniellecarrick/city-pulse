@@ -21,17 +21,18 @@ app.controller('mainController', function($scope, apiFactory, $http) {
 
     var params = {
     q: $scope.location,
-    count: 5
+    count: 5,
+    result_type: 'popular'
     // geocode: latitude/longitude
     }
 
     $http.post('/api/tweets', params)
-    .then(function (result) {
-    $scope.tweets = result.data;
-    console.log(result.data);
-  }, function(err) {
-    console.log(err);
-  })
+      .then(function (result) {
+      $scope.tweets = result.data;
+      console.log(result.data);
+      }, function(err) {
+      console.log(err);
+    })
   }
 
   /* Background color is based on temperature */

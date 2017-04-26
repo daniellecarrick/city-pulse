@@ -31,3 +31,7 @@ body {
 .temp {
   font-size: 24px;
 }
+
+.tweet-container {
+  margin: 10px 0px;
+}

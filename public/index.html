@@ -39,12 +39,13 @@
             <div class="icon-wrap">
               <i class="wi wi-day-thunderstorm"></i>
             </div>
-            <p class="temp">{{ weatherDB.main.temp | number: 0}} F | {{ weatherDB.weather[0].main | lowercase }}</p>
+            <p class="temp">{{ weatherDB.main.temp | number: 0}} &#8457; | {{ weatherDB.weather[0].main | lowercase }}</p>
           </div>
         </div>
       </div>
     </div>
   </div>
+
   <!-- Foursquare data -->
   <div class="row">
     <div class="container">
@@ -56,12 +57,18 @@
         </div>
       </div>
     </div>
+
   <!-- Twitter -->
   <div class="row">
     <div class="container">
       <h1>Tweets</h1>
       <div ng-repeat="tweet in tweets">
-       <div class="col-sm-12">{{ tweet.text }}</div>
+       <div class="col-sm-12">
+        <div class="tweet-container">
+          <p>{{ tweet.user.name }}</p>
+          <p>{{ tweet.text }}</p>
+        </div>
+      </div>
       </div>
     </div>
   </div>
