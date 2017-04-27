@@ -57,7 +57,7 @@ app.controller('mainController', function($scope, apiFactory, $http) {
     var bgColor1 = d3.interpolateRdYlBu(colorScale(temp+20));*/
     var bgColor = colorScale(temp);
     var bgColor1 = colorScale(temp+10);
-    d3.select('body').style('background', 'linear-gradient(to bottom,'+ bgColor + ',' + bgColor1);
+    d3.select('.top-section').style('background', 'linear-gradient(to bottom,'+ bgColor + ',' + bgColor1);
         console.log(bgColor);
     }
 

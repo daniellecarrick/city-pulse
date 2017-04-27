@@ -12,6 +12,8 @@
   <title>City Pulse</title>
 </head>
 <body ng-controller="mainController">
+
+<div class="top-section">
   <nav class="navbar navbar-custom">
     <div class="container-fluid">
       <!-- Brand and toggle get grouped for better mobile display -->
@@ -20,33 +22,36 @@
       </div>
     </div><!-- /.container-fluid -->
   </nav>
-  <div class="row">
-    <div class="container">
-      <div class="search">
-        <div class="col-sm-12">
-          <input type="text" class="search-box col-sm-12" name="location" placeholder="Search for a city" ng-autocomplete ng-model="location" options="{types: '(cities)'}" details="details" ng-required="true" ng-blur="search(location)"/>
-          <!-- <button type="button" class="btn" ng-click="search(location)">Search</button> -->
+
+  <!-- top section -->
+    <div class="row">
+      <div class="container">
+        <div class="search">
+          <div class="col-sm-12">
+            <input type="text" class="search-box col-sm-12" name="location" placeholder="Search for a city" ng-autocomplete ng-model="location" options="{types: '(cities)'}" details="details" ng-required="true" ng-blur="search(location)"/>
+            <!-- <button type="button" class="btn" ng-click="search(location)">Search</button> -->
+          </div>
         </div>
       </div>
     </div>
-  </div>
 
-  <!-- General stats like weather and time -->
-  <div class="row">
-    <div class="container">
-      <!-- <h1>{{ weatherDB.name }}</h1> -->
-      <div class="col-sm-12 text-center">
-        <div class="col-sm-4 col-sm-offset-4">
-          <div class="weather-container">
-            <div class="icon-wrap">
-              <i class="wi wi-owm-{{ weatherDB.weather[0].id}}"></i>
+    <!-- General stats like weather and time -->
+    <div class="row">
+      <div class="container">
+        <div class="col-sm-12 text-center">
+          <div class="col-sm-4 col-sm-offset-4">
+            <div class="weather-container">
+              <div class="icon-wrap">
+                <i class="wi wi-owm-{{ weatherDB.weather[0].id}}"></i>
+              </div>
+              <p class="temp">{{ weatherDB.main.temp | number: 0}} &#8457; | {{ weatherDB.weather[0].main | lowercase }}</p>
             </div>
-            <p class="temp">{{ weatherDB.main.temp | number: 0}} &#8457; | {{ weatherDB.weather[0].main | lowercase }}</p>
           </div>
         </div>
       </div>
     </div>
   </div>
+
 <div class="super-container">
 
 <!-- FLICKR PHOTOS -->

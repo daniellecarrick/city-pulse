@@ -2,6 +2,7 @@ body {
   height: 100%;
   font-family: 'Varela Round', sans-serif;
   color: white;
+  background-color: #f0f0f0;
 }
 
 input:focus,
@@ -15,6 +16,7 @@ button:focus {
   background-color: rgba(255,255,255,.2);
   margin: 30px;
   border-radius: 3px;
+  color: black;
 }
 
 .navbar-custom {
