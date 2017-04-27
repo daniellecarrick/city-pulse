@@ -24,7 +24,7 @@
     <div class="container">
       <div class="search">
         <div class="col-sm-12">
-          <input type="text" class="search-box col-sm-12" name="location" placeholder="Search for a city" ng-autocomplete ng-model="location" options="{types: '(cities)'}" details="details" ng-required="true" ng-blur="search(location)"/>
+          <input type="text" class="search-box col-sm-12" name="location" placeholder="Search for a city" ng-autocomplete ng-model="location" options="{types: '(cities)'}" details="details" ng-required="true" ng-blur="search(location)"/> <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
           <!-- <button type="button" class="btn" ng-click="search(location)">Search</button> -->
         </div>
       </div>
@@ -47,24 +47,26 @@
       </div>
     </div>
   </div>
-<div class="super-container">
 
-<!-- FLICKR PHOTOS -->
 <div class="row">
-  <div class="container">
-    <div ng-repeat="photo in photoDB | limitTo: 3">
-      <div class="col-sm-3">
-        <img class="img-responsive img-thumbnail" src='https://farm{{photo.farm}}.staticflickr.com/{{photo.server}}/{{photo.id}}_{{photo.secret}}.jpg' />
+  <div class="container super-container">
+<!-- FLICKR PHOTOS -->
+    <div class="row section-padding">
+      <div class="container text-center">
+        <h2>The Sights</h2>
+        <div ng-repeat="photo in photoDB | limitTo: 2">
+          <div class="col-sm-6">
+            <img class="img-responsive img-thumbnail" src='https://farm{{photo.farm}}.staticflickr.com/{{photo.server}}/{{photo.id}}_{{photo.secret}}.jpg' />
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-</div>
 
 
   <!-- Foursquare data -->
-  <div class="row">
-    <div class="container">
-      <h2>Eating</h2>
+  <div class="row section-padding">
+    <div class="container text-center">
+      <h2>The Tastes</h2>
       <div ng-repeat="venues in fourDB | limitTo: 4">
         <div class="col-sm-3">
           <div class="fq-venue-name-container">
@@ -77,11 +79,10 @@
     </div>
 
   <!-- Twitter -->
-  <div class="row">
-    <div class="container">
-      <hr />
-      <h2>Tweeting</h2>
-      <div ng-repeat="tweet in tweets">
+  <div class="row section-padding">
+    <div class="container text-center">
+      <h2>The Talk</h2>
+      <div ng-repeat="tweet in tweets | limitTo: 3">
        <div class="col-sm-12 tweet-container"">
         <div>
           <div class="col-sm-1">
@@ -97,8 +98,9 @@
       </div>
     </div>
   </div>
+  </div>
 </div> <!-- END OF CONTAINER -->
-<div id="map"></div>
+<img src="https://beta.mapquestapi.com/staticmap/v5/map?key=c9LUj3gveNGWjKMfAUk0VKnN8ZwkLuqX&size=1500,+170&type=sat&locations={{location}}" />
 <!-- Scripts -->
   <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyDQX1NwXDMRS8EEfA_bHLoB5N3NkB1e5a0"></script>
   <script src="/angular/angular.js"></script>

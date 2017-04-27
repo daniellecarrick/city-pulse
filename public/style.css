@@ -13,8 +13,11 @@ button:focus {
 
 .super-container {
   background-color: rgba(255,255,255,.2);
-  margin: 30px;
   border-radius: 3px;
+}
+
+.section-padding {
+  margin-bottom: 30px;
 }
 
 .navbar-custom {
@@ -29,7 +32,7 @@ button:focus {
   font-size: 40px;
   background-color: transparent;
   border: none;
-  border-bottom: 1px solid grey;
+  border-bottom: 1px solid white;
   text-align: center;
   text-transform: uppercase;
 }
@@ -75,6 +78,7 @@ p.tweet-username {
 .img-thumbnail {
   background-color: transparent;
   border: 2px solid white;
+  padding: 0px;
 }
 
 .fq-venue-name-container {
