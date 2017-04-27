@@ -12,14 +12,33 @@ button:focus {
     outline: none;
 }
 
+.glyphicon-search {
+  font-size: 30px;
+  right: 10px;
+  top: 10px;
+  position: absolute;
+  opacity: .5;
+}
+
+.top-section {
+  padding-bottom: 40px;
+}
+
 .super-container {
-  background-color: rgba(255,255,255,.2);
   margin: 30px;
   border-radius: 3px;
   color: black;
 }
 
-.img-flickr {
+.section {
+  margin-bottom: 20px;
+  background: white;
+  margin-top: 20px;
+  padding-bottom: 30px;
+}
+
+.title {
+  margin: 30px 0px;
 }
 
 .navbar-custom {
@@ -34,7 +53,7 @@ button:focus {
   font-size: 40px;
   background-color: transparent;
   border: none;
-  border-bottom: 1px solid grey;
+  border-bottom: 1px solid white;
   text-align: center;
   text-transform: uppercase;
 }
@@ -55,19 +74,17 @@ button:focus {
   font-size: 24px;
 }
 
-.tweet-container {
-  margin: 10px 0px;
-}
+/* Twitter section */
 
 p.tweet-username {
   margin-bottom: 0px;
 }
 
 .tweet-container {
-  background-color: rgba(255,255,255,.1);
   padding: 20px 0px;
-  border: 2px solid white;
+  border: 1px solid #f0f0f0;
   border-radius: 3px;
+  margin: 10px 0px;
 }
 
 .img-tweet {
@@ -78,8 +95,7 @@ p.tweet-username {
 /* FOURSQUARE STUFF */
 
 .img-thumbnail {
-  background-color: transparent;
-  border: 2px solid white;
+  padding: 0px;
 }
 
 .fq-venue-name-container {
