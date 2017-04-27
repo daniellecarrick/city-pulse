@@ -3,3 +3,10 @@ $ curl -F 'client_id=0e1912d97c3a43499ddf11d6bf532a9f' -F 'client_secret=15d994a
 
 // The Result!
 {"access_token": "10961617.0e1912d.e947e90b67b94edda8e32aa5d29dff6e", "user": {"id": "10961617", "username": "danielleadar", "profile_picture": "https://scontent.cdninstagram.com/t51.2885-19/11024184_1722332561326595_520399226_a.jpg", "full_name": "Danielle Carrick", "bio": "Ready.", "website": "http://www.daniellecarrick.com"}}
+
+City Pulse | Flickr
+Key:
+6ae44d19471914449a7bc6764acba0ef
+
+Secret:
+90c195538ff637f6
