@@ -39,37 +39,35 @@
     <div class="row">
       <div class="container">
         <div class="col-sm-12 text-center">
-          <div class="col-sm-4 col-sm-offset-4">
-            <div class="weather-container">
-              <div class="icon-wrap">
-                <i class="wi wi-owm-{{ weatherDB.weather[0].id}}"></i>
-              </div>
-              <p class="temp">{{ weatherDB.main.temp | number: 0}} &#8457; | {{ weatherDB.weather[0].main | lowercase }}</p>
+          <div class="weather-container">
+            <div class="icon-wrap">
+              <i class="wi wi-owm-{{ weatherDB.weather[0].id}}"></i>
             </div>
+            <p class="temp">{{ weatherDB.main.temp | number: 0}} &#8457; | {{ weatherDB.weather[0].main | lowercase }}</p>
           </div>
         </div>
       </div>
     </div>
+
   </div>
 
 <div class="super-container">
-
 <!-- FLICKR PHOTOS -->
-<div class="row">
-  <div class="container">
-    <div ng-repeat="photo in photoDB | limitTo: 3">
-      <div class="col-sm-3">
-        <img class="img-responsive img-thumbnail" src='https://farm{{photo.farm}}.staticflickr.com/{{photo.server}}/{{photo.id}}_{{photo.secret}}.jpg' />
+    <div class="row">
+      <div class="container">
+        <h2>The Sights</h2>
+        <div ng-repeat="photo in photoDB | limitTo: 4">
+          <div class="col-sm-3">
+            <img class="img-responsive img-flickr" src='https://farm{{photo.farm}}.staticflickr.com/{{photo.server}}/{{photo.id}}_{{photo.secret}}.jpg' />
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-</div>
-
 
   <!-- Foursquare data -->
   <div class="row">
     <div class="container">
-      <h2>Eating</h2>
+      <h2>The Tastes</h2>
       <div ng-repeat="venues in fourDB | limitTo: 4">
         <div class="col-sm-3">
           <div class="fq-venue-name-container">
@@ -85,8 +83,8 @@
   <div class="row">
     <div class="container">
       <hr />
-      <h2>Tweeting</h2>
-      <div ng-repeat="tweet in tweets">
+      <h2>The Talk</h2>
+      <div ng-repeat="tweet in tweets | limitTo: 3">
        <div class="col-sm-12 tweet-container"">
         <div>
           <div class="col-sm-1">
