@@ -7,6 +7,7 @@
   <link href="/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="/weather-icons.css">
+  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
   <link rel="stylesheet" type="text/css" href="/style.css">
   <title>City Pulse</title>
 </head>
@@ -47,10 +48,23 @@
     </div>
   </div>
 <div class="super-container">
+
+<!-- FLICKR PHOTOS -->
+<div class="row">
+  <div class="container">
+    <div ng-repeat="photo in photoDB | limitTo: 3">
+      <div class="col-sm-3">
+        <img class="img-responsive img-thumbnail" src='https://farm{{photo.farm}}.staticflickr.com/{{photo.server}}/{{photo.id}}_{{photo.secret}}.jpg' />
+      </div>
+    </div>
+  </div>
+</div>
+
+
   <!-- Foursquare data -->
   <div class="row">
     <div class="container">
-      <h2>Popular restaurants</h2>
+      <h2>Eating</h2>
       <div ng-repeat="venues in fourDB | limitTo: 4">
         <div class="col-sm-3">
           <div class="fq-venue-name-container">
@@ -66,7 +80,7 @@
   <div class="row">
     <div class="container">
       <hr />
-      <h2>Tweets</h2>
+      <h2>Tweeting</h2>
       <div ng-repeat="tweet in tweets">
        <div class="col-sm-12 tweet-container"">
         <div>
@@ -84,7 +98,7 @@
     </div>
   </div>
 </div> <!-- END OF CONTAINER -->
-
+<div id="map"></div>
 <!-- Scripts -->
   <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyDQX1NwXDMRS8EEfA_bHLoB5N3NkB1e5a0"></script>
   <script src="/angular/angular.js"></script>

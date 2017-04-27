@@ -5,21 +5,28 @@ app.controller('mainController', function($scope, apiFactory, $http) {
 
   //search triggered on button click
   $scope.search = function(location) {
-    $scope.location = location;
-    console.log(location);
+    //$scope.location = location;
+   // console.log(location);
     //console.log(autocomplete.getplace());
     // pass along to the factory
     apiFactory.getWeather(location).then(function (weatherDB) {
             $scope.weatherDB = weatherDB;
             $scope.coord = weatherDB.coord;
-            console.log($scope.coord.lon);
+           // console.log($scope.coord.lon);
             //set the background color based on temp
             setBackground(weatherDB);
     });
     apiFactory.getFourSq(location).then(function (fourDB) {
             $scope.fourDB = fourDB.response.groups[0].items;
             //$scope.fourDB = fourDB;
-            console.log(fourDB.response);
+            //console.log(fourDB.response);
+    });
+
+    apiFactory.getPhotos(location).then(function (photoDB) {
+            $scope.photoDB = photoDB.photos.photo;
+/*            $scope.coord.lat = lat;
+            $scope.coord.lon = lon;*/
+            console.log($scope.photoDB);
     });
 
     var params = {
