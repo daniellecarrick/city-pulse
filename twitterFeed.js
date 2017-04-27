@@ -25,18 +25,68 @@ function gotData(err, data, response) {
   }
 };
 
-// this function gets the tweets
+//////////////////////////////    1. this function gets the tweets   //////////////////////////////////////////////////
+
+// function search(params) {
+//   console.log(params);
+//   return T.get('search/tweets', params)
+//         .then((result) => {
+//           console.log(result);
+//           return result.data.statuses;
+//         })
+//         .catch((err) => console.log('error', err))
+// }
+
+//////////////////////////////    2. this one is for getting WOEID from lat & long:    ////////////////////////////////
+
+// function search(params) {
+//   return T.get('trends/closest', params)
+//         .then((result) => {
+//           console.log("trends/closest result is: " + result.data[0].woeid);
+//           return result;
+//           // return result.data.statuses;
+//         })
+//         .catch((err) => console.log('error', err))
+// }
+
+//////////////////////////////    3. this one gets place trends by WOEID:   ////////////////////////////////////////////
+
+// function search(params) {
+//   return T.get('trends/place', params)
+//         .then((result) => {
+//           console.log("trends/place result is: " + result.data);
+//           return result;
+//           // return result.data.statuses;
+//         })
+//         .catch((err) => console.log('error', err))
+// }
+
+////////////////////////////////////    4. trying for combo of 3 & 4  /////////////////////////////////////////////////////
+
+
 function search(params) {
-  console.log(params);
-  return T.get('search/tweets', params)
+  return T.get('trends/closest', params)
         .then((result) => {
-          console.log(result);
-          return result.data.statuses;
+          console.log("trends/closest result is: " + result.data[0].woeid);
+          place = result.data[0].woeid;
+          return place;
+          // return result.data.statuses;
+        })
+        .then(function search(params) {
+          var params = {
+            id: place
+          }
+          return T.get('trends/place', params)
+          .then((res) => {
+            console.log("trends/place result is: " + res.data);
+            return res;
+          })
         })
         .catch((err) => console.log('error', err))
-
 }
 
 
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 module.exports = search;
+
 // var config = require ('./config')
