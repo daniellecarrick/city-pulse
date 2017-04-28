@@ -4,7 +4,8 @@
   "description": "Experience a city with all 5 senses",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
   },
   "author": "Danielle Carrick",
   "license": "MIT",

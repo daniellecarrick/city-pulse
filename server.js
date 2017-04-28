@@ -18,7 +18,7 @@ app.post('/api/tweets', function(req, res, next){
   });
 })
 
-
-app.listen(8000, function() {
+app.listen(process.env.PORT || '8000');
+/*app.listen(8000, function() {
   console.log("Let's find some cities on 8000");
-});
+});*/
