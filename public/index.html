@@ -9,7 +9,7 @@
   <link rel="stylesheet" type="text/css" href="/weather-icons.css">
   <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
   <link rel="stylesheet" type="text/css" href="/style.css">
-  <title>City Pulse</title>
+  <title>City Seeker</title>
 </head>
 <body ng-controller="mainController">
 
@@ -29,7 +29,9 @@
       <div class="container">
         <div class="search">
           <div class="col-sm-12">
+              <form ng-submit=“search(location)“>
             <input type="text" class="search-box col-sm-12" name="location" placeholder="Search for a city" ng-autocomplete ng-model="location" options="{types: '(cities)'}" details="details" ng-required="true" ng-blur="search(location)"/> <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+            </form>
             <!-- <button type="button" class="btn" ng-click="search(location)">Search</button> -->
           </div>
         </div>
@@ -52,12 +54,13 @@
   </div>
 
 <div class="super-container">
+
 <!-- FLICKR PHOTOS -->
   <div class="row">
       <div class="container">
         <div class="col-sm-12 section">
         <h2 class="title text-center">The Sights</h2>
-        <div ng-repeat="photo in photoDB | limitTo: 2">
+        <div ng-repeat="photo in photoDB | limitTo: 10">
           <div class="col-sm-6">
             <img class="img-responsive img-thumbnail img-flickr" src='https://farm{{photo.farm}}.staticflickr.com/{{photo.server}}/{{photo.id}}_{{photo.secret}}.jpg' />
           </div>

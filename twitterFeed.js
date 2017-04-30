@@ -21,16 +21,16 @@ function gotData(err, data, response) {
 
   var tweets = data.statuses;
   for (var i = 0; i < tweets.length; i++) {
-    console.log(i + "----" + tweets[i].text);
+   // console.log(i + "----" + tweets[i].text);
   }
 };
 
 // this function gets the tweets
 function search(params) {
-  console.log(params);
+  //console.log(params);
   return T.get('search/tweets', params)
         .then((result) => {
-          console.log(result);
+          //console.log(result);
           return result.data.statuses;
         })
         .catch((err) => console.log('error', err))

@@ -5,28 +5,27 @@ app.controller('mainController', function($scope, apiFactory, $http) {
 
   //search triggered on button click
   $scope.search = function(location) {
-    //$scope.location = location;
-   // console.log(location);
-    //console.log(autocomplete.getplace());
+   console.log(location);
     // pass along to the factory
     apiFactory.getWeather(location).then(function (weatherDB) {
             $scope.weatherDB = weatherDB;
             $scope.coord = weatherDB.coord;
-           // console.log($scope.coord.lon);
             //set the background color based on temp
             setBackground(weatherDB);
     });
-    apiFactory.getFourSq(location).then(function (fourDB) {
-            $scope.fourDB = fourDB.response.groups[0].items;
-            //$scope.fourDB = fourDB;
-            //console.log(fourDB.response);
+
+    // give location to our friend getCityInfo in the factory then
+    apiFactory.getCityInfo(location).then(function (allData) {
+      $scope.allData = allData
+      console.log('allData', allData);
     });
+
+/*    apiFactory.getFourSq(location).then(function (fourDB) {
+            $scope.fourDB = fourDB.response.groups[0].items;
+    });*/
 
     apiFactory.getPhotos(location).then(function (photoDB) {
             $scope.photoDB = photoDB.photos.photo;
-/*            $scope.coord.lat = lat;
-            $scope.coord.lon = lon;*/
-            console.log($scope.photoDB);
     });
 
     var params = {
@@ -42,10 +41,9 @@ app.controller('mainController', function($scope, apiFactory, $http) {
 
     $http.post('/api/tweets', params)
       .then(function (result) {
-      $scope.tweets = result.data;
-      console.log(result.data);
+        $scope.tweets = result.data;
       }, function(err) {
-      console.log(err);
+        console.log(err);
     })
   }
 
@@ -58,14 +56,10 @@ app.controller('mainController', function($scope, apiFactory, $http) {
     var bgColor = colorScale(temp);
     var bgColor1 = colorScale(temp+10);
     d3.select('.top-section').style('background', 'linear-gradient(to bottom,'+ bgColor + ',' + bgColor1);
-        console.log(bgColor);
     }
 
 //* Tweet stuff */
   $scope.tweets=[]
-
-
-
   $scope.search($scope.location);
 
 });

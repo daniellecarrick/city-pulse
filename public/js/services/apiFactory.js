@@ -30,8 +30,18 @@ initialize();*/
             }, function(err) {});
     };
 
+// Getting city data from our city route on the server
+    apiFactory.getCityInfo = function(location) {
+      return $http.get('/city/'+location ) //let's go to the server
+        .then(function(response) {
+            return response.data
+        }, function(err) {
+          console.log(err);
+        });
+    };
+
 //  get something cool from the FourSquare API
-    apiFactory.getFourSq = function(location) {
+/*    apiFactory.getFourSq = function(location) {
         return $http.get('https://api.foursquare.com/v2/venues/explore?',
           { params: {
             section: 'food',
@@ -47,16 +57,6 @@ initialize();*/
                // console.log(response.data);
                 return response.data
             }, function(err) {});
-    };
-
-    //  get something cool from the google
-/*    apiFactory.getPhotos = function(location) {
-      var request = {
-        query: location
-      };
-      service.textSearch(request, function(data){
-        console.log(data);
-      });
     };*/
 
       // Flickr photos
