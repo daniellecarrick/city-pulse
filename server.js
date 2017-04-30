@@ -21,37 +21,45 @@ app.post('/api/tweets', function(req, res, next){
 })
 
 app.listen(process.env.PORT || '8000');
-/*app.listen(8000, function() {
-  console.log("Let's find some cities on 8000");
-});*/
 
 // ASYNC PARALLEL CODE
+//async.parallel(apiCalls, optionalCallback);
 
 app.get('/city/:city', function(req, res, next) { // req and res are special express utilities to help us send and recieve data
-  console.log('req.params', req.params.city);
-  var options = {
-    qs: {
-      section: 'food',
-      near: req.params.city,
-      venuePhotos: 1,
-      limit: 5,
-      client_id: 'QLJUKUZ0FU0NVLOWLUZJOOJHB1MTWSYMPHQBSKJ5FXKJH102',
-      client_secret: '5L3IZX1VKHONEULQBYLDSIC4HTZWEXVJFQRL4FE4ZIAWNS20',
-      v: 20161231,
-      m: 'foursquare'
-    }
-   };
-// get something cool from the FourSquare API
-  request.get('https://api.foursquare.com/v2/venues/explore', options, function(error, response, body) {
-     // console.log('body------------------------', body);
-           res.send(JSON.parse(body).response);
-  })
 
+  var city = req.params.city;
+
+  function getFoursquare(city) {
+    var options = {
+      qs: {
+        section: 'food',
+        near: city,
+        venuePhotos: 1,
+        limit: 5,
+        client_id: 'QLJUKUZ0FU0NVLOWLUZJOOJHB1MTWSYMPHQBSKJ5FXKJH102',
+        client_secret: '5L3IZX1VKHONEULQBYLDSIC4HTZWEXVJFQRL4FE4ZIAWNS20',
+        v: 20161231,
+        m: 'foursquare'
+      }
+     };
+    // get something cool from the FourSquare API
+    request.get('https://api.foursquare.com/v2/venues/explore', options, function(error, response, body) {
+      // need to parse response because it was returning as a string
+      res.send(JSON.parse(body).response);
+    })
+  }
+/*  var sendResults = function(err, results) {
+    res.send(results);
+  }
+  var apiCalls = [getFoursquare];
+  async.parallel(apiCalls, sendResults);*/
+
+  // pseudo code for later
   //getWeather(berlin).then(getTwitter).then(res.send(data))
-
+  getFoursquare(city);
 });
 
-function getWeather(city) {
+/*function getWeather(city) {
 
   //return request()
   //.then(return {lat:city.lat, lon:city.lin})
@@ -62,7 +70,7 @@ function getTwitter(data) {
 
   //return request()
 
-}
+}*/
 
 /*
 var apiCalls = [

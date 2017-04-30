@@ -14,15 +14,12 @@ app.controller('mainController', function($scope, apiFactory, $http) {
             setBackground(weatherDB);
     });
 
-    // give location to our friend getCityInfo in the factory then
-    apiFactory.getCityInfo(location).then(function (allData) {
-      $scope.allData = allData
-      console.log('allData', allData);
+    // give location to our friend getCityInfo in the factory then takes the response and puts it in variable called fourDB
+    apiFactory.getCityInfo(location).then(function (fourDB) {
+      $scope.fourDB = fourDB.groups[0].items;
+      console.log('fourDB', fourDB);
     });
 
-/*    apiFactory.getFourSq(location).then(function (fourDB) {
-            $scope.fourDB = fourDB.response.groups[0].items;
-    });*/
 
     apiFactory.getPhotos(location).then(function (photoDB) {
             $scope.photoDB = photoDB.photos.photo;

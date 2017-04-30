@@ -30,34 +30,15 @@ initialize();*/
             }, function(err) {});
     };
 
-// Getting city data from our city route on the server
+    // Getting city data from our city route on the server
     apiFactory.getCityInfo = function(location) {
-      return $http.get('/city/'+location ) //let's go to the server
+      return $http.get('/city/'+location ) // let's go to the server
         .then(function(response) {
             return response.data
         }, function(err) {
           console.log(err);
         });
     };
-
-//  get something cool from the FourSquare API
-/*    apiFactory.getFourSq = function(location) {
-        return $http.get('https://api.foursquare.com/v2/venues/explore?',
-          { params: {
-            section: 'food',
-            near: location,
-            venuePhotos: 1,
-            limit: 5,
-            client_id: 'QLJUKUZ0FU0NVLOWLUZJOOJHB1MTWSYMPHQBSKJ5FXKJH102',
-            client_secret: '5L3IZX1VKHONEULQBYLDSIC4HTZWEXVJFQRL4FE4ZIAWNS20',
-            v: 20161231,
-            m: 'foursquare'
-         } })
-            .then(function(response) {
-               // console.log(response.data);
-                return response.data
-            }, function(err) {});
-    };*/
 
       // Flickr photos
     apiFactory.getPhotos = function(location) {

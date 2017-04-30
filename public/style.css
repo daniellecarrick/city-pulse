@@ -113,3 +113,14 @@ p.tweet-username {
 .fq-venue-name {
   text-align: center;
 }
+
+/* Flickr stuff */
+.img-flickr {
+  height: 300px;
+  width: 300px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  margin-bottom: 20px;
+}
+
