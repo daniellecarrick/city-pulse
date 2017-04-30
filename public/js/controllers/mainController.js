@@ -12,14 +12,20 @@ app.controller('mainController', function($scope, apiFactory, $http) {
     // console.log(location);
     // pass along to the factory
     apiFactory.getWeather(location).then(function (weatherDB) {
-      // setTimeout(function() {
             $scope.weatherDB = weatherDB;
             $scope.coords = weatherDB.coord;
             console.log($scope.coords);
             //set the background color based on temp
             setBackground(weatherDB);
-      // }, 2000)
-            return $scope.coords;
+              getWOEID()
+  .then(function(trends) {
+    console.log("this is response.data:");
+    console.log(trends.data);
+    console.log(trends.data.data[0].locations[0].name);
+    $scope.trends = trends.data.data[0].trends;
+    // return response;
+    // angular.copy(trends.data.data[0].trends, $scope.tweets);
+  })
     });
     apiFactory.getFourSq(location).then(function (fourDB) {
             $scope.fourDB = fourDB.response.groups[0].items;
@@ -97,16 +103,16 @@ app.controller('mainController', function($scope, apiFactory, $http) {
     //   } 
     //   return $http.post('/api/tweets', params)
     // };
-
-  getWOEID()
-  .then(function(response) {
-    console.log("this is response.data:");
-    console.log(response.data);
-    console.log(response.data.data[0].locations[0].name);
-    // return response;
-    angular.copy(response.data.data[0].locations[0].name, $scope.tweets);
-  })
-
+///////////////////////////////////////////////////////////////////////////////////////////////////
+  // getWOEID()
+  // .then(function(response) {
+  //   console.log("this is response.data:");
+  //   console.log(response.data);
+  //   console.log(response.data.data[0].locations[0].name);
+  //   // return response;
+  //   angular.copy(response.data.data[0].locations[0].name, $scope.tweets);
+  // })
+///////////////////////////////////////////////////////////////////////////////////////////////////
   // .then(getTrendingTweets())  
   // .then(function(res) {
   //   console.log("this is response.data for trends:");
