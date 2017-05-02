@@ -34,7 +34,6 @@ initialize();*/
     apiFactory.getCityInfo = function(location) {
       return $http.get('/city/'+location ) // let's go to the server
         .then(function(response) {
-          console.log('apifactory response', response);
             return response.data
         }, function(err) {
           console.log(err);

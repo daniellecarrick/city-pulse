@@ -15,9 +15,8 @@ app.controller('mainController', function($scope, apiFactory, $http) {
     });
 
     // give location to our friend getCityInfo in the factory then takes the response and puts it in variable called fourDB
-    apiFactory.getCityInfo(location).then(function (fourDB) {
-      console.log('controller', fourDB);
-      $scope.fourDB = fourDB.groups[0].items;
+    apiFactory.getCityInfo(location).then(function (allData) {
+      $scope.fourDB = allData[0].groups[0].items;
     });
 
 

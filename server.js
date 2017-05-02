@@ -38,14 +38,10 @@ app.get('/city/:city', function(req, res, next) { // req and res are special exp
     }
     return res.json(results)
   })
-
 })
 
 var getFoursquareData = function(city, cb) {
-  console.log('in getFoursquareData');
-  var returnedFoursquareData = 'blank';
-   /* function getFoursquare(city) {*/
-  console.log('in getFoursquare');
+
   var options = {
       qs: {
         section: 'food',
@@ -61,11 +57,10 @@ var getFoursquareData = function(city, cb) {
 
     // get something cool from the FourSquare API
     request.get('https://api.foursquare.com/v2/venues/explore', options, function(error, response, body) {
-        // need to parse response because it was returning as a string
         if(error) {
           return cb(error, null)
         }
-        console.log(response);
+        // need to parse response because it was returning as a string
         return cb(null, JSON.parse(body).response)
       })
 };
