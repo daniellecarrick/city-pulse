@@ -26,9 +26,27 @@ app.get('/city/:city', function(req, res, next) { // req and res are special exp
 
   var city = req.params.city;
 
-// pre-async version
-/*  function getFoursquare(city) {
-    var options = {
+  // now run all the requests and then give us the results
+  async.parallel([function(cb){
+    getFoursquareData(city, function(err, result){
+      cb(err, result)
+    })
+  }],
+  function(err, results){
+    if(err) {
+      // handle err
+    }
+    return res.json(results)
+  })
+
+})
+
+var getFoursquareData = function(city, cb) {
+  console.log('in getFoursquareData');
+  var returnedFoursquareData = 'blank';
+   /* function getFoursquare(city) {*/
+  console.log('in getFoursquare');
+  var options = {
       qs: {
         section: 'food',
         near: city,
@@ -39,58 +57,22 @@ app.get('/city/:city', function(req, res, next) { // req and res are special exp
         v: 20161231,
         m: 'foursquare'
       }
-     };
+   };
+
     // get something cool from the FourSquare API
     request.get('https://api.foursquare.com/v2/venues/explore', options, function(error, response, body) {
-      // need to parse response because it was returning as a string
-      res.send(JSON.parse(body).response);
-    })
-  }
-})*/
+        // need to parse response because it was returning as a string
+        if(error) {
+          return cb(error, null)
+        }
+        console.log(response);
+        return cb(null, JSON.parse(body).response)
+      })
+};
 
-  // TRYINGGGGGGGG
-
-  var getFoursquareData = function(city, callback) {
-    console.log('in getFoursquareData');
-    var returnedFoursquareData = 'blank';
-     /* function getFoursquare(city) {*/
-        console.log('in getFoursquare');
-        var options = {
-          qs: {
-            section: 'food',
-            near: city,
-            venuePhotos: 1,
-            limit: 5,
-            client_id: 'QLJUKUZ0FU0NVLOWLUZJOOJHB1MTWSYMPHQBSKJ5FXKJH102',
-            client_secret: '5L3IZX1VKHONEULQBYLDSIC4HTZWEXVJFQRL4FE4ZIAWNS20',
-            v: 20161231,
-            m: 'foursquare'
-          }
-         };
-    // get something cool from the FourSquare API
-      request.get('https://api.foursquare.com/v2/venues/explore', options, function(error, response, body) {
-          // need to parse response because it was returning as a string
-          console.log(response);
-          res.send(JSON.parse(body).response);
-          /*console.log(response);
-          returnedFoursquareData = response;*/
-        })
-      //}
-     return callback(null, returnedFoursquareData);
-  };
-
-  var getFlickrData = function(callback) {
-      return callback(null, 'flickrResults');
-  };
-
-  var apiCalls = [getFoursquareData, getFlickrData];
-  var sendResults = function(err, results) {
-  console.log(results);
-}
-
-// now run all the requests and then give us the results
-async.parallel(apiCalls, sendResults);
-});
+var getFlickrData = function(callback) {
+    return callback(null, 'flickrResults');
+};
 
 
 // ASYNC MODEL
