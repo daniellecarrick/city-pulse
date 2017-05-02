@@ -34,13 +34,14 @@ initialize();*/
     apiFactory.getCityInfo = function(location) {
       return $http.get('/city/'+location ) // let's go to the server
         .then(function(response) {
+            console.log(response.data);
             return response.data
         }, function(err) {
           console.log(err);
         });
     };
 
-      // Flickr photos
+/*      // Flickr photos
     apiFactory.getPhotos = function(location) {
         return $http.get('https://api.flickr.com/services/rest/?',
           { params: {
@@ -56,7 +57,7 @@ initialize();*/
                console.log('response.data', response.data);
                 return response.data
             }, function(err) {});
-    };
+    };*/
 
 return apiFactory;
 

@@ -27,12 +27,18 @@ app.get('/city/:city', function(req, res, next) { // req and res are special exp
   var city = req.params.city;
 
   // now run all the requests and then give us the results
-  async.parallel([function(cb){
+  async.parallel([
+    function(cb){
     getFoursquareData(city, function(err, result){
       cb(err, result)
     })
+  },
+    function(cb){
+    getFlickrData(city, function(err, result){
+      cb(err, result)
+    })
   }],
-  function(err, results){
+    function(err, results){
     if(err) {
       // handle err
     }
@@ -65,8 +71,28 @@ var getFoursquareData = function(city, cb) {
       })
 };
 
-var getFlickrData = function(callback) {
-    return callback(null, 'flickrResults');
+// Flickr photos
+var getFlickrData  = function(city, cb) {
+  var options = {
+    qs: {
+      method: 'flickr.photos.search',
+      api_key: '6ae44d19471914449a7bc6764acba0ef',
+      text: city,
+      format: 'json',
+      nojsoncallback: '?',
+      page: '1',
+      sort: 'relevance'
+   }
+   };
+     // get something cool from the Flickr
+  request.get('https://api.flickr.com/services/rest/?', options, function(error, response, body) {
+    if(error) {
+      return cb(error, null)
+    }
+    // need to parse response because it was returning as a string
+    console.log(response.body);
+    return cb(null, JSON.parse(response.body));
+  })
 };
 
 

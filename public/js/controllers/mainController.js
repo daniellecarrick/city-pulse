@@ -17,12 +17,13 @@ app.controller('mainController', function($scope, apiFactory, $http) {
     // give location to our friend getCityInfo in the factory then takes the response and puts it in variable called fourDB
     apiFactory.getCityInfo(location).then(function (allData) {
       $scope.fourDB = allData[0].groups[0].items;
+      $scope.photoDB = allData[1].photos.photo;
     });
 
 
-    apiFactory.getPhotos(location).then(function (photoDB) {
+/*    apiFactory.getPhotos(location).then(function (photoDB) {
             $scope.photoDB = photoDB.photos.photo;
-    });
+    });*/
 
     var params = {
     q: $scope.location,
