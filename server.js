@@ -22,83 +22,11 @@ app.post('/api/tweets', function(req, res, next){
 
 app.listen(process.env.PORT || '8000');
 
-/*// ASYNC PARALLEL CODE
-
 app.get('/city/:city', function(req, res, next) { // req and res are special express utilities to help us send and recieve data
 
   var city = req.params.city;
 
-  function getFoursquare(city) {
-    var options = {
-      qs: {
-        section: 'food',
-        near: city,
-        venuePhotos: 1,
-        limit: 5,
-        client_id: 'QLJUKUZ0FU0NVLOWLUZJOOJHB1MTWSYMPHQBSKJ5FXKJH102',
-        client_secret: '5L3IZX1VKHONEULQBYLDSIC4HTZWEXVJFQRL4FE4ZIAWNS20',
-        v: 20161231,
-        m: 'foursquare'
-      }
-     };
-    // get something cool from the FourSquare API
-    request.get('https://api.foursquare.com/v2/venues/explore', options, function(error, response, body) {
-      // need to parse response because it was returning as a string
-      //res.send(JSON.parse(body).response);
-      return JSON.parse(body).response;
-    })
-  }
-
-  function getFlickrPhotos(city) {
-    var options = {
-      qs: {
-        method: 'flickr.photos.search',
-        api_key: '6ae44d19471914449a7bc6764acba0ef',
-        text: city,
-        format: 'json',
-        nojsoncallback: '?',
-        page: '1',
-        sort: 'relevance'
-      }
-    };
-    // get images from Flickr API
-    request.get('https://api.flickr.com/services/rest/?', options, function(error, response, body) {
-      // need to parse response because it was returning as a string
-      return JSON.parse(body).response;
-    })
-  }
-  var sendResults = function(err, results) {
-    console.log('results', results);
-    console.log('in send results');
-    res.send(results);
-  }
-  var apiCalls = [getFoursquare(city), getFlickrPhotos(city)];
-  async.parallel(apiCalls, sendResults);
-
-  // pseudo code for later
-  //getWeather(berlin).then(getTwitter).then(res.send(data))
-  //getFoursquare(city);
-  //getFlickrPhotos(city);
-});
-*/
-/*function getWeather(city) {
-
-  //return request()
-  //.then(return {lat:city.lat, lon:city.lin})
-
-}
-
-function getTwitter(data) {
-
-  //return request()
-
-}*/
-
-
-app.get('/city/:city', function(req, res, next) { // req and res are special express utilities to help us send and recieve data
-
-  var city = req.params.city;
-
+// pre-async version
 /*  function getFoursquare(city) {
     var options = {
       qs: {
@@ -117,15 +45,16 @@ app.get('/city/:city', function(req, res, next) { // req and res are special exp
       // need to parse response because it was returning as a string
       res.send(JSON.parse(body).response);
     })
-  }*/
+  }
+})*/
 
-  // pseudo code for later
-  //getWeather(berlin).then(getTwitter).then(res.send(data))
-  //getFoursquare(city);
+  // TRYINGGGGGGGG
 
-  var getFoursquareData = function(callback) {
+  var getFoursquareData = function(city, callback) {
+    console.log('in getFoursquareData');
     var returnedFoursquareData = 'blank';
-      function getFoursquare(city) {
+     /* function getFoursquare(city) {*/
+        console.log('in getFoursquare');
         var options = {
           qs: {
             section: 'food',
@@ -141,16 +70,19 @@ app.get('/city/:city', function(req, res, next) { // req and res are special exp
     // get something cool from the FourSquare API
       request.get('https://api.foursquare.com/v2/venues/explore', options, function(error, response, body) {
           // need to parse response because it was returning as a string
-          //res.send(JSON.parse(body).response);
           console.log(response);
-          returnedFoursquareData = response;
+          res.send(JSON.parse(body).response);
+          /*console.log(response);
+          returnedFoursquareData = response;*/
         })
-      }
-      return callback(null, returnedFoursquareData);
+      //}
+     return callback(null, returnedFoursquareData);
   };
+
   var getFlickrData = function(callback) {
       return callback(null, 'flickrResults');
   };
+
   var apiCalls = [getFoursquareData, getFlickrData];
   var sendResults = function(err, results) {
   console.log(results);
@@ -160,6 +92,8 @@ app.get('/city/:city', function(req, res, next) { // req and res are special exp
 async.parallel(apiCalls, sendResults);
 });
 
+
+// ASYNC MODEL
 /*
 async.parallel([
     function(getFoursquareX) {
@@ -186,7 +120,25 @@ function(err, results) {
   function(callback) {
       return callback(null, 'managerResults');
   }
-]*/
+]
+
+// CODE SNIPPETS FOR REFERENCE
+  //getWeather(berlin).then(getTwitter).then(res.send(data))
+  //getFoursquare(city);
+  //getFlickrPhotos(city);
+
+function getWeather(city) {
+
+  //return request()
+  //.then(return {lat:city.lat, lon:city.lin})
+
+}
+
+function getTwitter(data) {
+
+  //return request()
+
+}*/
 
 
 
