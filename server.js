@@ -12,61 +12,97 @@ app.use(bodyParser.json());
 app.use(express.static('public'));
 app.use(express.static('node_modules'));
 
+
+
+
 app.get('/city/:city', function(req, res, next) { // req and res are special express utilities to help us send and recieve data
 
   var city = req.params.city;
 
-  // now run all the requests and then give us the results
-  async.parallel([
-    function(cb){
-      getFlickrData(city, function(err, result){
-        cb(err, result)
-        //console.log('flickr result: ', result)
-    })
-  },
-    function(cb){
-      getWeatherData(city, function(err, result){
-        cb(err, result)
-        //console.log('weather result: ', result)
-    })
-  },
-    function(cb){
-      Tweet({
-        q: city,
-        count: 5,
-        result_type: 'popular recent',
-        lang: 'en'
-      })
-      .then(function(result){
-         cb(null, result)
-      }, function(err) {
-        cb(err)
-      })
-  }, function(cb){
-    // WATERFALL
-      async.waterfall([
-        function(innercb){
-          getFoursquareData(city, function(err, result){
-            console.log('coord: ', result.geocode.center)
-            innercb(err, result)
-          })
-        },
-        function(prev, innercb) {
-          console.log('coord from prev: ', prev.geocode.center)
-          innercb(null, prev);
-        }
-      ], function(err, result) {
-        cb(err, result);
-      });
-  }],
-  function(err, results){
-    if(err) {
-      res.status(500).send(err)
-    }
-    return res.json(results)
-  })
-}); //END of get request
 
+    function flickrCall(cb){
+      getFlickrData(city, function(err, result){
+            cb(err, result);
+        })
+    }
+
+    function weatherCall(cb){
+          getWeatherData(city, function(err, result){
+            cb(err, result)
+            //console.log('weather result: ', result)
+          })
+    }
+
+    function twitterCall(cb){
+        Tweet.search({
+            q: city,
+            count: 5,
+            result_type: 'popular recent',
+            lang: 'en'
+          })
+          .then(function(result){
+             cb(null, result)
+          }, function(err) {
+            cb(err)
+          })
+      }
+
+    function twitterTrends(cb){
+        async.waterfall([
+          foursquareCall,
+          twitterClosest,
+          twitterPlace
+      ], function(err, results) {
+        cb(err, results);
+      })
+    }
+
+    function foursquareCall(cb){
+      getFoursquareData(city, function(err, result){
+           cb(err, {lat: result.geocode.center.lat, long: result.geocode.center.lng})
+          })
+        }
+
+    function foursquareVenueCall(cb){
+      getFoursquareData(city, function(err, result){
+           cb(err, result)
+          })
+    }
+
+    function twitterClosest(geolocation, cb){
+        Tweet.closest(geolocation)
+          .then(function(id){
+             cb(null, id)
+          }, function(err) {
+            cb(err)
+          })
+      }
+
+    function twitterPlace(id, cb){
+        Tweet.place(id)
+          .then(function(result){
+             cb(null, result)
+          }, function(err) {
+            cb(err)
+          })
+      }
+
+     async.parallel([
+        foursquareVenueCall,
+        flickrCall,
+        weatherCall,
+        twitterCall,
+        twitterTrends
+      ],
+      function(err, results){
+        if(err) {
+          console.log(err)
+          return res.status(500).send(err)
+        }
+        return res.json(results)
+      })
+   });
+ //END of get request
 
 var getFoursquareData = function(city, cb) {
 
@@ -90,8 +126,8 @@ var getFoursquareData = function(city, cb) {
         }
         // need to parse response because it was returning as a string
         //console.log(JSON.parse(body).response.geocode.center);
-        var coord = JSON.parse(body).response.geocode.center
-        return cb(null, JSON.parse(body).response, coord)
+        //var coord = JSON.parse(body).response.geocode.center
+        return cb(null, JSON.parse(body).response)
       })
 };
 

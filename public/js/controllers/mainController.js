@@ -8,11 +8,12 @@ app.controller('mainController', function($scope, apiFactory, $http) {
     console.log(city);
     // give the searched city to our friend getCityInfo in the factory
     apiFactory.getCityInfo(city).then(function (allData) {
+      console.log(allData);
       // data is returned as an array of objects - one for each api database
-      $scope.fourDB = allData[3].groups[0].items;
-      $scope.photoDB = allData[0].photos.photo;
-      $scope.weatherDB = allData[1];
-      $scope.tweets = allData[2];
+      $scope.fourDB = allData[0].groups[0].items;
+      $scope.photoDB = allData[1].photos.photo;
+      $scope.weatherDB = allData[2];
+      $scope.tweets = allData[3];
 
       setBackground($scope.weatherDB);
     });

@@ -20,27 +20,34 @@ function search(params) {
         })
 }
 
-/*function searchTrends(params) {
-  return T.get('trends/closest', params)
+function closest(geolocation) {
+  return T.get('trends/closest', geolocation)
         .then((result) => {
           //console.log("trends/closest result is: " + result.data[0].woeid);
+          console.log('closest', result);
           place = result.data[0].woeid;
           return place;
           // return result.data.statuses;
         })
-        .then(function search(params) {
-          var params = {
-            id: place
-          }
-          return T.get('trends/place', params)
+
+        }
+
+function place(id){
+  return T.get('trends/place', {id: id})
           .then((res) => {
             console.log("trends/place result is: " + res.data);
-            return res;
+            return res.data;
           })
-        })
-        .catch((err) => console.log('error', err))
-}*/
+    }
+       // .catch((err) => console.log('error', err))
 
 
-module.exports = search;
+
+
+
+module.exports = {
+  search: search,
+  closest: closest,
+  place: place
+}
 // var config = require ('./config')
