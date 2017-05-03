@@ -46,7 +46,9 @@
             <div class="icon-wrap">
               <i class="wi wi-owm-{{ weatherDB.weather[0].id}}"></i>
             </div>
-            <p class="temp">{{ weatherDB.main.temp | number: 0}} &#8457; | {{ weatherDB.weather[0].main | lowercase }}</p>
+              <!-- <p ng-click = "switchTemperature()" ng-show="fahrenheit" class="temp">{{ tempFahrenheit | number: 0}} &#8457; | {{ weatherDB.weather[0].main | lowercase }}</p>
+              <p ng-click = "switchTemperature()" ng-show="!fahrenheit" class="temp">{{ tempCelsius | number: 0}} &#8451; | {{ weatherDB.weather[0].main | lowercase }}</p> -->
+             <p class="temp">{{ weatherDB.main.temp | number: 0}} &#8457; | {{ weatherDB.weather[0].main | lowercase }}</p>
           </div>
         </div>
       </div>
