@@ -29,10 +29,10 @@
       <div class="container">
         <div class="search">
           <div class="col-sm-12">
-              <form ng-submit="search(location)">
-            <input type="text" class="search-box col-sm-12" name="location" placeholder="Search for a city" ng-autocomplete ng-model="location" options="{types: '(cities)'}" details="details" ng-required="true" ng-blur="search(location)"/> <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+              <form ng-submit="search(city)">
+            <input type="text" class="search-box col-sm-12" name="city" placeholder="Search for a city" ng-autocomplete ng-model="city" options="{types: '(cities)'}" details="details" ng-required="true" ng-blur="search(city)"/> <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
             </form>
-            <!-- <button type="button" class="btn" ng-click="search(location)">Search</button> -->
+            <!-- <button type="button" class="btn" ng-click="search(city)">Search</button> -->
           </div>
         </div>
       </div>
@@ -111,7 +111,7 @@
   </div>
 
 </div> <!-- END OF CONTAINER -->
-<img src="https://beta.mapquestapi.com/staticmap/v5/map?key=c9LUj3gveNGWjKMfAUk0VKnN8ZwkLuqX&size=1500,+170&type=sat&locations={{location}}"/>
+<img src="https://beta.mapquestapi.com/staticmap/v5/map?key=c9LUj3gveNGWjKMfAUk0VKnN8ZwkLuqX&size=1500,+170&type=sat&locations={{city}}"/>
 <!-- Scripts -->
   <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyDQX1NwXDMRS8EEfA_bHLoB5N3NkB1e5a0"></script>
   <script src="/angular/angular.js"></script>
