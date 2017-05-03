@@ -95,6 +95,12 @@
     <div class="container">
       <div class="col-sm-12 section">
       <h2 class="title text-center">The Talk</h2>
+
+      <div ng-repeat="trend in trends | filter:{tweet_volume:'!!'} | orderBy:'-tweet_volume' | limitTo: 12">
+        <div class="col-sm-3 trend-container"><button type="button" class="btn"><a href="{{trend.url}}">{{ trend.name }}</a></button></div>
+       <!--{{ trend.tweet_volume }}-->
+      </div>
+
         <div ng-repeat="tweet in tweets | limitTo: 3">
           <div class="col-sm-12 tweet-container">
             <div>
