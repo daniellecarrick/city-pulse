@@ -1,8 +1,8 @@
 body {
-  height: 100%;
-  font-family: 'Varela Round', sans-serif;
-  color: white;
-  background-color: #f0f0f0;
+    height: 100%;
+    font-family: 'Varela Round', sans-serif;
+    color: white;
+    background-color: #f0f0f0;
 }
 
 input:focus,
@@ -13,103 +13,105 @@ button:focus {
 }
 
 .glyphicon-search {
-  font-size: 30px;
-  right: 10px;
-  top: 10px;
-  position: absolute;
-  opacity: .5;
+    font-size: 30px;
+    right: 10px;
+    top: 10px;
+    position: absolute;
+    opacity: .5;
 }
 
 .top-section {
-  padding-bottom: 40px;
+    padding-bottom: 40px;
 }
 
 .super-container {
-  margin: 30px;
-  border-radius: 3px;
-  color: black;
+    margin: 30px;
+    border-radius: 3px;
+    color: black;
 }
 
 .section {
-  margin-bottom: 20px;
-  background: white;
-  margin-top: 20px;
-  padding-bottom: 30px;
+    margin-bottom: 20px;
+    background: white;
+    margin-top: 20px;
+    padding-bottom: 30px;
 }
 
 .title {
-  margin: 30px 0px;
+    margin: 30px 0px;
 }
 
 .section-padding {
-  margin-bottom: 30px;
+    margin-bottom: 30px;
 }
 
 .navbar-custom {
-  background-color: rgba(255,255,255,.1);
+    background-color: rgba(255, 255, 255, .1);
 }
 
 .navbar-brand {
-  color: white;
+    color: white;
 }
 
 .search-box {
-  font-size: 40px;
-  background-color: transparent;
-  border: none;
-  border-bottom: 1px solid white;
-  text-align: center;
-  text-transform: uppercase;
+    font-size: 40px;
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid white;
+    text-align: center;
+    text-transform: uppercase;
 }
 
 .weather-container {
-  margin-top: 30px;
+    margin-top: 30px;
 }
 
 .icon-wrap {
-  margin-bottom: 20px;
+    margin-bottom: 20px;
 }
 
 .wi {
-  font-size: 70px;
+    font-size: 70px;
 }
 
 .temp {
-  font-size: 24px;
+    font-size: 24px;
 }
+
 
 /* Twitter section */
 
 p.tweet-username {
-  margin-bottom: 0px;
+    margin-bottom: 0px;
 }
 
 .tweet-container {
-  padding: 20px 0px;
-  border-radius: 3px;
-  margin: 10px 0px;
-  display: inline;
+    padding: 20px 0px;
+    border-radius: 3px;
+    margin: 10px 0px;
+    display: inline;
 }
 
 .trend-container button {
-  background-color: white;
-  border: 1px solid #f0f0f0;
-  margin-bottom: 10px
+    background-color: white;
+    border: 1px solid #f0f0f0;
+    margin-bottom: 10px
 }
 
 .img-tweet {
-  border: 2px solid white;
-  border-radius: 3px;
+    border: 2px solid white;
+    border-radius: 3px;
 }
+
 
 /* FOURSQUARE STUFF */
 
 .img-thumbnail {
-  padding: 0px;
+    padding: 0px;
 }
 
 .fq-venue-name-container {
-/*  height: 40px;
+    /*  height: 40px;
   width: 100%;
   background-color: rgba(50,50,50,.5);
   position: absolute;
@@ -117,16 +119,17 @@ p.tweet-username {
 }
 
 .fq-venue-name {
-  text-align: center;
+    text-align: center;
 }
+
 
 /* Flickr stuff */
-.img-flickr {
-  height: 300px;
-  width: 300px;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-  margin-bottom: 20px;
-}
 
+.img-flickr {
+    height: 300px;
+    width: 300px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    margin-bottom: 20px;
+}

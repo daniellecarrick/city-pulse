@@ -19,6 +19,7 @@
     "express": "^4.15.2",
     "font-awesome": "^4.7.0",
     "less": "^2.7.2",
+    "masonry-layout": "^4.2.0",
     "ng-autocomplete": "^1.0.0",
     "request": "^2.81.0",
     "twit": "^2.2.5",
