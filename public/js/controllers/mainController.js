@@ -1,5 +1,20 @@
 app.controller('mainController', function($scope, apiFactory, $http) {
 
+
+////////////////////////////////////////  carousel stuff  ////////////////////////////////////////
+
+    $scope.currentPage = 0;
+    $scope.pageSize = 3;
+    $scope.data = [];
+    $scope.numberOfPages=function(){
+        return Math.ceil($scope.data.length/$scope.pageSize);                
+    }
+    for (var i=0; i<100; i++) {
+        $scope.data.push("Item "+i);
+    }
+
+//////////////////////////////////////////////////////////////////////////////////////////////////
+
   $scope.location = 'New York';
   $scope.coord = {};
 
@@ -59,4 +74,13 @@ app.controller('mainController', function($scope, apiFactory, $http) {
   $scope.tweets=[]
   $scope.search($scope.location);
 
+});
+
+////////////////////////////////////////    more carousel stuff   ////////////////////////////////////////
+
+app.filter('startFrom', function() {
+    return function(input, start) {
+        start = +start; //parse to int
+        return input.slice(start);
+    }
 });
