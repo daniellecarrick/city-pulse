@@ -46,7 +46,9 @@
             <div class="icon-wrap">
               <i class="wi wi-owm-{{ weatherDB.weather[0].id}}"></i>
             </div>
-            <p class="temp">{{ weatherDB.main.temp | number: 0}} &#8457; | {{ weatherDB.weather[0].main | lowercase }}</p>
+              <!-- <p ng-click = "switchTemperature()" ng-show="fahrenheit" class="temp">{{ tempFahrenheit | number: 0}} &#8457; | {{ weatherDB.weather[0].main | lowercase }}</p>
+              <p ng-click = "switchTemperature()" ng-show="!fahrenheit" class="temp">{{ tempCelsius | number: 0}} &#8451; | {{ weatherDB.weather[0].main | lowercase }}</p> -->
+             <p class="temp">{{ weatherDB.main.temp | number: 0}} &#8457; | {{ weatherDB.weather[0].main | lowercase }}</p>
           </div>
         </div>
       </div>
@@ -93,6 +95,14 @@
     <div class="container">
       <div class="col-sm-12 section">
       <h2 class="title text-center">The Talk</h2>
+
+      <div ng-repeat="trend in trends | filter:{tweet_volume:'!!'} | orderBy:'-tweet_volume' | limitTo: 8">
+        <div class="col-sm-3 trend-container">
+          <button type="button" class="btn"><a href="{{trend.url}}">{{ trend.name }}</a></button>
+        </div>
+       <!--{{ trend.tweet_volume }}-->
+      </div>
+
         <div ng-repeat="tweet in tweets | limitTo: 3">
           <div class="col-sm-12 tweet-container">
             <div>

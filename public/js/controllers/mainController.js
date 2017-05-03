@@ -5,35 +5,21 @@ app.controller('mainController', function($scope, apiFactory, $http) {
 
   //search triggered on button click
   $scope.search = function(city) {
-   console.log(city);
-
+    console.log(city);
     // give the searched city to our friend getCityInfo in the factory
     apiFactory.getCityInfo(city).then(function (allData) {
+      console.log(allData);
       // data is returned as an array of objects - one for each api database
       $scope.fourDB = allData[0].groups[0].items;
       $scope.photoDB = allData[1].photos.photo;
       $scope.weatherDB = allData[2];
+      $scope.tweets = allData[3];
+      $scope.trends = allData[4][0].trends;
+
       setBackground($scope.weatherDB);
     });
 
-    var params = {
-    q: $scope.city,
-    count: 5,
-    result_type: 'popular recent',
-    lang: 'en',
-/*    lat: $scope.coord.lat,
-    long: $scope.coord.lon*/
-    //geocode: '40.7,-74.01,100mi'
-    //geocode: $scope.coord.lat $scope.coord.lon 50mi
-    }
-
-    $http.post('/api/tweets', params)
-      .then(function (result) {
-        $scope.tweets = result.data;
-      }, function(err) {
-        console.log(err);
-    })
-  }
+  } //end of search() function
 
   /* Background color is based on temperature */
   var setBackground = function(weatherDB) {
@@ -49,5 +35,14 @@ app.controller('mainController', function($scope, apiFactory, $http) {
 //* Tweet stuff */
   $scope.tweets=[]
   $scope.search($scope.city);
+
+//* Change from F to C and back */
+/*  $scope.fahrenheit = true;
+  $scope.tempFahrenheit = $scope.weatherDB.main.temp;
+
+  $scope.switchTemperature = function () {
+    $scope.fahrenheit = !$scope.fahrenheit;
+    $scope.tempCelsius = Math.round((($scope.weatherDB.main.temp) - 32) / 1.8);
+  }*/
 
 });

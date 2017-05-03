@@ -1,4 +1,4 @@
-console.log("The bot is starting")
+console.log("Twitterfeed.js")
 
 var Twit = require('twit');
 
@@ -9,21 +9,6 @@ var T = new Twit({
     , access_token_secret:  'GrhpFs0wxUnN5A1XtRXtKJrQ2eXJG3JfTETySAbawtFaJ'
   })
 
-  // T.get('search/tweets', { q: 'banana since:2011-07-11', count: 100 }, function(err, data, response) {
-  //   console.log(data)
-//
-
-
-// T.get('search/tweets', params, gotData);
-// search(params);
-
-function gotData(err, data, response) {
-
-  var tweets = data.statuses;
-  for (var i = 0; i < tweets.length; i++) {
-   // console.log(i + "----" + tweets[i].text);
-  }
-};
 
 // this function gets the tweets
 function search(params) {
@@ -33,10 +18,36 @@ function search(params) {
           //console.log(result);
           return result.data.statuses;
         })
-        .catch((err) => console.log('error', err))
-
 }
 
+function closest(geolocation) {
+  return T.get('trends/closest', geolocation)
+        .then((result) => {
+          //console.log("trends/closest result is: " + result.data[0].woeid);
+          console.log('closest', result);
+          place = result.data[0].woeid;
+          return place;
+          // return result.data.statuses;
+        })
 
-module.exports = search;
+        }
+
+function place(id){
+  return T.get('trends/place', {id: id})
+          .then((res) => {
+            console.log("trends/place result is: " + res.data);
+            return res.data;
+          })
+    }
+       // .catch((err) => console.log('error', err))
+
+
+
+
+
+module.exports = {
+  search: search,
+  closest: closest,
+  place: place
+}
 // var config = require ('./config')

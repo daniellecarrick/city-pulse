@@ -12,44 +12,97 @@ app.use(bodyParser.json());
 app.use(express.static('public'));
 app.use(express.static('node_modules'));
 
-//  twit post route
-app.post('/api/tweets', function(req, res, next){
-  //console.log(req.body);
-  Tweet(req.body).then(function(result){
-  res.send(result);
-  });
-})
 
-app.listen(process.env.PORT || '8000');
+
 
 app.get('/city/:city', function(req, res, next) { // req and res are special express utilities to help us send and recieve data
 
   var city = req.params.city;
 
-  // now run all the requests and then give us the results
-  async.parallel([
-    function(cb){
-      getFoursquareData(city, function(err, result){
-        cb(err, result)
-    })
-  },
-    function(cb){
+
+    function flickrCall(cb){
       getFlickrData(city, function(err, result){
-        cb(err, result)
-    })
-  },
-    function(cb){
-      getWeatherData(city, function(err, result){
-        cb(err, result)
-    })
-  }],
-  function(err, results){
-    if(err) {
-      // handle err
+            cb(err, result);
+        })
     }
-    return res.json(results)
-  })
-})
+
+    function weatherCall(cb){
+          getWeatherData(city, function(err, result){
+            cb(err, result)
+            //console.log('weather result: ', result)
+          })
+    }
+
+    function twitterCall(cb){
+        Tweet.search({
+            q: city,
+            count: 5,
+            result_type: 'popular recent',
+            lang: 'en'
+          })
+          .then(function(result){
+             cb(null, result)
+          }, function(err) {
+            cb(err)
+          })
+      }
+
+    function twitterTrends(cb){
+        async.waterfall([
+          foursquareCall,
+          twitterClosest,
+          twitterPlace
+      ], function(err, results) {
+        cb(err, results);
+      })
+    }
+
+    function foursquareCall(cb){
+      getFoursquareData(city, function(err, result){
+           cb(err, {lat: result.geocode.center.lat, long: result.geocode.center.lng})
+          })
+        }
+
+    function foursquareVenueCall(cb){
+      getFoursquareData(city, function(err, result){
+           cb(err, result)
+          })
+    }
+
+    function twitterClosest(geolocation, cb){
+        Tweet.closest(geolocation)
+          .then(function(id){
+             cb(null, id)
+          }, function(err) {
+            cb(err)
+          })
+      }
+
+    function twitterPlace(id, cb){
+        Tweet.place(id)
+          .then(function(result){
+             cb(null, result)
+          }, function(err) {
+            cb(err)
+          })
+      }
+
+     async.parallel([
+        foursquareVenueCall,
+        flickrCall,
+        weatherCall,
+        twitterCall,
+        twitterTrends
+      ],
+      function(err, results){
+        if(err) {
+          console.log(err)
+          return res.status(500).send(err)
+        }
+        return res.json(results)
+      })
+   });
+ //END of get request
 
 var getFoursquareData = function(city, cb) {
 
@@ -67,11 +120,13 @@ var getFoursquareData = function(city, cb) {
   };
 
     // get something cool from the FourSquare API
-    request.get('https://api.foursquare.com/v2/venues/explore', options, function(error, response, body) {
-        if(error) {
-          return cb(error, null)
+    request.get('https://api.foursquare.com/v2/venues/explore', options, function(err, response, body) {
+        if(err) {
+          return cb(err, null)
         }
         // need to parse response because it was returning as a string
+        //console.log(JSON.parse(body).response.geocode.center);
+        //var coord = JSON.parse(body).response.geocode.center
         return cb(null, JSON.parse(body).response)
       })
 };
@@ -90,9 +145,9 @@ var getFlickrData  = function(city, cb) {
    }
    };
      // get something cool from the Flickr
-  request.get('https://api.flickr.com/services/rest/?', options, function(error, response, body) {
-    if(error) {
-      return cb(error, null)
+  request.get('https://api.flickr.com/services/rest/?', options, function(err, response, body) {
+    if(err) {
+      return cb(err, null)
     }
     // need to parse response because it was returning as a string
     return cb(null, JSON.parse(response.body));
@@ -108,19 +163,17 @@ var getWeatherData  = function(city, cb) {
       }
     }
   // get something cool from the OpenWeatherMap
-  request.get('http://api.openweathermap.org/data/2.5/weather?', options, function(error, response, body) {
-    if(error) {
-      return cb(error, null)
+  request.get('http://api.openweathermap.org/data/2.5/weather?', options, function(err, response, body) {
+    if(err) {
+      return cb(err, null)
     }
     // need to parse response because it was returning as a string
-    console.log(response.body);
+    //console.log(response.body);
     return cb(null, JSON.parse(response.body));
   })
 };
 
-var test = function(cb) {
-
-}
+app.listen(process.env.PORT || '8000');
 
 
 // CODE SNIPPETS FOR REFERENCE
