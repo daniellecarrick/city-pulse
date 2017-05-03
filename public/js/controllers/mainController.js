@@ -20,9 +20,9 @@ app.controller('mainController', function($scope, apiFactory, $http) {
       console.log('fourDB', fourDB);
     });
 
-
     apiFactory.getPhotos(location).then(function (photoDB) {
             $scope.photoDB = photoDB.photos.photo;
+            console.log($scope.photoDB);
     });
 
     var params = {

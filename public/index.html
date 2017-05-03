@@ -55,20 +55,38 @@
 
 <div class="super-container">
 
+<!-- THE PAGINATION EFFORT -->
+
+  <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+    <!-- Indicators -->
+    <ol class="carousel-indicators">
+      <li data-target="#carousel-example-generic" ng-repeat="photo in photoDB" data-slide-to="$index" ng-class="{active:isActive($index)}"></li>
+    </ol>
+
+    <!-- Wrapper for slides -->
+    <div >
+      <div class="item" ng-class="{active:index}">
+        <img src="{{ photo }}" style="margin:auto;">
+      </div>
+    </div>
+  </div>
+<!--</div>-->
+
+
 <!-- FLICKR PHOTOS -->
+<!--
   <div class="row">
       <div class="container">
         <div class="col-sm-12 section">
         <h2 class="title text-center">The Sights</h2>
         <div ng-repeat="photo in photoDB | limitTo: 4">
           <div class="col-sm-6">
-            <!-- <img class="img-responsive img-thumbnail img-flickr" src='https://farm{{photo.farm}}.staticflickr.com/{{photo.server}}/{{photo.id}}_{{photo.secret}}.jpg' /> -->
             <div class="img-flickr" style="background-image: url(https://farm{{photo.farm}}.staticflickr.com/{{photo.server}}/{{photo.id}}_{{photo.secret}}.jpg);"></div>
           </div>
         </div>
       </div>
     </div>
-    </div>
+  </div>-->
 
   <!-- Foursquare data -->
   <div class="row">
@@ -120,5 +138,7 @@
   <script src="/js/controllers/mainController.js"></script>
   <script src="/js/directives/weatherDirective.js"></script>
   <script src="/ng-autocomplete/src/ngAutocomplete.js"></script>
+  <script src="/ng-repeat-owl-carousel/dist/ngRepeatOwlCarousel.min.js"></script>
+  <script src="/angular-ui-bootstrap/dist/ui-bootstrap.js"></script>
 </body>
 </html>
