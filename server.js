@@ -29,16 +29,21 @@ app.get('/city/:city', function(req, res, next) { // req and res are special exp
   // now run all the requests and then give us the results
   async.parallel([
     function(cb){
-    getFoursquareData(city, function(err, result){
-      cb(err, result)
+      getFoursquareData(city, function(err, result){
+        cb(err, result)
     })
   },
     function(cb){
-    getFlickrData(city, function(err, result){
-      cb(err, result)
+      getFlickrData(city, function(err, result){
+        cb(err, result)
+    })
+  },
+    function(cb){
+      getWeatherData(city, function(err, result){
+        cb(err, result)
     })
   }],
-    function(err, results){
+  function(err, results){
     if(err) {
       // handle err
     }
@@ -49,17 +54,17 @@ app.get('/city/:city', function(req, res, next) { // req and res are special exp
 var getFoursquareData = function(city, cb) {
 
   var options = {
-      qs: {
-        section: 'food',
-        near: city,
-        venuePhotos: 1,
-        limit: 5,
-        client_id: 'QLJUKUZ0FU0NVLOWLUZJOOJHB1MTWSYMPHQBSKJ5FXKJH102',
-        client_secret: '5L3IZX1VKHONEULQBYLDSIC4HTZWEXVJFQRL4FE4ZIAWNS20',
-        v: 20161231,
-        m: 'foursquare'
-      }
-   };
+    qs: {
+      section: 'food',
+      near: city,
+      venuePhotos: 1,
+      limit: 5,
+      client_id: 'QLJUKUZ0FU0NVLOWLUZJOOJHB1MTWSYMPHQBSKJ5FXKJH102',
+      client_secret: '5L3IZX1VKHONEULQBYLDSIC4HTZWEXVJFQRL4FE4ZIAWNS20',
+      v: 20161231,
+      m: 'foursquare'
+    }
+  };
 
     // get something cool from the FourSquare API
     request.get('https://api.foursquare.com/v2/venues/explore', options, function(error, response, body) {
@@ -90,43 +95,36 @@ var getFlickrData  = function(city, cb) {
       return cb(error, null)
     }
     // need to parse response because it was returning as a string
+    return cb(null, JSON.parse(response.body));
+  })
+};
+
+var getWeatherData  = function(city, cb) {
+  var options = {
+    qs: {
+      q: city,
+      units: 'imperial',
+      appid: 'b51ff059850fb59ef5b5085a6e089a74'
+      }
+    }
+  // get something cool from the OpenWeatherMap
+  request.get('http://api.openweathermap.org/data/2.5/weather?', options, function(error, response, body) {
+    if(error) {
+      return cb(error, null)
+    }
+    // need to parse response because it was returning as a string
     console.log(response.body);
     return cb(null, JSON.parse(response.body));
   })
 };
 
+var test = function(cb) {
 
-// ASYNC MODEL
-/*
-async.parallel([
-    function(getFoursquareX) {
-            getFoursquareX(null, 'one');
-            console.log('what does this do');
-    },
-    function(callback) {
-        setTimeout(function() {
-            callback(null, 'two');
-        }, 100);
-    }
-],
-// optional callback
-function(err, results) {
-  console.log(results, 'optional callback');
-    // the results array will equal ['one','two'] even though
-    // the second function had a shorter timeout.
-});*/
+}
 
-/*var dbQueryFunctions = [
-  function(callback) {
-      return callback(null, 'userResults');
-  },
-  function(callback) {
-      return callback(null, 'managerResults');
-  }
-]
 
 // CODE SNIPPETS FOR REFERENCE
-  //getWeather(berlin).then(getTwitter).then(res.send(data))
+  /*getWeather(berlin).then(getTwitter).then(res.send(data))
   //getFoursquare(city);
   //getFlickrPhotos(city);
 

@@ -1,32 +1,23 @@
 app.controller('mainController', function($scope, apiFactory, $http) {
 
-  $scope.location = 'New York';
+  $scope.city = 'New York';
   $scope.coord = {};
 
   //search triggered on button click
-  $scope.search = function(location) {
-   console.log(location);
-    // pass along to the factory
-    apiFactory.getWeather(location).then(function (weatherDB) {
-            $scope.weatherDB = weatherDB;
-            $scope.coord = weatherDB.coord;
-            //set the background color based on temp
-            setBackground(weatherDB);
-    });
+  $scope.search = function(city) {
+   console.log(city);
 
-    // give location to our friend getCityInfo in the factory then takes the response and puts it in variable called fourDB
-    apiFactory.getCityInfo(location).then(function (allData) {
+    // give the searched city to our friend getCityInfo in the factory
+    apiFactory.getCityInfo(city).then(function (allData) {
+      // data is returned as an array of objects - one for each api database
       $scope.fourDB = allData[0].groups[0].items;
       $scope.photoDB = allData[1].photos.photo;
+      $scope.weatherDB = allData[2];
+      setBackground($scope.weatherDB);
     });
 
-
-/*    apiFactory.getPhotos(location).then(function (photoDB) {
-            $scope.photoDB = photoDB.photos.photo;
-    });*/
-
     var params = {
-    q: $scope.location,
+    q: $scope.city,
     count: 5,
     result_type: 'popular recent',
     lang: 'en',
@@ -57,6 +48,6 @@ app.controller('mainController', function($scope, apiFactory, $http) {
 
 //* Tweet stuff */
   $scope.tweets=[]
-  $scope.search($scope.location);
+  $scope.search($scope.city);
 
 });
