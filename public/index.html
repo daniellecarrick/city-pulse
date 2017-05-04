@@ -10,6 +10,7 @@
     <link rel="stylesheet" type="text/css" href="/weather-icons.css">
     <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="/style.css">
+    <link rel="stylesheet" type="text/css" href="/masonry.css">
     <title>City Seeker</title>
 </head>
 
@@ -55,19 +56,17 @@
     </div>
     <div class="super-container">
         <!-- FLICKR PHOTOS -->
-        <div class="row">
-            <div class="container">
+        <div class="grid">
                 <div class="col-sm-12 section">
                     <h2 class="title text-center">The Sights</h2>
+                    <div class="grid-sizer"></div>
                     <div ng-repeat="photo in photoDB | limitTo: 4">
-                        <div class="col-sm-6">
-                            <!-- <img class="img-responsive img-thumbnail img-flickr" src='https://farm{{photo.farm}}.staticflickr.com/{{photo.server}}/{{photo.id}}_{{photo.secret}}.jpg' /> -->
-                            <div class="img-flickr" style="background-image: url(https://farm{{photo.farm}}.staticflickr.com/{{photo.server}}/{{photo.id}}_{{photo.secret}}.jpg);"></div>
+                        <div class="grid-item">
+                            <div style="background-image: url(https://farm{{photo.farm}}.staticflickr.com/{{photo.server}}/{{photo.id}}_{{photo.secret}}.jpg);"></div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
         <!-- Foursquare data -->
         <div class="row">
             <div class="container">
@@ -122,6 +121,8 @@
     <script src="/js/controllers/mainController.js"></script>
     <script src="/js/directives/weatherDirective.js"></script>
     <script src="/ng-autocomplete/src/ngAutocomplete.js"></script>
+    <script src="/masonry-layout/dist/masonry-pkgd.js"></script>
+    <script src="/js/masonry.js"></script>
 </body>
 
 </html>
