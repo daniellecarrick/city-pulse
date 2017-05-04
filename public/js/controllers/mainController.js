@@ -3,6 +3,11 @@ app.controller('mainController', function($scope, apiFactory, $http) {
     $scope.city = 'New York';
     $scope.coord = {};
 
+    $scope.fahrenheit = true;
+    $scope.switchTemperature = function () {
+    $scope.fahrenheit = !$scope.fahrenheit;
+    }
+
     //search triggered on button click
     $scope.search = function(city) {
             console.log(city);
@@ -15,6 +20,9 @@ app.controller('mainController', function($scope, apiFactory, $http) {
                 $scope.weatherDB = allData[2];
                 $scope.tweets = allData[3];
                 $scope.trends = allData[4][0].trends;
+
+                $scope.tempFahrenheit = $scope.weatherDB.main.temp;
+                $scope.tempCelsius = Math.round((($scope.weatherDB.main.temp) - 32) / 1.8);
 
                 setBackground($scope.weatherDB);
             });
@@ -35,6 +43,10 @@ app.controller('mainController', function($scope, apiFactory, $http) {
     //* Tweet stuff */
     $scope.tweets = []
     $scope.search($scope.city);
+
+
+
+
 
     //* Change from F to C and back */
     /*  $scope.fahrenheit = true;
