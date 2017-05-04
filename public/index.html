@@ -97,7 +97,8 @@
               </div>
               <div class="col-sm-11">
                 <p class="tweet-username"><strong>{{ tweet.user.name }}</strong></p>
-                <p class="tweet-text">{{ tweet.text }}</p>
+                <p class="tweet-text">{{ tweet.retweeted_status?tweet.retweeted_status.text :tweet.text}}</p>
+                <!-- <p class="tweet-text">{{ tweet.text }}</p> -->
               </div>
             </div>
           </div>

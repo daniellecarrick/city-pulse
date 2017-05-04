@@ -26,7 +26,7 @@ app.controller('mainController', function($scope, apiFactory, $http) {
             $scope.photoDB = photoDB.photos.photo;
 /*            $scope.coord.lat = lat;
             $scope.coord.lon = lon;*/
-            console.log($scope.photoDB);
+            //console.log($scope.photoDB);
     });
 
     var params = {
@@ -62,7 +62,7 @@ app.controller('mainController', function($scope, apiFactory, $http) {
     }
 
 //* Tweet stuff */
-  $scope.tweets=[]
+  $scope.tweets=[];
 
 
 
