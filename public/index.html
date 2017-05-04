@@ -54,20 +54,27 @@
         </div>
     </div>
     <div class="super-container">
-        <!-- FLICKR PHOTOS -->
-        <div class="row">
+        <!-- FLICKR WITH CAROUSEL --> 
+         <div class="row">
             <div class="container">
                 <div class="col-sm-12 section">
                     <h2 class="title text-center">The Sights</h2>
-                    <div ng-repeat="photo in photoDB | limitTo: 4">
-                        <div class="col-sm-6">
-                            <!-- <img class="img-responsive img-thumbnail img-flickr" src='https://farm{{photo.farm}}.staticflickr.com/{{photo.server}}/{{photo.id}}_{{photo.secret}}.jpg' /> -->
+                    <carousel class="carousel-inner" role="listbox">
+                    <slide ng-repeat="photo in photoDB" active="slide.active">
+                        <div class="col-sm-4">
                             <div class="img-flickr" style="background-image: url(https://farm{{photo.farm}}.staticflickr.com/{{photo.server}}/{{photo.id}}_{{photo.secret}}.jpg);"></div>
                         </div>
-                    </div>
+                        <div class="col-sm-4">                          
+                            <div class="img-flickr" style="background-image: url(https://farm{{photoDB[$index+1].farm}}.staticflickr.com/{{photoDB[$index+1].server}}/{{photoDB[$index+1].id}}_{{photoDB[$index+1].secret}}.jpg);"></div>
+                        </div>
+                        <div class="col-sm-4">                          
+                            <div class="img-flickr" style="background-image: url(https://farm{{photoDB[$index+2].farm}}.staticflickr.com/{{photoDB[$index+2].server}}/{{photoDB[$index+2].id}}_{{photoDB[$index+2].secret}}.jpg);"></div>
+                        </div>
+                    </slide>
+                    </carousel>
                 </div>
             </div>
-        </div>
+        </div>       
         <!-- Foursquare data -->
         <div class="row">
             <div class="container">
@@ -78,7 +85,7 @@
                             <div class="fq-venue-name-container">
                                 <span class="fq-venue-name">{{ venues.venue.name | limitTo: 20 }}</span>
                             </div>
-                            <img class="img-responsive img-thumbnail" src="{{venues.venue.photos.groups[0].items[0].prefix}}200x200{{venues.venue.photos.groups[0].items[0].suffix}}" />
+                            <img class="img-responsive img-thumbnail" src="{{venues.venue.photoDB.groups[0].items[0].prefix}}200x200{{venues.venue.photoDB.groups[0].items[0].suffix}}" />
                         </div>
                     </div>
                 </div>
@@ -122,6 +129,7 @@
     <script src="/js/controllers/mainController.js"></script>
     <script src="/js/directives/weatherDirective.js"></script>
     <script src="/ng-autocomplete/src/ngAutocomplete.js"></script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.10.0/ui-bootstrap-tpls.min.js"></script>
 </body>
 
 </html>

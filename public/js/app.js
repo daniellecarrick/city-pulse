@@ -1,4 +1,4 @@
-var app = angular.module('cityPulse', ['ngAutocomplete']);
+var app = angular.module('cityPulse', ['ngAutocomplete', 'ui.bootstrap']);
 
 /*app.config(function($sceDelegateProvider, $sceProvider) {
   $sceDelegateProvider.resourceUrlWhitelist([
