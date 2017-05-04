@@ -133,3 +133,5 @@ p.tweet-username {
     background-position: center;
     margin-bottom: 20px;
 }
+
+.carousel-indicators li { visibility: hidden; }
