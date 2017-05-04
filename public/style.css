@@ -138,3 +138,6 @@ p.tweet-username {
 
 .carousel-indicators li { visibility: hidden; }
 
+.carousel-inner>.item {
+transition: 0.2s ease-out;
+}
