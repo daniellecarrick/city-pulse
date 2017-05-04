@@ -34,6 +34,14 @@ app.get('/city/:city', function(req, res, next) { // req and res are special exp
         })
     }
 
+    // gets the lat/long for weather data
+    function weatherLatLongCall(cb) {
+        getWeatherData(city, function(err, result) {
+            cb(err, {lat: result.coord.lat, long: result.coord.lon})
+                //console.log('weather result: ', result)
+        })
+    }
+
     // get just the lat and long from foursquare
     function foursquareCall(cb) {
         getFoursquareData(city, function(err, result) {
@@ -86,7 +94,7 @@ app.get('/city/:city', function(req, res, next) { // req and res are special exp
     // foursquareCall gets lat and long, then passes it to twitterClosest for the woeid then to TwitterPlace for the trends
     function twitterTrends(cb) {
         async.waterfall([
-            foursquareCall,
+            weatherLatLongCall,
             twitterClosest,
             twitterPlace
         ], function(err, results) {
