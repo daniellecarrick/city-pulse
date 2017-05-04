@@ -55,16 +55,20 @@
     </div>
     <div class="super-container">
         <!-- FLICKR WITH CAROUSEL -->
-         <div class="row">
+        <div class="row">
             <div class="container">
                 <div class="col-sm-12 section">
                     <h2 class="title text-center">The Sights</h2>
-                    <div class="carousel-container">
-                      <div ng-repeat="photo in photoDB | limitTo: 20">
-                        <div class="col-sm-4">
-                            <div class="img-flickr" style="background-image: url(https://farm{{photo.farm}}.staticflickr.com/{{photo.server}}/{{photo.id}}_{{photo.secret}}.jpg);"></div>
+                    <div class="carousel-container"> {{ counter }}
+                        <div ng-repeat="photo in photoDB | limitTo: 3">
+                            <div class="slide">
+                                <!-- <div class="img-flickr" style="background-image: url(https://farm{{photo.farm}}.staticflickr.com/{{photo.server}}/{{photo.id}}_{{photo.secret}}.jpg);"></div> -->
+                                <div class="col-sm-4">
+                                    <div class="img-flickr" style="background-image: url(https://farm{{photoDB[$index+counter].farm}}.staticflickr.com/{{photoDB[$index+counter].server}}/{{photoDB[$index+counter].id}}_{{photoDB[$index+counter].secret}}.jpg);"></div>
+                                </div>
+                            </div>
                         </div>
-                      </div>
+                        <button ng-click="nextPhoto()">Next</button>
                     </div>
                 </div>
             </div>

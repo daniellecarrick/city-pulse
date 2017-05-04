@@ -2,6 +2,11 @@ app.controller('mainController', function($scope, apiFactory, $http) {
 
     $scope.city = 'New York';
     $scope.coord = {};
+    $scope.counter = 0;
+    $scope.nextPhoto = function() {
+      $scope.counter += 1;
+      console.log($scope.counter);
+    }
 
     //search triggered on button click
     $scope.search = function(city) {
