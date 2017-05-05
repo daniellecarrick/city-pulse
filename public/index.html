@@ -59,8 +59,8 @@
             <div class="container">
                 <div class="col-sm-12 section">
                     <h2 class="title text-center">The Sights</h2>
-                    <div ng-repeat="photo in photoDB | limitTo: 4">
-                        <div class="col-sm-6">
+                    <div ng-repeat="photo in photoDB | limitTo: 3">
+                        <div class="col-sm-4">
                             <!-- <img class="img-responsive img-thumbnail img-flickr" src='https://farm{{photo.farm}}.staticflickr.com/{{photo.server}}/{{photo.id}}_{{photo.secret}}.jpg' /> -->
                             <div class="img-flickr" style="background-image: url(https://farm{{photo.farm}}.staticflickr.com/{{photo.server}}/{{photo.id}}_{{photo.secret}}.jpg);"></div>
                         </div>

@@ -1,6 +1,6 @@
 app.controller('mainController', function($scope, apiFactory, $http) {
 
-    $scope.city = 'New York';
+    $scope.city = 'New York City';
     $scope.coord = {};
 
     //search triggered on button click
