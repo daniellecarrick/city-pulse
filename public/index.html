@@ -30,7 +30,8 @@
                 <div class="search">
                     <div class="col-sm-12">
                         <form ng-submit="search(city)">
-                            <input type="text" class="search-box col-sm-12" name="city" placeholder="Search for a city" ng-autocomplete ng-model="city" options="{types: '(cities)'}" details="details" ng-required="true" /> <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                            <input type="text" class="search-box col-sm-12" name="city" placeholder="Search for a city" ng-autocomplete ng-model="city" options="{types: '(cities)'}" details="details" ng-required="true" />
+                            <button type="button" class="search-btn" ng-click="search(city)"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
                         </form>
                         <!-- <button type="button" class="btn" ng-click="search(city)">Search</button> -->
                     </div>
