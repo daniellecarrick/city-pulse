@@ -1,6 +1,6 @@
 app.controller('mainController', function($scope, apiFactory, $http) {
 
-    $scope.city = 'New York';
+    $scope.city = 'New York City';
     $scope.coord = {};
     $scope.counter = 0;
     $scope.nextPhoto = function() {
