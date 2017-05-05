@@ -57,56 +57,32 @@
     <div class="super-container">
         <!-- FLICKR PHOTOS -->
         <div class="grid">
-                <div class="col-sm-12 section">
-                    <h2 class="title text-center">The Sights</h2>
-                    <div class="grid-sizer"></div>
-                    <div ng-repeat="photo in photoDB | limitTo: 4">
-                        <div class="grid-item">
-                            <div style="background-image: url(https://farm{{photo.farm}}.staticflickr.com/{{photo.server}}/{{photo.id}}_{{photo.secret}}.jpg);"></div>
-                        </div>
-                    </div>
+            <div class="grid-sizer"></div>
+            <div ng-repeat="photo in photoDB | limitTo: 6">
+                <!-- <div ng-repeat="data in allData[1].photos.photo | limitTo: 6"> -->
+                <div class="grid-item">
+                    <img src='https://farm{{photo.farm}}.staticflickr.com/{{photo.server}}/{{photo.id}}_{{photo.secret}}.jpg' />
                 </div>
             </div>
-        <!-- Foursquare data -->
-        <div class="row">
-            <div class="container">
-                <div class="col-sm-12 section">
-                    <h2 class="title text-center">The Tastes</h2>
-                    <div ng-repeat="venues in fourDB | limitTo: 4">
-                        <div class="col-sm-3">
-                            <div class="fq-venue-name-container">
-                                <span class="fq-venue-name">{{ venues.venue.name | limitTo: 20 }}</span>
-                            </div>
-                            <img class="img-responsive img-thumbnail" src="{{venues.venue.photos.groups[0].items[0].prefix}}200x200{{venues.venue.photos.groups[0].items[0].suffix}}" />
-                        </div>
+                        <div ng-repeat="trend in trends | filter:{tweet_volume:'!!'} | orderBy:'-tweet_volume' | limitTo: 2">
+                <button type="button" class="btn grid-item"><a href="{{trend.url}}">{{ trend.name }}</a></button>
+            </div>
+            <div ng-repeat="venues in fourDB | limitTo: 4">
+                <div class="grid-item grid-item--width2">
+                    <div class="fq-venue-name-container">
+                        <div class="fq-venue-name">{{ venues.venue.name | limitTo: 20 }}</div>
                     </div>
+                    <img src="{{venues.venue.photos.groups[0].items[0].prefix}}original{{venues.venue.photos.groups[0].items[0].suffix}}" />
                 </div>
             </div>
-        </div>
-        <!-- Twitter -->
-        <div class="row">
-            <div class="container">
-                <div class="col-sm-12 section">
-                    <h2 class="title text-center">The Talk</h2>
-                    <div ng-repeat="trend in trends | filter:{tweet_volume:'!!'} | orderBy:'-tweet_volume' | limitTo: 8">
-                        <div class="col-sm-3 trend-container">
-                            <button type="button" class="btn"><a href="{{trend.url}}">{{ trend.name }}</a></button>
-                        </div>
-                        <!--{{ trend.tweet_volume }}-->
-                    </div>
-                    <div ng-repeat="tweet in tweets | limitTo: 3">
-                        <div class="col-sm-12 tweet-container">
-                            <div>
-                                <div class="col-sm-1">
-                                    <img src="{{ tweet.user.profile_image_url }}" class="img-tweet" />
-                                </div>
-                                <div class="col-sm-11">
-                                    <p class="tweet-username"><strong>{{ tweet.user.name }}</strong></p>
-                                    <p class="tweet-text">{{ tweet.text }}</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+            <div ng-repeat="trend in trends | filter:{tweet_volume:'!!'} | orderBy:'-tweet_volume' | limitTo: 2">
+                <button type="button" class="btn grid-item"><a href="{{trend.url}}">{{ trend.name }}</a></button>
+            </div>
+            <div ng-repeat="tweet in tweets | limitTo: 3">
+                <div class="tweet-container grid-item">
+                    <img src="{{ tweet.user.profile_image_url }}" class="img-tweet" />
+                    <p class="tweet-username"><strong>{{ tweet.user.name }}</strong></p>
+                    <p class="tweet-text">{{ tweet.text }}</p>
                 </div>
             </div>
         </div>

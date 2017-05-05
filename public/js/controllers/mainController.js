@@ -15,7 +15,7 @@ app.controller('mainController', function($scope, apiFactory, $http) {
                 $scope.weatherDB = allData[2];
                 $scope.tweets = allData[3];
                 $scope.trends = allData[4][0].trends;
-
+                $scope.allData = allData;
                 setBackground($scope.weatherDB);
             });
 

@@ -33,3 +33,17 @@ body { font-family: sans-serif; }
   display: block;
   max-width: 100%;
 }
+
+* { box-sizing: border-box; }
+
+body { font-family: sans-serif; }
+
+/* ---- grid ---- */
+
+
+.grid-item--width2 { width:  40%; }
+.grid-item--width3 { width:  60%; }
+
+.grid-item--height2 { height: 200px; }
+.grid-item--height3 { height: 260px; }
+.grid-item--height4 { height: 360px; }
