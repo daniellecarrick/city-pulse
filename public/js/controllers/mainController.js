@@ -4,8 +4,19 @@ app.controller('mainController', function($scope, apiFactory, $http) {
     $scope.coord = {};
 
     $scope.fahrenheit = true;
-    $scope.switchTemperature = function () {
-    $scope.fahrenheit = !$scope.fahrenheit;
+    $scope.switchTemperature = function() {
+        $scope.fahrenheit = !$scope.fahrenheit;
+    }
+
+    $scope.counter = 0;
+    $scope.nextPhoto = function() {
+        $scope.counter += 1;
+        console.log($scope.counter);
+    }
+
+    $scope.lastPhoto = function() {
+        $scope.counter -= 1;
+        console.log($scope.counter);
     }
 
     //search triggered on button click

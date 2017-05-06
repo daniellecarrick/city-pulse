@@ -10,7 +10,7 @@
     <link rel="stylesheet" type="text/css" href="/weather-icons.css">
     <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="/style.css">
-        <script src="/angular/angular.js"></script>
+    <script src="/angular/angular.js"></script>
     <title>City Pulse</title>
 </head>
 
@@ -47,8 +47,8 @@
                         <div class="icon-wrap">
                             <i class="wi wi-owm-{{ weatherDB.weather[0].id}}"></i>
                         </div>
-                        <p ng-click = "switchTemperature()" ng-show="fahrenheit" class="temp">{{ tempFahrenheit | number: 0}} &#8457; | {{ weatherDB.weather[0].main | lowercase }}</p>
-              <p ng-click = "switchTemperature()" ng-show="!fahrenheit" class="temp">{{ tempCelsius | number: 0}} &#8451; | {{ weatherDB.weather[0].main | lowercase }}</p>
+                        <p ng-click="switchTemperature()" ng-show="fahrenheit" class="temp">{{ tempFahrenheit | number: 0}} &#8457; | {{ weatherDB.weather[0].main | lowercase }}</p>
+                        <p ng-click="switchTemperature()" ng-show="!fahrenheit" class="temp">{{ tempCelsius | number: 0}} &#8451; | {{ weatherDB.weather[0].main | lowercase }}</p>
                     </div>
                 </div>
             </div>
@@ -62,10 +62,11 @@
                     <h2 class="title text-center">The Sights</h2>
                     <div ng-repeat="photo in photoDB | limitTo: 3">
                         <div class="col-sm-4">
-                            <!-- <img class="img-responsive img-thumbnail img-flickr" src='https://farm{{photo.farm}}.staticflickr.com/{{photo.server}}/{{photo.id}}_{{photo.secret}}.jpg' /> -->
-                            <div class="img-flickr img-border" style="background-image: url(https://farm{{photo.farm}}.staticflickr.com/{{photo.server}}/{{photo.id}}_{{photo.secret}}.jpg);"></div>
+                            <div class="img-flickr" style="background-image: url(https://farm{{photoDB[$index+counter].farm}}.staticflickr.com/{{photoDB[$index+counter].server}}/{{photoDB[$index+counter].id}}_{{photoDB[$index+counter].secret}}.jpg);"></div>
+                            <!--                             <div class="img-flickr img-border" style="background-image: url(https://farm{{photo.farm}}.staticflickr.com/{{photo.server}}/{{photo.id}}_{{photo.secret}}.jpg);"></div>-->
                         </div>
                     </div>
+                   <button ng-click="lastPhoto()">Last</button> <button ng-click="nextPhoto()">Next</button>
                 </div>
             </div>
         </div>
@@ -116,12 +117,10 @@
     </div>
     <!-- END OF CONTAINER -->
     <div id="img-mapquest" class="row">
-      <img src="https://beta.mapquestapi.com/staticmap/v5/map?key=c9LUj3gveNGWjKMfAUk0VKnN8ZwkLuqX&size=1500,+170&type=sat&locations={{city}}" />
+        <img src="https://beta.mapquestapi.com/staticmap/v5/map?key=c9LUj3gveNGWjKMfAUk0VKnN8ZwkLuqX&size=1500,+170&type=sat&locations={{city}}" />
     </div>
-
-<!--
+    <!--
     <div id="img-mapquest" style="background-image: url(https://beta.mapquestapi.com/staticmap/v5/map?key=c9LUj3gveNGWjKMfAUk0VKnN8ZwkLuqX&size=1500,+170&type=sat&locations={{city}})"></div> -->
-
     <!-- Scripts -->
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyDQX1NwXDMRS8EEfA_bHLoB5N3NkB1e5a0"></script>
     <script src="/js/app.js"></script>
