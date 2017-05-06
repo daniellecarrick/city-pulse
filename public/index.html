@@ -10,10 +10,11 @@
     <link rel="stylesheet" type="text/css" href="/weather-icons.css">
     <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="/style.css">
+        <script src="/angular/angular.js"></script>
     <title>City Seeker</title>
 </head>
 
-<body ng-controller="mainController">
+<body ng-controller="mainController" class="ng-cloak">
     <div class="top-section">
         <nav class="navbar navbar-custom">
             <div class="container-fluid">
@@ -117,7 +118,6 @@
     <img src="https://beta.mapquestapi.com/staticmap/v5/map?key=c9LUj3gveNGWjKMfAUk0VKnN8ZwkLuqX&size=1500,+170&type=sat&locations={{city}}" />
     <!-- Scripts -->
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyDQX1NwXDMRS8EEfA_bHLoB5N3NkB1e5a0"></script>
-    <script src="/angular/angular.js"></script>
     <script src="/js/app.js"></script>
     <script src="/js/services/apiFactory.js"></script>
     <script src="/js/controllers/mainController.js"></script>
