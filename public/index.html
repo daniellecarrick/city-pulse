@@ -9,6 +9,7 @@
     <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="/weather-icons.css">
     <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/animate.css">
     <link rel="stylesheet" type="text/css" href="/style.css">
     <script src="/angular/angular.js"></script>
     <title>City Pulse</title>
@@ -62,8 +63,7 @@
                     <h2 class="title text-center">The Sights</h2>
                     <div ng-repeat="photo in photoDB | limitTo: 3">
                         <div class="col-sm-4">
-                            <div class="img-flickr" style="background-image: url(https://farm{{photoDB[$index+counter].farm}}.staticflickr.com/{{photoDB[$index+counter].server}}/{{photoDB[$index+counter].id}}_{{photoDB[$index+counter].secret}}.jpg);"></div>
-                            <!--                             <div class="img-flickr img-border" style="background-image: url(https://farm{{photo.farm}}.staticflickr.com/{{photo.server}}/{{photo.id}}_{{photo.secret}}.jpg);"></div>-->
+                            <div class="img-flickr fadeIn animated" style="background-image: url(https://farm{{photoDB[$index+counter].farm}}.staticflickr.com/{{photoDB[$index+counter].server}}/{{photoDB[$index+counter].id}}_{{photoDB[$index+counter].secret}}.jpg);"></div>
                         </div>
                     </div>
                     <button class="btn-gallery btn-left" ng-click="last()">
