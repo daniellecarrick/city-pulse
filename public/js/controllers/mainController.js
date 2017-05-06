@@ -9,12 +9,12 @@ app.controller('mainController', function($scope, apiFactory, $http) {
     }
 
     $scope.counter = 0;
-    $scope.nextPhoto = function() {
+    $scope.next = function() {
         $scope.counter += 1;
         console.log($scope.counter);
     }
 
-    $scope.lastPhoto = function() {
+    $scope.last = function() {
         $scope.counter -= 1;
         console.log($scope.counter);
     }
