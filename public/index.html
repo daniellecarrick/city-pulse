@@ -64,7 +64,7 @@
                     <div ng-repeat="photo in photoDB | limitTo: 3">
                         <div class="col-sm-4">
                             <!-- <img class="img-responsive img-thumbnail img-flickr" src='https://farm{{photo.farm}}.staticflickr.com/{{photo.server}}/{{photo.id}}_{{photo.secret}}.jpg' /> -->
-                            <div class="img-flickr" style="background-image: url(https://farm{{photo.farm}}.staticflickr.com/{{photo.server}}/{{photo.id}}_{{photo.secret}}.jpg);"></div>
+                            <div class="img-flickr img-border" style="background-image: url(https://farm{{photo.farm}}.staticflickr.com/{{photo.server}}/{{photo.id}}_{{photo.secret}}.jpg);"></div>
                         </div>
                     </div>
                 </div>
@@ -80,7 +80,7 @@
                             <div class="fq-venue-name-container">
                                 <span class="fq-venue-name">{{ venues.venue.name | limitTo: 20 }}</span>
                             </div>
-                            <img class="img-responsive img-thumbnail" src="{{venues.venue.photos.groups[0].items[0].prefix}}200x200{{venues.venue.photos.groups[0].items[0].suffix}}" />
+                            <div class="img-responsive img-foursquare img-border" style="background-image: url({{venues.venue.photos.groups[0].items[0].prefix}}original{{venues.venue.photos.groups[0].items[0].suffix}});" />
                         </div>
                     </div>
                 </div>

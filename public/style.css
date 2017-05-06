@@ -45,6 +45,7 @@ button:focus {
     background: white;
     margin-top: 20px;
     padding-bottom: 30px;
+    border-radius: 3px;
 }
 
 .title {
@@ -132,6 +133,14 @@ p.tweet-username {
     text-align: center;
 }
 
+.img-foursquare {
+    height: 200px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    margin-bottom: 20px;
+}
+
 
 /* Flickr stuff */
 
@@ -141,4 +150,9 @@ p.tweet-username {
     background-repeat: no-repeat;
     background-position: center;
     margin-bottom: 20px;
+}
+
+.img-border {
+  border: 1px solid #f7f7f7;
+  border-radius: 3px;
 }
