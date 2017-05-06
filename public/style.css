@@ -157,3 +157,14 @@ p.tweet-username {
   border: 1px solid #f7f7f7;
   border-radius: 3px;
 }
+
+/* Mapquest stuff */
+
+#img-mapquest {
+    height: 170px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    overflow-y: hidden;
+}
+
