@@ -11,13 +11,23 @@ app.controller('mainController', function($scope, apiFactory, $http) {
     $scope.counter = 0;
     $scope.next = function() {
         $scope.counter += 1;
-        console.log($scope.counter);
+        $scope.animateClass =  'slideInRight';
+        console.log($scope.animateClass);
+        setTimeout($scope.animateClassFunc(), 2000);
+        console.log($scope.animateClass);
     }
 
     $scope.last = function() {
+       if ($scope.counter > 0) {
         $scope.counter -= 1;
-        console.log($scope.counter);
+        $scope.animateClass =  'slideInLeft';
+        setTimeout($scope.animateClassFunc(), 2000);
+       }
     }
+
+    $scope.animateClassFunc = function() {
+      $scope.animateClass = 'slideInRight';
+    };
 
     //search triggered on button click
     $scope.search = function(city) {
