@@ -168,3 +168,25 @@ p.tweet-username {
     overflow-y: hidden;
 }
 
+/* animation transitions */
+.img-transition {
+  background-color: red;
+}
+
+.btn-gallery {
+    border-radius: 50%;
+    border: none;
+    color: white;
+    background-color: rgba(0,0,0,0.5);
+    position: absolute;
+    top: 50%;
+}
+
+.btn-left {
+  left: 10px;
+}
+
+.btn-right {
+  right: 10px;
+}
+

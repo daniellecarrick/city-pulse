@@ -66,7 +66,12 @@
                             <!--                             <div class="img-flickr img-border" style="background-image: url(https://farm{{photo.farm}}.staticflickr.com/{{photo.server}}/{{photo.id}}_{{photo.secret}}.jpg);"></div>-->
                         </div>
                     </div>
-                   <button ng-click="last()">Last</button> <button ng-click="next()">Next</button>
+                    <button class="btn-gallery btn-left" ng-click="last()">
+                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                    </button>
+                    <button class="btn-gallery btn-right" ng-click="next()">
+                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                    </button>
                 </div>
             </div>
         </div>
