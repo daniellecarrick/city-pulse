@@ -98,10 +98,10 @@
             </div>
         </div>
         <!--Wikipedia -->
-        <div class="row" ng-hide="{{wikipedia.length > 20 && wikipedia.length }}">
-            <div class="container"> {{wikipedia.length > 20 && wikipedia }} {{ allData[5][2]}}
-                <div id="weekee" class="col-sm-12 section">
-                    <h3><a href="{{wikiLink}}">{{wikipedia}} </a></h3>
+        <div class="row">
+            <div class="container" ng-show="true">
+                <div id="weekee" class="col-sm-12 section" ng-show="wikipedia.length>5">
+                    <h3><i class="fa fa-wikipedia-w" aria-hidden="true"></i><a href="{{wikiLink}}">  {{wikipedia}}</a></h3>
                 </div>
             </div>
         </div>
