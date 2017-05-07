@@ -21,7 +21,7 @@
             <div class="container-fluid">
                 <!-- Brand and toggle get grouped for better mobile display -->
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="#">City Pulse</a>
+                    <a class="navbar-brand" href="#">City Pulse</a><img src="/images/logo.png" />
                 </div>
             </div>
             <!-- /.container-fluid -->
@@ -97,7 +97,14 @@
                 </button>
             </div>
         </div>
-
+        <!--Wikipedia -->
+        <div class="row" ng-hide="{{wikipedia.length > 20 && wikipedia.length }}">
+            <div class="container"> {{wikipedia.length > 20 && wikipedia }} {{ allData[5][2]}}
+                <div id="weekee" class="col-sm-12 section">
+                    <h3><a href="{{wikiLink}}">{{wikipedia}} </a></h3>
+                </div>
+            </div>
+        </div>
         <!-- Twitter -->
         <div class="row">
             <div class="container">
@@ -126,7 +133,6 @@
             </div>
         </div>
     </div>
-
     </div>
     <!-- END OF CONTAINER -->
     <div id="img-mapquest" class="row">

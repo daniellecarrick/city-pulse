@@ -67,6 +67,9 @@ app.controller('mainController', function($scope, apiFactory, $http) {
                 })
                 $scope.trends = allData[4][0].trends;
 
+                $scope.wikipedia = allData[5][2]['0'];
+                $scope.wikiLink = allData[5][3]['0'];
+
                 $scope.tempFahrenheit = $scope.weatherDB.main.temp;
                 $scope.tempCelsius = Math.round((($scope.weatherDB.main.temp) - 32) / 1.8);
 
