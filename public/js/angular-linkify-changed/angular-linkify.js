@@ -1,7 +1,5 @@
 angular.module('linkify', []);
 
-console.log("in linkgy js")
-
 angular.module('linkify')
   .filter('linkify', function () {
       'use strict';

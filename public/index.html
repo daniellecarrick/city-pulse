@@ -113,11 +113,11 @@
                         <div class="col-sm-12 tweet-container">
                             <div>
                                 <div class="col-sm-1">
-                                    <img src="{{ tweet.user.profile_image_url }}" class="img-tweet" />
+                                    <img src="{{ tweet.profileimage }}" class="img-tweet" />
                                 </div>
                                 <div class="col-sm-11">
-                                    <p class="tweet-username"><strong>{{ tweet.user.name }}</strong></p>
-                                    <p class="tweet-text">{{ tweet.text }}</p>
+                                    <p class="tweet-username"><strong>{{ tweet.username }}</strong></p>
+                                    <p ng-bind="tweet.status" linkify="twitter"></p>
                                 </div>
                             </div>
                         </div>
