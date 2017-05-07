@@ -65,6 +65,10 @@ button:focus {
     color: white;
 }
 
+.navbar-header img {
+  height: 40px;
+}
+
 .search-box {
     font-size: 40px;
     background-color: transparent;
