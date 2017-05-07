@@ -97,7 +97,14 @@
                 </button>
             </div>
         </div>
-
+        <!--Wikipedia -->
+        <div class="row" ng-hide="{{wikipedia.length<20}}">
+            <div class="container">
+                <div id="weekee" class="col-sm-12 section">
+                    <h3><i class="fa fa-wikipedia-w" aria-hidden="true"></i><a href="{{wikiLink}}">: {{wikipedia}} </a></h3>
+                </div>
+            </div>
+        </div>
         <!-- Twitter -->
         <div class="row">
             <div class="container">
@@ -126,7 +133,6 @@
             </div>
         </div>
     </div>
-
     </div>
     <!-- END OF CONTAINER -->
     <div id="img-mapquest" class="row">
