@@ -97,29 +97,7 @@
                 </button>
             </div>
         </div>
-<<<<<<< HEAD
-      </div>
-  </div>
 
-  <!-- Twitter -->
-
-  <div class="row">
-    <div class="container">
-      <div class="col-sm-12 section">
-      <h2 class="title text-center">The Talk</h2>
-        <div ng-repeat="tweet in tweets | limitTo: 3">
-          <div class="col-sm-12 tweet-container">
-            <div>
-              <div class="col-sm-1">
-                <img src="{{ tweet.user.profile_image_url }}" class="img-tweet"/>
-              </div>
-              <div class="col-sm-11">
-                <p class="tweet-username"><strong>{{ tweet.username }}</strong></p>
-                <p ng-bind="tweet.status" linkify="twitter"></p>
-                <!-- <p class="tweet-text">{{ tweet.status }}</p> -->
-                <!-- <p class="tweet-text">{{ tweet.text }}</p> -->
-              </div>
-=======
         <!-- Twitter -->
         <div class="row">
             <div class="container">
@@ -145,26 +123,10 @@
                         </div>
                     </div>
                 </div>
->>>>>>> 7f0409ed77c422e8dc31f217b0d314cfbf075aab
             </div>
         </div>
     </div>
-<<<<<<< HEAD
-  </div>
 
-</div> <!-- END OF CONTAINER -->
-<img src="https://beta.mapquestapi.com/staticmap/v5/map?key=c9LUj3gveNGWjKMfAUk0VKnN8ZwkLuqX&size=1500,+170&type=sat&locations={{location}}"/>
-<!-- Scripts -->
-  <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyDQX1NwXDMRS8EEfA_bHLoB5N3NkB1e5a0"></script>
-  <script src="/angular/angular.js"></script>
-  <script src="/js/angular-linkify-changed/angular-linkify.js"></script>
-  <script src="/js/app.js"></script>
-  <script src="/js/services/apiFactory.js"></script>
-  <script src="/js/controllers/mainController.js"></script>
-  <script src="/js/directives/weatherDirective.js"></script>
-  <script src="/ng-autocomplete/src/ngAutocomplete.js"></script>
-
-=======
     </div>
     <!-- END OF CONTAINER -->
     <div id="img-mapquest" class="row">
@@ -173,13 +135,13 @@
     <!--
     <div id="img-mapquest" style="background-image: url(https://beta.mapquestapi.com/staticmap/v5/map?key=c9LUj3gveNGWjKMfAUk0VKnN8ZwkLuqX&size=1500,+170&type=sat&locations={{city}})"></div> -->
     <!-- Scripts -->
+    <script src="/js/angular-linkify-changed/angular-linkify.js"></script>
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyDQX1NwXDMRS8EEfA_bHLoB5N3NkB1e5a0"></script>
     <script src="/js/app.js"></script>
     <script src="/js/services/apiFactory.js"></script>
     <script src="/js/controllers/mainController.js"></script>
     <script src="/js/directives/weatherDirective.js"></script>
     <script src="/ng-autocomplete/src/ngAutocomplete.js"></script>
->>>>>>> 7f0409ed77c422e8dc31f217b0d314cfbf075aab
 </body>
 
 </html>

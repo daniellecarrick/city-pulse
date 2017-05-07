@@ -8,14 +8,6 @@ app.controller('mainController', function($scope, apiFactory, $http) {
         $scope.fahrenheit = !$scope.fahrenheit;
     }
 
-<<<<<<< HEAD
-    apiFactory.getPhotos(location).then(function (photoDB) {
-            $scope.photoDB = photoDB.photos.photo;
-/*            $scope.coord.lat = lat;
-            $scope.coord.lon = lon;*/
-            //console.log($scope.photoDB);
-    });
-=======
     $scope.counter = 0;
     $scope.next = function() {
         $scope.counter += 1;
@@ -24,7 +16,6 @@ app.controller('mainController', function($scope, apiFactory, $http) {
         setTimeout($scope.animateClassFunc(), 2000);
         console.log($scope.animateClass);
     }
->>>>>>> 7f0409ed77c422e8dc31f217b0d314cfbf075aab
 
     $scope.last = function() {
        if ($scope.counter > 0) {
@@ -34,28 +25,9 @@ app.controller('mainController', function($scope, apiFactory, $http) {
        }
     }
 
-<<<<<<< HEAD
-    $http.post('/api/tweets', params)
-      .then(function (result) {
-
-        $scope.tweets = result.data.map(tweet=>{
-          //tweet === result.data for each item
-          return {
-            username: tweet.user.name,
-            status:  tweet.retweeted_status?tweet.retweeted_status.text :tweet.text
-          }
-        })
-        
-      console.log(result.data);
-      }, function(err) {
-      console.log(err);
-    })
-  }
-=======
     $scope.animateClassFunc = function() {
       $scope.animateClass = 'slideInRight';
     };
->>>>>>> 7f0409ed77c422e8dc31f217b0d314cfbf075aab
 
     //search triggered on button click
     $scope.search = function(city) {
@@ -73,10 +45,6 @@ app.controller('mainController', function($scope, apiFactory, $http) {
                 $scope.tempFahrenheit = $scope.weatherDB.main.temp;
                 $scope.tempCelsius = Math.round((($scope.weatherDB.main.temp) - 32) / 1.8);
 
-<<<<<<< HEAD
-//* Tweet stuff */
-  $scope.tweets=[];
-=======
                 setBackground($scope.weatherDB);
             });
 
@@ -92,7 +60,6 @@ app.controller('mainController', function($scope, apiFactory, $http) {
         var bgColor1 = colorScale(temp + 10);
         d3.select('.top-section').style('background', 'linear-gradient(to bottom,' + bgColor + ',' + bgColor1);
     }
->>>>>>> 7f0409ed77c422e8dc31f217b0d314cfbf075aab
 
     //* Tweet stuff */
     $scope.tweets = []
