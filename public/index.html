@@ -66,10 +66,10 @@
                             <div class="img-flickr {{animateClass}} animated" style="background-image: url(https://farm{{photoDB[$index+counter].farm}}.staticflickr.com/{{photoDB[$index+counter].server}}/{{photoDB[$index+counter].id}}_{{photoDB[$index+counter].secret}}.jpg);"></div>
                         </div>
                     </div>
-                    <button class="btn-gallery btn-left" ng-click="last()">
+                    <button class="btn-gallery btn-left" ng-click="lastPhoto()">
                         <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
                     </button>
-                    <button class="btn-gallery btn-right" ng-click="next()">
+                    <button class="btn-gallery btn-right" ng-click="nextPhoto()">
                         <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
                     </button>
                 </div>
@@ -83,16 +83,16 @@
                     <div ng-repeat="venues in fourDB | limitTo: 4">
                         <div class="col-sm-3">
                             <div class="fq-venue-name-container">
-                                <span class="fq-venue-name">{{ fourDB[$index+counter].venue.name | limitTo: 20 }}</span>
+                                <span class="fq-venue-name">{{ fourDB[$index+counterPlace].venue.name | limitTo: 25 }}</span>
                             </div>
-                            <div class="img-responsive img-foursquare img-border" style="background-image: url({{fourDB[$index+counter].venue.photos.groups[0].items[0].prefix}}original{{fourDB[$index+counter].venue.photos.groups[0].items[0].suffix}});" />
+                            <div class="img-responsive {{animateClass}} img-foursquare img-border" style="background-image: url({{fourDB[$index+counterPlace].venue.photos.groups[0].items[0].prefix}}original{{fourDB[$index+counterPlace].venue.photos.groups[0].items[0].suffix}});" />
                         </div>
                     </div>
                 </div>
-                <button class="btn-gallery btn-left" ng-click="last()">
+                <button class="btn-gallery btn-left" ng-click="lastPlace()">
                     <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
                 </button>
-                <button class="btn-gallery btn-right" ng-click="next()">
+                <button class="btn-gallery btn-right" ng-click="nextPlace()">
                     <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
                 </button>
             </div>

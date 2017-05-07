@@ -158,7 +158,9 @@ var getFlickrData = function(city, cb) {
             format: 'json',
             nojsoncallback: '?',
             page: '1',
-            sort: 'relevance'
+            sort: 'relevance',
+            content_type: '1',
+            media: 'photos'
         }
     };
     // get something cool from the Flickr

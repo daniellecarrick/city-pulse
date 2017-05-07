@@ -9,15 +9,14 @@ app.controller('mainController', function($scope, apiFactory, $http) {
     }
 
     $scope.counter = 0;
-    $scope.next = function() {
-        $scope.counter += 1;
+    $scope.counterPlace = 0;
+    $scope.nextPhoto = function() {
+        setTimeout($scope.animateClassFunc(), 1000);
         $scope.animateClass =  'slideInRight';
-        console.log($scope.animateClass);
-        setTimeout($scope.animateClassFunc(), 2000);
         console.log($scope.animateClass);
     }
 
-    $scope.last = function() {
+    $scope.lastPhoto = function() {
        if ($scope.counter > 0) {
         $scope.counter -= 1;
         $scope.animateClass =  'slideInLeft';
@@ -25,8 +24,26 @@ app.controller('mainController', function($scope, apiFactory, $http) {
        }
     }
 
+    $scope.nextPlace = function() {
+        $scope.animateClass =  '';
+        $scope.counterPlace += 1;
+        console.log($scope.animateClass);
+        setTimeout($scope.animateClassFunc(), 2000);
+        console.log($scope.animateClass);
+    }
+
+    $scope.lastPlace = function() {
+       if ($scope.counterPlace > 0) {
+        $scope.counterPlace -= 1;
+        $scope.animateClass =  'slideInLeft';
+        setTimeout($scope.animateClassFunc(), 2000);
+       }
+    }
+
     $scope.animateClassFunc = function() {
-      $scope.animateClass = 'slideInRight';
+      $scope.counter += 1;
+      $scope.animateClass = ' ';
+      console.log('setTimeout class')
     };
 
     //search triggered on button click
