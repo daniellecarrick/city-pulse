@@ -127,7 +127,7 @@ var getFoursquareData = function(city, cb) {
             section: 'food',
             near: city,
             venuePhotos: 1,
-            limit: 5,
+            limit: 20,
             client_id: 'QLJUKUZ0FU0NVLOWLUZJOOJHB1MTWSYMPHQBSKJ5FXKJH102',
             client_secret: '5L3IZX1VKHONEULQBYLDSIC4HTZWEXVJFQRL4FE4ZIAWNS20',
             v: 20161231,
