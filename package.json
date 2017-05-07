@@ -11,7 +11,11 @@
   "license": "MIT",
   "dependencies": {
     "angular": "^1.6.4",
+<<<<<<< HEAD
     "angular-linkify": "^2.0.0",
+=======
+    "async": "^2.3.0",
+>>>>>>> 7f0409ed77c422e8dc31f217b0d314cfbf075aab
     "body-parser": "^1.17.1",
     "bootstrap": "^3.3.7",
     "d3": "^4.8.0",
@@ -19,7 +23,9 @@
     "express": "^4.15.2",
     "font-awesome": "^4.7.0",
     "less": "^2.7.2",
+    "masonry-layout": "^4.2.0",
     "ng-autocomplete": "^1.0.0",
+    "request": "^2.81.0",
     "twit": "^2.2.5",
     "weather-icons": "^1.3.2"
   }

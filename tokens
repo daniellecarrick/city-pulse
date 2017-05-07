@@ -10,3 +10,12 @@ Key:
 
 Secret:
 90c195538ff637f6
+
+img-flickr {
+  height: 300px;
+  width: 300px;
+  background-size: cover;
+  background-image: url(https://farm4.staticflickr.com/3185/2554649058_505cf17e62.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+}

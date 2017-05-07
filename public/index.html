@@ -1,85 +1,103 @@
 <!DOCTYPE html>
 <html ng-app="cityPulse">
+
 <head>
-  <meta name='viewport' content='width=device-width, initial-scale=1'>
-  <script type="text/javascript" src="/d3/build/d3.js"></script>
-  <script type="text/javascript" src="/d3-scale-chromatic/build/d3-scale-chromatic.js"></script>
-  <link href="/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
-  <link rel="stylesheet" type="text/css" href="/weather-icons.css">
-  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
-  <link rel="stylesheet" type="text/css" href="/style.css">
-  <title>City Pulse</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <script type="text/javascript" src="/d3/build/d3.js"></script>
+    <script type="text/javascript" src="/d3-scale-chromatic/build/d3-scale-chromatic.js"></script>
+    <link href="/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/weather-icons.css">
+    <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/animate.css">
+    <link rel="stylesheet" type="text/css" href="/style.css">
+    <script src="/angular/angular.js"></script>
+    <title>City Pulse</title>
 </head>
-<body ng-controller="mainController">
 
-<div class="top-section">
-  <nav class="navbar navbar-custom">
-    <div class="container-fluid">
-      <!-- Brand and toggle get grouped for better mobile display -->
-      <div class="navbar-header">
-        <a class="navbar-brand" href="#">City Seeker</a>
-      </div>
-    </div><!-- /.container-fluid -->
-  </nav>
-
-
-  <!-- top section -->
-    <div class="row">
-      <div class="container">
-        <div class="search">
-          <div class="col-sm-12">
-            <input type="text" class="search-box col-sm-12" name="location" placeholder="Search for a city" ng-autocomplete ng-model="location" options="{types: '(cities)'}" details="details" ng-required="true" ng-blur="search(location)"/> <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
-            <!-- <button type="button" class="btn" ng-click="search(location)">Search</button> -->
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- General stats like weather and time -->
-    <div class="row">
-      <div class="container">
-        <div class="col-sm-12 text-center">
-          <div class="weather-container">
-            <div class="icon-wrap">
-              <i class="wi wi-owm-{{ weatherDB.weather[0].id}}"></i>
+<body ng-controller="mainController" class="ng-cloak">
+    <div class="top-section">
+        <nav class="navbar navbar-custom">
+            <div class="container-fluid">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="#">City Pulse</a>
+                </div>
             </div>
-            <p class="temp">{{ weatherDB.main.temp | number: 0}} &#8457; | {{ weatherDB.weather[0].main | lowercase }}</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-<div class="super-container">
-<!-- FLICKR PHOTOS -->
-  <div class="row">
-      <div class="container">
-        <div class="col-sm-12 section">
-        <h2 class="title text-center">The Sights</h2>
-        <div ng-repeat="photo in photoDB | limitTo: 2">
-          <div class="col-sm-6">
-            <img class="img-responsive img-thumbnail img-flickr" src='https://farm{{photo.farm}}.staticflickr.com/{{photo.server}}/{{photo.id}}_{{photo.secret}}.jpg' />
-          </div>
-        </div>
-      </div>
-    </div>
-    </div>
-
-  <!-- Foursquare data -->
-  <div class="row">
-      <div class="container">
-        <div class="col-sm-12 section">
-          <h2 class="title text-center">The Tastes</h2>
-          <div ng-repeat="venues in fourDB | limitTo: 4">
-          <div class="col-sm-3">
-            <div class="fq-venue-name-container">
-              <span class="fq-venue-name">{{ venues.venue.name | limitTo: 20 }}</span>
+            <!-- /.container-fluid -->
+        </nav>
+        <!-- top section -->
+        <div class="row">
+            <div class="container">
+                <div class="search">
+                    <div class="col-sm-12">
+                        <form ng-submit="search(city)">
+                            <input type="text" class="search-box col-sm-12" name="city" placeholder="Search for a city" ng-autocomplete ng-model="city" options="{types: '(cities)'}" details="details" ng-required="true" />
+                            <button type="button" class="search-btn" ng-click="search(city)"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+                        </form>
+                        <!-- <button type="button" class="btn" ng-click="search(city)">Search</button> -->
+                    </div>
+                </div>
             </div>
-            <img class="img-responsive img-thumbnail" src="{{venues.venue.photos.groups[0].items[0].prefix}}200x200{{venues.venue.photos.groups[0].items[0].suffix}}" />
-            </div>
-          </div>
         </div>
+        <!-- General stats like weather and time -->
+        <div class="row">
+            <div class="container">
+                <div class="col-sm-12 text-center">
+                    <div class="weather-container">
+                        <div class="icon-wrap">
+                            <i class="wi wi-owm-{{ weatherDB.weather[0].id}}"></i>
+                        </div>
+                        <p ng-click="switchTemperature()" ng-show="fahrenheit" class="temp">{{ tempFahrenheit | number: 0}} &#8457; | {{ weatherDB.weather[0].main | lowercase }}</p>
+                        <p ng-click="switchTemperature()" ng-show="!fahrenheit" class="temp">{{ tempCelsius | number: 0}} &#8451; | {{ weatherDB.weather[0].main | lowercase }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="super-container">
+        <!-- FLICKR PHOTOS -->
+        <div class="row">
+            <div class="container">
+                <div class="col-sm-12 section">
+                    <h2 class="title text-center">The Sights</h2>
+                    <div ng-repeat="photo in photoDB | limitTo: 3">
+                        <div class="col-sm-4">
+                            <div class="img-flickr {{animateClass}} animated" style="background-image: url(https://farm{{photoDB[$index+counter].farm}}.staticflickr.com/{{photoDB[$index+counter].server}}/{{photoDB[$index+counter].id}}_{{photoDB[$index+counter].secret}}.jpg);"></div>
+                        </div>
+                    </div>
+                    <button class="btn-gallery btn-left" ng-click="last()">
+                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                    </button>
+                    <button class="btn-gallery btn-right" ng-click="next()">
+                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Foursquare data -->
+        <div class="row">
+            <div class="container">
+                <div class="col-sm-12 section">
+                    <h2 class="title text-center">The Tastes</h2>
+                    <div ng-repeat="venues in fourDB | limitTo: 4">
+                        <div class="col-sm-3">
+                            <div class="fq-venue-name-container">
+                                <span class="fq-venue-name">{{ fourDB[$index+counter].venue.name | limitTo: 20 }}</span>
+                            </div>
+                            <div class="img-responsive img-foursquare img-border" style="background-image: url({{fourDB[$index+counter].venue.photos.groups[0].items[0].prefix}}original{{fourDB[$index+counter].venue.photos.groups[0].items[0].suffix}});" />
+                        </div>
+                    </div>
+                </div>
+                <button class="btn-gallery btn-left" ng-click="last()">
+                    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                </button>
+                <button class="btn-gallery btn-right" ng-click="next()">
+                    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                </button>
+            </div>
+        </div>
+<<<<<<< HEAD
       </div>
   </div>
 
@@ -101,11 +119,37 @@
                 <!-- <p class="tweet-text">{{ tweet.status }}</p> -->
                 <!-- <p class="tweet-text">{{ tweet.text }}</p> -->
               </div>
+=======
+        <!-- Twitter -->
+        <div class="row">
+            <div class="container">
+                <div class="col-sm-12 section">
+                    <h2 class="title text-center">The Talk</h2>
+                    <div ng-repeat="trend in trends | filter:{tweet_volume:'!!'} | orderBy:'-tweet_volume' | limitTo: 8">
+                        <div class="col-sm-3 trend-container">
+                            <button type="button" class="btn"><a href="{{trend.url}}">{{ trend.name }}</a></button>
+                        </div>
+                        <!--{{ trend.tweet_volume }}-->
+                    </div>
+                    <div ng-repeat="tweet in tweets | limitTo: 3">
+                        <div class="col-sm-12 tweet-container">
+                            <div>
+                                <div class="col-sm-1">
+                                    <img src="{{ tweet.user.profile_image_url }}" class="img-tweet" />
+                                </div>
+                                <div class="col-sm-11">
+                                    <p class="tweet-username"><strong>{{ tweet.user.name }}</strong></p>
+                                    <p class="tweet-text">{{ tweet.text }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+>>>>>>> 7f0409ed77c422e8dc31f217b0d314cfbf075aab
             </div>
-          </div>
         </div>
-      </div>
     </div>
+<<<<<<< HEAD
   </div>
 
 </div> <!-- END OF CONTAINER -->
@@ -120,5 +164,22 @@
   <script src="/js/directives/weatherDirective.js"></script>
   <script src="/ng-autocomplete/src/ngAutocomplete.js"></script>
 
+=======
+    </div>
+    <!-- END OF CONTAINER -->
+    <div id="img-mapquest" class="row">
+        <img src="https://beta.mapquestapi.com/staticmap/v5/map?key=c9LUj3gveNGWjKMfAUk0VKnN8ZwkLuqX&size=1500,+170&type=sat&locations={{city}}" />
+    </div>
+    <!--
+    <div id="img-mapquest" style="background-image: url(https://beta.mapquestapi.com/staticmap/v5/map?key=c9LUj3gveNGWjKMfAUk0VKnN8ZwkLuqX&size=1500,+170&type=sat&locations={{city}})"></div> -->
+    <!-- Scripts -->
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyDQX1NwXDMRS8EEfA_bHLoB5N3NkB1e5a0"></script>
+    <script src="/js/app.js"></script>
+    <script src="/js/services/apiFactory.js"></script>
+    <script src="/js/controllers/mainController.js"></script>
+    <script src="/js/directives/weatherDirective.js"></script>
+    <script src="/ng-autocomplete/src/ngAutocomplete.js"></script>
+>>>>>>> 7f0409ed77c422e8dc31f217b0d314cfbf075aab
 </body>
+
 </html>

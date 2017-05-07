@@ -1,82 +1,18 @@
 app.service('apiFactory', function($http) {
 
-var apiFactory = {};
-/*var map;
-var service;
-var infowindow;
-var pyrmont = new google.maps.LatLng(-33.8665433,151.1956316);
+    var apiFactory = {};
 
-function initialize() {
-
-  map = new google.maps.Map(document.getElementById('map'), {
-      center: pyrmont,
-      zoom: 15
-    });
-
-  service = new google.maps.places.PlacesService(map);
-}
-
-initialize();*/
-
-//  get the weather from the Open Weather API
-    apiFactory.getWeather = function(location) {
-        return $http.get('http://api.openweathermap.org/data/2.5/weather?',
-          { params: { q: location,
-            units: 'imperial',
-            appid: 'b51ff059850fb59ef5b5085a6e089a74' } })
+    // Getting city data from our city route on the server
+    apiFactory.getCityInfo = function(city) {
+        return $http.get('/city/' + city) // let's go to the server
             .then(function(response) {
-                //console.log(response.data);
+                console.log(response.data);
                 return response.data
-            }, function(err) {});
+            }, function(err) {
+                console.log(err);
+            });
     };
 
-//  get something cool from the FourSquare API
-    apiFactory.getFourSq = function(location) {
-        return $http.get('https://api.foursquare.com/v2/venues/explore?',
-          { params: {
-            section: 'food',
-            near: location,
-            venuePhotos: 1,
-            limit: 5,
-            client_id: 'QLJUKUZ0FU0NVLOWLUZJOOJHB1MTWSYMPHQBSKJ5FXKJH102',
-            client_secret: '5L3IZX1VKHONEULQBYLDSIC4HTZWEXVJFQRL4FE4ZIAWNS20',
-            v: 20161231,
-            m: 'foursquare'
-         } })
-            .then(function(response) {
-               // console.log(response.data);
-                return response.data
-            }, function(err) {});
-    };
-
-    //  get something cool from the google
-/*    apiFactory.getPhotos = function(location) {
-      var request = {
-        query: location
-      };
-      service.textSearch(request, function(data){
-        console.log(data);
-      });
-    };*/
-
-      // Flickr photos
-    apiFactory.getPhotos = function(location) {
-        return $http.get('https://api.flickr.com/services/rest/?',
-          { params: {
-            method: 'flickr.photos.search',
-            api_key: '6ae44d19471914449a7bc6764acba0ef',
-            text: location,
-            format: 'json',
-            nojsoncallback: '?',
-            page: '1',
-            sort: 'relevance'
-         } })
-            .then(function(response) {
-               console.log('response.data', response.data);
-                return response.data
-            }, function(err) {});
-    };
-
-return apiFactory;
+    return apiFactory;
 
 });
