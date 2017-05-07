@@ -96,8 +96,9 @@
                 <img src="{{ tweet.user.profile_image_url }}" class="img-tweet"/>
               </div>
               <div class="col-sm-11">
-                <p class="tweet-username"><strong>{{ tweet.user.name }}</strong></p>
-                <p class="tweet-text">{{ tweet.retweeted_status?tweet.retweeted_status.text :tweet.text}}</p>
+                <p class="tweet-username"><strong>{{ tweet.username }}</strong></p>
+                <p ng-bind="tweet.status" linkify="twitter"></p>
+                <!-- <p class="tweet-text">{{ tweet.status }}</p> -->
                 <!-- <p class="tweet-text">{{ tweet.text }}</p> -->
               </div>
             </div>
@@ -112,10 +113,12 @@
 <!-- Scripts -->
   <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyDQX1NwXDMRS8EEfA_bHLoB5N3NkB1e5a0"></script>
   <script src="/angular/angular.js"></script>
+  <script src="/js/angular-linkify-changed/angular-linkify.js"></script>
   <script src="/js/app.js"></script>
   <script src="/js/services/apiFactory.js"></script>
   <script src="/js/controllers/mainController.js"></script>
   <script src="/js/directives/weatherDirective.js"></script>
   <script src="/ng-autocomplete/src/ngAutocomplete.js"></script>
+
 </body>
 </html>

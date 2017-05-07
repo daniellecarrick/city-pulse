@@ -42,7 +42,15 @@ app.controller('mainController', function($scope, apiFactory, $http) {
 
     $http.post('/api/tweets', params)
       .then(function (result) {
-      $scope.tweets = result.data;
+
+        $scope.tweets = result.data.map(tweet=>{
+          //tweet === result.data for each item
+          return {
+            username: tweet.user.name,
+            status:  tweet.retweeted_status?tweet.retweeted_status.text :tweet.text
+          }
+        })
+        
       console.log(result.data);
       }, function(err) {
       console.log(err);

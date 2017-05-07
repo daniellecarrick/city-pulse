@@ -11,6 +11,7 @@
   "license": "MIT",
   "dependencies": {
     "angular": "^1.6.4",
+    "angular-linkify": "^2.0.0",
     "body-parser": "^1.17.1",
     "bootstrap": "^3.3.7",
     "d3": "^4.8.0",
