@@ -11,21 +11,23 @@ app.controller('mainController', function($scope, apiFactory, $http) {
     $scope.counter = 0;
     $scope.counterPlace = 0;
     $scope.nextPhoto = function() {
-        setTimeout($scope.animateClassFunc(), 1000);
-        $scope.animateClass =  'slideInRight';
+       // $scope.animateClass =  $scope.animateClass === 'slideInRight' ? 'slideInLeft' : 'slideInRight';
+        //setTimeout($scope.animateClassFunc(), 1000);
+        $scope.counter += 1;
         console.log($scope.animateClass);
+        console.log($scope.counter);
     }
 
     $scope.lastPhoto = function() {
        if ($scope.counter > 0) {
         $scope.counter -= 1;
-        $scope.animateClass =  'slideInLeft';
+        //$scope.animateClass =  'slideInLeft';
         setTimeout($scope.animateClassFunc(), 2000);
        }
     }
 
     $scope.nextPlace = function() {
-        $scope.animateClass =  '';
+       // $scope.animateClass =  '';
         $scope.counterPlace += 1;
         console.log($scope.animateClass);
         setTimeout($scope.animateClassFunc(), 2000);
@@ -35,13 +37,12 @@ app.controller('mainController', function($scope, apiFactory, $http) {
     $scope.lastPlace = function() {
        if ($scope.counterPlace > 0) {
         $scope.counterPlace -= 1;
-        $scope.animateClass =  'slideInLeft';
+       // $scope.animateClass =  'slideInLeft';
         setTimeout($scope.animateClassFunc(), 2000);
        }
     }
 
     $scope.animateClassFunc = function() {
-      $scope.counter += 1;
       $scope.animateClass = ' ';
       console.log('setTimeout class')
     };
@@ -57,6 +58,7 @@ app.controller('mainController', function($scope, apiFactory, $http) {
                 $scope.photoDB = allData[1].photos.photo;
                 $scope.weatherDB = allData[2];
                 $scope.tweets = allData[3];
+
                 $scope.trends = allData[4][0].trends;
 
                 $scope.tempFahrenheit = $scope.weatherDB.main.temp;
