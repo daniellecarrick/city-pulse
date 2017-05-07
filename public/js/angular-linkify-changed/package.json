@@ -1,0 +1,97 @@
+{
+  "_args": [
+    [
+      {
+        "raw": "angular-linkify",
+        "scope": null,
+        "escapedName": "angular-linkify",
+        "name": "angular-linkify",
+        "rawSpec": "",
+        "spec": "latest",
+        "type": "tag"
+      },
+      "C:\\bootcamp\\city-pulse"
+    ]
+  ],
+  "_from": "angular-linkify@latest",
+  "_id": "angular-linkify@2.0.0",
+  "_inCache": true,
+  "_location": "/angular-linkify",
+  "_nodeVersion": "6.9.3",
+  "_npmOperationalInternal": {
+    "host": "packages-12-west.internal.npmjs.com",
+    "tmp": "tmp/angular-linkify-2.0.0.tgz_1484326089575_0.5301968089770526"
+  },
+  "_npmUser": {
+    "name": "scottcorgan",
+    "email": "scottcorgan@gmail.com"
+  },
+  "_npmVersion": "3.10.10",
+  "_phantomChildren": {},
+  "_requested": {
+    "raw": "angular-linkify",
+    "scope": null,
+    "escapedName": "angular-linkify",
+    "name": "angular-linkify",
+    "rawSpec": "",
+    "spec": "latest",
+    "type": "tag"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/angular-linkify/-/angular-linkify-2.0.0.tgz",
+  "_shasum": "5c156667216110df6d19a9a7ced973445712dd22",
+  "_shrinkwrap": null,
+  "_spec": "angular-linkify",
+  "_where": "C:\\bootcamp\\city-pulse",
+  "author": {
+    "name": "Scott Corgan"
+  },
+  "bugs": {
+    "url": "https://github.com/scottcorgan/angular-linkify/issues"
+  },
+  "dependencies": {},
+  "description": "Angular filter to linkify urls, \"@\" usernames, and hashtags.",
+  "devDependencies": {
+    "grunt": "~0.4.1",
+    "grunt-contrib-jshint": "~0.6.0",
+    "grunt-contrib-uglify": "~0.2.2"
+  },
+  "directories": {
+    "test": "test"
+  },
+  "dist": {
+    "shasum": "5c156667216110df6d19a9a7ced973445712dd22",
+    "tarball": "https://registry.npmjs.org/angular-linkify/-/angular-linkify-2.0.0.tgz"
+  },
+  "gitHead": "678eb8134e103e684c2df050b0c774c0f81a0acb",
+  "homepage": "https://github.com/scottcorgan/angular-linkify#readme",
+  "keywords": [
+    "angularjs",
+    "angular",
+    "filter",
+    "linkify",
+    "twitter"
+  ],
+  "license": "BSD",
+  "main": "angular-linkify.js",
+  "maintainers": [
+    {
+      "name": "scottcorgan",
+      "email": "scottcorgan@gmail.com"
+    }
+  ],
+  "name": "angular-linkify",
+  "optionalDependencies": {},
+  "readme": "ERROR: No README data found!",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/scottcorgan/angular-linkify.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "version": "2.0.0"
+}

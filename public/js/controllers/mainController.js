@@ -56,7 +56,17 @@ app.controller('mainController', function($scope, apiFactory, $http) {
                 $scope.fourDB = allData[0].groups[0].items;
                 $scope.photoDB = allData[1].photos.photo;
                 $scope.weatherDB = allData[2];
-                $scope.tweets = allData[3];
+                // $scope.tweets = allData[3];
+
+                $scope.tweets = allData[3].map(tweet=>{
+                  //tweet === allData[3] for each item
+                  return {
+                    profileimage: tweet.user.profile_image_url,
+                    username: tweet.user.name,
+                    status:  tweet.retweeted_status?tweet.retweeted_status.text :tweet.text
+                  }
+                })
+
                 $scope.trends = allData[4][0].trends;
 
                 $scope.tempFahrenheit = $scope.weatherDB.main.temp;
