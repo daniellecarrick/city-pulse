@@ -1,8 +1,8 @@
 app.controller('mainController', function($scope, apiFactory, $http) {
 
-    $scope.city = 'New York';
+    $scope.city = 'New York City';
     $scope.coord = {};
-
+    $scope.fahrenheit = true;
     //search triggered on button click
     $scope.search = function(city) {
             console.log(city);
@@ -15,6 +15,8 @@ app.controller('mainController', function($scope, apiFactory, $http) {
                 $scope.weatherDB = allData[2];
                 $scope.tweets = allData[3];
                 $scope.trends = allData[4][0].trends;
+                $scope.wikipedia = allData[5][2]['0'];
+                $scope.wikiLink = allData[5][3]['0'];
 
                 setBackground($scope.weatherDB);
             });
@@ -44,5 +46,24 @@ app.controller('mainController', function($scope, apiFactory, $http) {
         $scope.fahrenheit = !$scope.fahrenheit;
         $scope.tempCelsius = Math.round((($scope.weatherDB.main.temp) - 32) / 1.8);
       }*/
+
+
+
+
+
+  // $scope.tempFahrenheit = weatherDB.main.temp;
+  // $scope.tempCelsius = Math.round(((weatherDB.main.temp) - 32) / 1.8);
+  // $scope.switchTemperature = function () {
+  //   $scope.fahrenheit = !$scope.fahrenheit;
+  //   }
+  //
+
+
+
+
+
+
+
+
 
 });

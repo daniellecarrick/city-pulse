@@ -26,6 +26,19 @@ app.get('/city/:city', function(req, res, next) { // req and res are special exp
         })
     }
 
+    function wikipediaCall(cb) {
+      getWikipediaData(city, function(err, result) {
+          cb(err, result);
+      })
+    }
+
+    function weatherLatLongCall(cb) {
+        getWeatherData(city, function(err, result) {
+            cb(err, {lat: result.coord.lat, long: result.coord.lon})
+                //console.log('weather result: ', result)
+        })
+    }
+
     // gets the weather data
     function weatherCall(cb) {
         getWeatherData(city, function(err, result) {
@@ -35,11 +48,11 @@ app.get('/city/:city', function(req, res, next) { // req and res are special exp
     }
 
     // get just the lat and long from foursquare
-    function foursquareCall(cb) {
-        getFoursquareData(city, function(err, result) {
-            cb(err, { lat: result.geocode.center.lat, long: result.geocode.center.lng })
-        })
-    }
+    // function foursquareCall(cb) {
+    //     getFoursquareData(city, function(err, result) {
+    //         cb(err, { lat: result.geocode.center.lat, long: result.geocode.center.lng })
+    //     })
+    // }
 
     // get all the foursquare data
     function foursquareVenueCall(cb) {
@@ -86,7 +99,7 @@ app.get('/city/:city', function(req, res, next) { // req and res are special exp
     // foursquareCall gets lat and long, then passes it to twitterClosest for the woeid then to TwitterPlace for the trends
     function twitterTrends(cb) {
         async.waterfall([
-            foursquareCall,
+            weatherLatLongCall,
             twitterClosest,
             twitterPlace
         ], function(err, results) {
@@ -100,7 +113,8 @@ app.get('/city/:city', function(req, res, next) { // req and res are special exp
             flickrCall,
             weatherCall,
             twitterCall,
-            twitterTrends
+            twitterTrends,
+            wikipediaCall
         ],
         function(err, results) {
             if (err) {
@@ -181,5 +195,28 @@ var getWeatherData = function(city, cb) {
         return cb(null, JSON.parse(response.body));
     })
 };
+
+var getWikipediaData = function(city, cb) {
+  var options = {
+    qs: {
+    action: 'opensearch',
+    search: city,
+    contentType: 'application/json; charset=utf-8',
+    async: false,
+    format: 'json'
+  }
+}
+
+    // get something cool from Wikipedia
+request.get('https://en.wikipedia.org/w/api.php', options, function(err, response, body) {
+    if (err) {
+        return cb(err, null)
+    }
+    // need to parse response because it was returning as a string
+    //console.log(response.body);
+    return cb(null, JSON.parse(response.body));
+    })
+
+}
 
 app.listen(process.env.PORT || '8000');
