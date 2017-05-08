@@ -51,4 +51,3 @@ app.directive("weatherDirective", function() {
     }
   };
 });
-

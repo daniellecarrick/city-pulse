@@ -11,11 +11,8 @@
   "license": "MIT",
   "dependencies": {
     "angular": "^1.6.4",
-<<<<<<< HEAD
     "angular-linkify": "^2.0.0",
-=======
     "async": "^2.3.0",
->>>>>>> 7f0409ed77c422e8dc31f217b0d314cfbf075aab
     "body-parser": "^1.17.1",
     "bootstrap": "^3.3.7",
     "d3": "^4.8.0",

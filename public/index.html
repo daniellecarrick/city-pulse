@@ -21,7 +21,7 @@
             <div class="container-fluid">
                 <!-- Brand and toggle get grouped for better mobile display -->
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="#">City Pulse</a>
+                    <a class="navbar-brand" href="#">City Pulse</a><img src="/images/logo.png" />
                 </div>
             </div>
             <!-- /.container-fluid -->
@@ -33,7 +33,7 @@
                     <div class="col-sm-12">
                         <form ng-submit="search(city)">
                             <input type="text" class="search-box col-sm-12" name="city" placeholder="Search for a city" ng-autocomplete ng-model="city" options="{types: '(cities)'}" details="details" ng-required="true" />
-                            <button type="button" class="search-btn" ng-click="search(city)"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+                            <button type="button" class="search-btn" ng-click="search(city)"><span class="search-icon glyphicon glyphicon-search" aria-hidden="true"></span></button>
                         </form>
                         <!-- <button type="button" class="btn" ng-click="search(city)">Search</button> -->
                     </div>
@@ -98,13 +98,13 @@
             </div>
         </div>
         <!--Wikipedia -->
-        <div class="row">
-            <div class="container" ng-show="true">
-                <div id="weekee" class="col-sm-12 section" ng-show="wikipedia.length>5">
-                    <h3><i class="fa fa-wikipedia-w" aria-hidden="true"></i><a href="{{wikiLink}}">  {{wikipedia}}</a></h3>
+<!--         <div class="row" ng-hide="{{wikipedia.length > 20 && wikipedia.length }}">
+            <div class="container"> {{wikipedia.length > 20 && wikipedia }} {{ allData[5][2]}}
+                <div id="weekee" class="col-sm-12 section">
+                    <h3><a href="{{wikiLink}}">{{wikipedia}} </a></h3>
                 </div>
             </div>
-        </div>
+        </div> -->
         <!-- Twitter -->
         <div class="row">
             <div class="container">
@@ -135,19 +135,39 @@
     </div>
     </div>
     <!-- END OF CONTAINER -->
+
+
+
+<div align="center" ng-controller="locationController" class="ng-cloak locater">
+
+  <button type="button" class="btn pure-button pure-button-primary">calculate distance to city</button>
+  <div class="result"></div>
+</div>
+
     <div id="img-mapquest" class="row">
         <img src="https://beta.mapquestapi.com/staticmap/v5/map?key=c9LUj3gveNGWjKMfAUk0VKnN8ZwkLuqX&size=1500,+170&type=sat&locations={{city}}" />
     </div>
     <!--
     <div id="img-mapquest" style="background-image: url(https://beta.mapquestapi.com/staticmap/v5/map?key=c9LUj3gveNGWjKMfAUk0VKnN8ZwkLuqX&size=1500,+170&type=sat&locations={{city}})"></div> -->
     <!-- Scripts -->
+
+
+
+
+
     <script src="/js/angular-linkify-changed/angular-linkify.js"></script>
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyDQX1NwXDMRS8EEfA_bHLoB5N3NkB1e5a0"></script>
     <script src="/js/app.js"></script>
     <script src="/js/services/apiFactory.js"></script>
     <script src="/js/controllers/mainController.js"></script>
+    <script src="/js/controllers/locationController.js"></script>
     <script src="/js/directives/weatherDirective.js"></script>
     <script src="/ng-autocomplete/src/ngAutocomplete.js"></script>
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.min.js"
+      integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+      crossorigin="anonymous"></script>
+    <!-- <script src="/js/getLocation.js"></script> -->
 </body>
 
 </html>

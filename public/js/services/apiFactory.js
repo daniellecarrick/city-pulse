@@ -7,12 +7,18 @@ app.service('apiFactory', function($http) {
         return $http.get('/city/' + city) // let's go to the server
             .then(function(response) {
                 console.log(response.data);
+                apiFactory.cityLat = response.data["0"].geocode.center.lat;
+                apiFactory.cityLong = response.data["0"].geocode.center.lng;
                 return response.data
             }, function(err) {
                 console.log(err);
             });
     };
 
+
     return apiFactory;
+
+
+
 
 });

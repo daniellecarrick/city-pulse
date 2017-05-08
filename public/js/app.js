@@ -9,4 +9,3 @@ var app = angular.module('cityPulse', ['ngAutocomplete', 'linkify'] );
   ]);
   $sceProvider.enabled(false);
 });*/
-

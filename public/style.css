@@ -65,6 +65,10 @@ button:focus {
     color: white;
 }
 
+.navbar-header img {
+  height: 40px;
+}
+
 .search-box {
     font-size: 40px;
     background-color: transparent;
@@ -191,3 +195,36 @@ p.tweet-username {
   right: 10px;
 }
 
+
+
+/*geolocation*/
+
+button{
+  color: black;
+}
+.result{
+  margin: 2em 2em 1em 2em;
+  color: black;
+}
+.result img{
+  margin-top: 1em;
+  border: 1px solid #333;
+}
+.fa-spinner{
+  font-size: 3em;
+}
+
+
+
+@media screen and (max-width: 500px) {
+    body {
+        background-color: lightgreen;
+    }
+
+
+    .search-icon{
+    display: none;
+    }
+
+
+}
