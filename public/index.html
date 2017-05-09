@@ -60,7 +60,7 @@
     </div>
     <div class="super-container">
         <!-- FLICKR PHOTOS -->
-        <div class="row">
+        <div class="row" ng-hide="!photoDB">
             <div class="container-fluid">
                 <div class="col-sm-12 section">
                     <h2 class="title text-center">The Sights</h2>
@@ -79,7 +79,7 @@
             </div>
         </div>
         <!-- Foursquare data -->
-        <div class="row">
+        <div class="row" ng-hide="!fourDB">
             <div class="container-fluid">
                 <div class="col-sm-12 section">
                     <h2 class="title text-center">The Tastes</h2>

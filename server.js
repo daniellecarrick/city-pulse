@@ -33,12 +33,12 @@ app.get('/city/:city', function(req, res, next) { // req and res are special exp
                 //console.log('weather result: ', result)
         })
     }
-
+/*
     function wikipediaCall(cb) {
         getWikipediaData(city, function(err, result) {
             cb(err, result);
         })
-    }
+    }*/
 
     // gets the lat/long for weather data
     function weatherLatLongCall(cb) {
@@ -114,8 +114,7 @@ app.get('/city/:city', function(req, res, next) { // req and res are special exp
             flickrCall,
             weatherCall,
             twitterCall,
-            twitterTrends,
-            wikipediaCall
+            twitterTrends
         ],
         function(err, results) {
             if (err) {
@@ -199,7 +198,7 @@ var getWeatherData = function(city, cb) {
     })
 };
 
-var getWikipediaData = function(city, cb) {
+/*var getWikipediaData = function(city, cb) {
     var options = {
         qs: {
             action: 'opensearch',
@@ -220,7 +219,7 @@ var getWikipediaData = function(city, cb) {
         return cb(null, JSON.parse(response.body));
     })
 
-}
+}*/
 
 
 app.listen(process.env.PORT || '8000');

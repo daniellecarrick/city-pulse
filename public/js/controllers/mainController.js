@@ -57,34 +57,33 @@ app.controller('mainController', function($scope, apiFactory, $http) {
                 console.log(allData);
                 // Data is returned as an array of objects - one for each api database.
                 // If statement assures we can display
-                if (allData[0].groups) {
+                if (allData[0]) { // Object
                   $scope.fourDB = allData[0].groups[0].items;
                 } else {
-                  $scope.fourDB = null;
+                  $scope.fourDB = false;
                 }
-                if (allData[1].photos.photo) {
+                if (allData[1].length > 0) { //object
                   $scope.photoDB = allData[1].photos.photo;
                 } else {
                   $scope.photoDB = false;
                 }
-                if (allData[2]) {
+                if (allData[2]) { //object
                   $scope.weatherDB = allData[2];
                 } else {
                   $scope.weatherDB = false;
                 }
 
-                if (allData[3]) {
+                if (allData[3].length > 0) { //array
                   $scope.tweets = allData[3].map(tweet=>{
                   return {
                     profileimage: tweet.user.profile_image_url,
                     username: tweet.user.name,
                     status:  tweet.retweeted_status?tweet.retweeted_status.text :tweet.text
                   }
-                })
-                } else {
+                })} else {
                   $scope.tweets = false;
                 }
-                 if (allData[4][0].trends) {
+                 if (allData[4][0].trends) { //array
                   $scope.trends = allData[4][0].trends;
                 } else {
                   $scope.trends = false;
