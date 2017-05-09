@@ -29,22 +29,16 @@ app.controller('mainController', function($scope, apiFactory, $http) {
     $scope.nextPlace = function() {
         // $scope.animateClass =  '';
         $scope.counterPlace += 1;
-        /* console.log($scope.animateClass);
-         setTimeout($scope.animateClassFunc(), 2000);
-         console.log($scope.animateClass);*/
     }
 
     $scope.lastPlace = function() {
         if ($scope.counterPlace > 0) {
             $scope.counterPlace -= 1;
-            // $scope.animateClass =  'slideInLeft';
-            //setTimeout($scope.animateClassFunc(), 2000);
         }
     }
 
     $scope.animateClassFunc = function() {
         $scope.animateClass = ' ';
-        //console.log('setTimeout class')
     };
 
     //search triggered on button click
@@ -112,24 +106,16 @@ app.controller('mainController', function($scope, apiFactory, $http) {
         var bgColor1 = d3.interpolateRdYlBu(colorScale(temp+20));*/
         var bgColor = colorScale(temp);
         var bgColor1 = colorScale(temp + 15);
-        var topSection = document.querySelector(".top-section");
-        topSection.style.background = 'linear-gradient(to bottom,' + bgColor + ',' + bgColor1;
-        //d3.select('.top-section').style('background', 'linear-gradient(to bottom,' + bgColor + ',' + bgColor1);
-
-
+        /*var topSection = document.querySelector(".top-section");
+        topSection.style.background = 'linear-gradient(to bottom,' + bgColor + ',' + bgColor1;*/
+        var topSection = d3.select('.top-section');
+        topSection.style('background-image', 'linear-gradient(to bottom,' + bgColor + ',' + bgColor1)
+                  .style('background-image', '-webkit-linear-gradient(to bottom,' + bgColor + ',' + bgColor1);
     }
 
     //* Tweet stuff */
     $scope.tweets = []
     $scope.search($scope.city);
 
-    //* Change from F to C and back */
-    /*  $scope.fahrenheit = true;
-      $scope.tempFahrenheit = $scope.weatherDB.main.temp;
-
-      $scope.switchTemperature = function () {
-        $scope.fahrenheit = !$scope.fahrenheit;
-        $scope.tempCelsius = Math.round((($scope.weatherDB.main.temp) - 32) / 1.8);
-      }*/
 
 });
