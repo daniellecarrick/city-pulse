@@ -112,7 +112,11 @@ app.controller('mainController', function($scope, apiFactory, $http) {
         var bgColor1 = d3.interpolateRdYlBu(colorScale(temp+20));*/
         var bgColor = colorScale(temp);
         var bgColor1 = colorScale(temp + 15);
-        d3.select('.top-section').style('background', 'linear-gradient(to bottom,' + bgColor + ',' + bgColor1);
+        var topSection = document.querySelector(".top-section");
+        topSection.style.background = 'linear-gradient(to bottom,' + bgColor + ',' + bgColor1;
+        //d3.select('.top-section').style('background', 'linear-gradient(to bottom,' + bgColor + ',' + bgColor1);
+
+
     }
 
     //* Tweet stuff */
