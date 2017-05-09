@@ -109,7 +109,8 @@ app.controller('mainController', function($scope, apiFactory, $http) {
         /*var topSection = document.querySelector(".top-section");
         topSection.style.background = 'linear-gradient(to bottom,' + bgColor + ',' + bgColor1;*/
         var topSection = d3.select('.top-section');
-        topSection.style('background-image', 'linear-gradient(to bottom,' + bgColor + ',' + bgColor1)
+        topSection.style('background', bgColor)
+                  .style('background-image', 'linear-gradient(to bottom,' + bgColor + ',' + bgColor1)
                   .style('background-image', '-webkit-linear-gradient(to bottom,' + bgColor + ',' + bgColor1);
     }
 
