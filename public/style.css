@@ -211,14 +211,10 @@ p.tweet-username {
 }
 
 .btn-bottom {
-    bottom: 10px;
-    left: 50%;
     display: none;
 }
 
 .btn-up {
-    bottom: 10px;
-    left: 40%;
     display: none;
 }
 

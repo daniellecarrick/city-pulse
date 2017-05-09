@@ -19,9 +19,13 @@
 }
 
 .btn-bottom {
+    bottom: 0px;
+    left: 30%;
     display: block;
 }
 
 .btn-up {
+    bottom: 0px;
+    left: 50%;
     display: block;
 }
