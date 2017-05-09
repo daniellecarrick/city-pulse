@@ -17,7 +17,13 @@ button:focus {
     right: 10px;
     top: 10px;
     position: absolute;*/
-    opacity: .5;
+    opacity: .75;
+}
+
+.glyphicon-search:hover {
+  opacity: 1;
+  font-size:35px;
+  transition: opacity .5s, font-size .5s;
 }
 
 .search-btn {
@@ -193,5 +199,22 @@ p.tweet-username {
 
 .btn-right {
   right: 10px;
+}
+
+/* Loader */
+.loader {
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    background: rgba(10,10,10,0.05);
+    z-index: 100;
+    text-align: center;
+    padding-top: 50%;
+    font-size: 100px;
+
+}
+
+.blur {
+  filter: blur(5px);
 }
 
