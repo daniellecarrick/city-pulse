@@ -22,29 +22,29 @@ app.controller('mainController', function($scope, apiFactory, $http) {
        if ($scope.counter > 0) {
         $scope.counter -= 1;
         //$scope.animateClass =  'slideInLeft';
-        setTimeout($scope.animateClassFunc(), 2000);
+       // setTimeout($scope.animateClassFunc(), 2000);
        }
     }
 
     $scope.nextPlace = function() {
        // $scope.animateClass =  '';
         $scope.counterPlace += 1;
-        console.log($scope.animateClass);
+       /* console.log($scope.animateClass);
         setTimeout($scope.animateClassFunc(), 2000);
-        console.log($scope.animateClass);
+        console.log($scope.animateClass);*/
     }
 
     $scope.lastPlace = function() {
        if ($scope.counterPlace > 0) {
         $scope.counterPlace -= 1;
        // $scope.animateClass =  'slideInLeft';
-        setTimeout($scope.animateClassFunc(), 2000);
+        //setTimeout($scope.animateClassFunc(), 2000);
        }
     }
 
     $scope.animateClassFunc = function() {
       $scope.animateClass = ' ';
-      console.log('setTimeout class')
+      //console.log('setTimeout class')
     };
 
     //search triggered on button click
@@ -67,8 +67,8 @@ app.controller('mainController', function($scope, apiFactory, $http) {
                 })
                 $scope.trends = allData[4][0].trends;
 
-                $scope.wikipedia = allData[5][2]['0'];
-                $scope.wikiLink = allData[5][3]['0'];
+               /* $scope.wikipedia = allData[5][2]['0'];
+                $scope.wikiLink = allData[5][3]['0'];*/
 
                 $scope.tempFahrenheit = $scope.weatherDB.main.temp;
                 $scope.tempCelsius = Math.round((($scope.weatherDB.main.temp) - 32) / 1.8);
@@ -77,6 +77,7 @@ app.controller('mainController', function($scope, apiFactory, $http) {
             });
 
         } //end of search() function
+
 
     /* Background color is based on temperature */
     var setBackground = function(weatherDB) {

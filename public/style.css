@@ -17,7 +17,13 @@ button:focus {
     right: 10px;
     top: 10px;
     position: absolute;*/
-    opacity: .5;
+    opacity: .75;
+}
+
+.glyphicon-search:hover {
+  opacity: 1;
+  font-size:35px;
+  transition: opacity .5s, font-size .5s;
 }
 
 .search-btn {

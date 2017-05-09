@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="/animate.css">
     <link rel="stylesheet" type="text/css" href="/style.css">
+    <link rel="stylesheet" media="(max-width: 500px)" href="mobile.css" />
     <script src="/angular/angular.js"></script>
     <title>City Pulse</title>
 </head>
@@ -28,11 +29,11 @@
         </nav>
         <!-- top section -->
         <div class="row">
-            <div class="container">
+            <div class="container-fluid">
                 <div class="search">
                     <div class="col-sm-12">
                         <form ng-submit="search(city)">
-                            <input type="text" class="search-box col-sm-12" name="city" placeholder="Search for a city" ng-autocomplete ng-model="city" options="{types: '(cities)'}" details="details" ng-required="true" />
+                            <input type="text" class="search-box col-sm-12" name="city" placeholder="Search for a city" ng-autocomplete ng-model="city" options="{types: '(cities)'}" details="details" ng-required="true"/>
                             <button type="button" class="search-btn" ng-click="search(city)"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
                         </form>
                         <!-- <button type="button" class="btn" ng-click="search(city)">Search</button> -->
@@ -42,7 +43,7 @@
         </div>
         <!-- General stats like weather and time -->
         <div class="row">
-            <div class="container">
+            <div class="container-fluid">
                 <div class="col-sm-12 text-center">
                     <div class="weather-container">
                         <div class="icon-wrap">
@@ -58,7 +59,7 @@
     <div class="super-container">
         <!-- FLICKR PHOTOS -->
         <div class="row">
-            <div class="container">
+            <div class="container-fluid">
                 <div class="col-sm-12 section">
                     <h2 class="title text-center">The Sights</h2>
                     <div ng-repeat="photo in photoDB | limitTo: 3">
@@ -77,7 +78,7 @@
         </div>
         <!-- Foursquare data -->
         <div class="row">
-            <div class="container">
+            <div class="container-fluid">
                 <div class="col-sm-12 section">
                     <h2 class="title text-center">The Tastes</h2>
                     <div ng-repeat="venues in fourDB | limitTo: 4">
@@ -107,7 +108,7 @@
         </div> -->
         <!-- Twitter -->
         <div class="row">
-            <div class="container">
+            <div class="container-fluid">
                 <div class="col-sm-12 section">
                     <h2 class="title text-center">The Talk</h2>
                     <div ng-repeat="trend in trends | filter:{tweet_volume:'!!'} | orderBy:'-tweet_volume' | limitTo: 8">
