@@ -55,24 +55,46 @@ app.controller('mainController', function($scope, apiFactory, $http) {
             // give the searched city to our friend getCityInfo in the factory
             apiFactory.getCityInfo(city).then(function(allData) {
                 console.log(allData);
-                // data is returned as an array of objects - one for each api database
-                $scope.fourDB = allData[0].groups[0].items;
-                $scope.photoDB = allData[1].photos.photo;
-                $scope.weatherDB = allData[2];
-                $scope.tweets = allData[3].map(tweet=>{
-                  //tweet === allData[3] for each item
+                // Data is returned as an array of objects - one for each api database.
+                // If statement assures we can display
+                if (allData[0].groups) {
+                  $scope.fourDB = allData[0].groups[0].items;
+                } else {
+                  $scope.fourDB = null;
+                }
+                if (allData[1].photos.photo) {
+                  $scope.photoDB = allData[1].photos.photo;
+                } else {
+                  $scope.photoDB = false;
+                }
+                if (allData[2]) {
+                  $scope.weatherDB = allData[2];
+                } else {
+                  $scope.weatherDB = false;
+                }
+
+                if (allData[3]) {
+                  $scope.tweets = allData[3].map(tweet=>{
                   return {
                     profileimage: tweet.user.profile_image_url,
                     username: tweet.user.name,
                     status:  tweet.retweeted_status?tweet.retweeted_status.text :tweet.text
                   }
                 })
-                $scope.trends = allData[4][0].trends;
-               /* $scope.wikipedia = allData[5][2]['0'];
-                $scope.wikiLink = allData[5][3]['0'];*/
+                } else {
+                  $scope.tweets = false;
+                }
+                 if (allData[4][0].trends) {
+                  $scope.trends = allData[4][0].trends;
+                } else {
+                  $scope.trends = false;
+                }
+
+
                 $scope.tempFahrenheit = $scope.weatherDB.main.temp;
                 $scope.tempCelsius = Math.round((($scope.weatherDB.main.temp) - 32) / 1.8);
                 setBackground($scope.weatherDB);
+                // Data is here so we can remove loading bar
                 $scope.loading = false;
                 $scope.blur = ' '
             });
