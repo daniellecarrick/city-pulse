@@ -191,7 +191,7 @@ p.tweet-username {
 }
 
 .btn-gallery {
-    color: rgba(255,255,255,1);
+    color: rgba(255, 255, 255, 1);
     background-color: transparent;
     position: absolute;
     border: none;
@@ -212,7 +212,13 @@ p.tweet-username {
 
 .btn-bottom {
     bottom: 10px;
-    left: 45%;
+    left: 50%;
+    display: none;
+}
+
+.btn-up {
+    bottom: 10px;
+    left: 40%;
     display: none;
 }
 

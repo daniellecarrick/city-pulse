@@ -10,10 +10,6 @@
     margin: 0;
 }
 
-.btn-gallery {
-
-}
-
 .btn-left {
     display: none;
 }
@@ -23,5 +19,9 @@
 }
 
 .btn-bottom {
-  display: block;
+    display: block;
+}
+
+.btn-up {
+    display: block;
 }
