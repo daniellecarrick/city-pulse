@@ -11,7 +11,7 @@ app.controller('mainController', function($scope, apiFactory, $http) {
     $scope.counter = 0;
     $scope.counterPlace = 0;
     $scope.nextPhoto = function() {
-       // $scope.animateClass =  $scope.animateClass === 'slideInRight' ? 'slideInLeft' : 'slideInRight';
+        // $scope.animateClass =  $scope.animateClass === 'slideInRight' ? 'slideInLeft' : 'slideInRight';
         //setTimeout($scope.animateClassFunc(), 1000);
         $scope.counter += 1;
         console.log($scope.animateClass);
@@ -19,32 +19,32 @@ app.controller('mainController', function($scope, apiFactory, $http) {
     }
 
     $scope.lastPhoto = function() {
-       if ($scope.counter > 0) {
-        $scope.counter -= 1;
-        //$scope.animateClass =  'slideInLeft';
-       // setTimeout($scope.animateClassFunc(), 2000);
-       }
+        if ($scope.counter > 0) {
+            $scope.counter -= 1;
+            //$scope.animateClass =  'slideInLeft';
+            // setTimeout($scope.animateClassFunc(), 2000);
+        }
     }
 
     $scope.nextPlace = function() {
-       // $scope.animateClass =  '';
+        // $scope.animateClass =  '';
         $scope.counterPlace += 1;
-       /* console.log($scope.animateClass);
-        setTimeout($scope.animateClassFunc(), 2000);
-        console.log($scope.animateClass);*/
+        /* console.log($scope.animateClass);
+         setTimeout($scope.animateClassFunc(), 2000);
+         console.log($scope.animateClass);*/
     }
 
     $scope.lastPlace = function() {
-       if ($scope.counterPlace > 0) {
-        $scope.counterPlace -= 1;
-       // $scope.animateClass =  'slideInLeft';
-        //setTimeout($scope.animateClassFunc(), 2000);
-       }
+        if ($scope.counterPlace > 0) {
+            $scope.counterPlace -= 1;
+            // $scope.animateClass =  'slideInLeft';
+            //setTimeout($scope.animateClassFunc(), 2000);
+        }
     }
 
     $scope.animateClassFunc = function() {
-      $scope.animateClass = ' ';
-      //console.log('setTimeout class')
+        $scope.animateClass = ' ';
+        //console.log('setTimeout class')
     };
 
     //search triggered on button click
@@ -52,41 +52,44 @@ app.controller('mainController', function($scope, apiFactory, $http) {
             console.log(city);
             $scope.loading = true;
             $scope.blur = 'blur'
-            // give the searched city to our friend getCityInfo in the factory
+                // give the searched city to our friend getCityInfo in the factory
             apiFactory.getCityInfo(city).then(function(allData) {
                 console.log(allData);
+                console.log(angular.equals(allData[0], {}));
                 // Data is returned as an array of objects - one for each api database.
                 // If statement assures we can display
-                if (allData[0]) { // Object
-                  $scope.fourDB = allData[0].groups[0].items;
+                if (angular.equals(allData[0], {})) { // Checks if the object is empty
+                    $scope.fourDB = false;
                 } else {
-                  $scope.fourDB = false;
+                    $scope.fourDB = allData[0].groups[0].items;
                 }
-                if (allData[1].length > 0) { //object
-                  $scope.photoDB = allData[1].photos.photo;
+                if (allData[1].photos.photo.length === 0) { // Checks if the photo array is empty
+                    $scope.photoDB = false;
                 } else {
-                  $scope.photoDB = false;
+                    $scope.photoDB = allData[1].photos.photo;
                 }
-                if (allData[2]) { //object
-                  $scope.weatherDB = allData[2];
+                if (angular.equals(allData[2], {})) { // Checks if the object is empty
+                    $scope.weatherDB = false;
                 } else {
-                  $scope.weatherDB = false;
+                    $scope.weatherDB = allData[2];
                 }
-
-                if (allData[3].length > 0) { //array
-                  $scope.tweets = allData[3].map(tweet=>{
-                  return {
-                    profileimage: tweet.user.profile_image_url,
-                    username: tweet.user.name,
-                    status:  tweet.retweeted_status?tweet.retweeted_status.text :tweet.text
-                  }
-                })} else {
-                  $scope.tweets = false;
-                }
-                 if (allData[4][0].trends) { //array
-                  $scope.trends = allData[4][0].trends;
+                /*console.log(allData[0]);
+                console.log($scope.photoDB)*/
+                if (allData[3].length > 0) { // Checks if array has length
+                    $scope.tweets = allData[3].map(tweet => {
+                        return {
+                            profileimage: tweet.user.profile_image_url,
+                            username: tweet.user.name,
+                            status: tweet.retweeted_status ? tweet.retweeted_status.text : tweet.text
+                        }
+                    })
                 } else {
-                  $scope.trends = false;
+                    $scope.tweets = false;
+                }
+                if (allData[4][0].trends.length > 0) { // Checks if array has length
+                    $scope.trends = allData[4][0].trends;
+                } else {
+                    $scope.trends = false;
                 }
 
 
