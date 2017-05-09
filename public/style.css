@@ -13,7 +13,7 @@ button:focus {
 }
 
 .glyphicon-search {
-/*    font-size: 30px;
+    /*    font-size: 30px;
     right: 10px;
     top: 10px;
     position: absolute;*/
@@ -21,9 +21,9 @@ button:focus {
 }
 
 .glyphicon-search:hover {
-  opacity: 1;
-  font-size:35px;
-  transition: opacity .5s, font-size .5s;
+    opacity: 1;
+    font-size: 35px;
+    transition: opacity .5s, font-size .5s;
 }
 
 .search-btn {
@@ -72,7 +72,7 @@ button:focus {
 }
 
 .navbar-header img {
-  height: 40px;
+    height: 40px;
 }
 
 .search-box {
@@ -165,9 +165,10 @@ p.tweet-username {
 }
 
 .img-border {
-  border: 1px solid #f7f7f7;
-  border-radius: 3px;
+    border: 1px solid #f7f7f7;
+    border-radius: 3px;
 }
+
 
 /* Mapquest stuff */
 
@@ -177,47 +178,68 @@ p.tweet-username {
     background-repeat: no-repeat;
     background-position: center;
     overflow-y: hidden;
-/*    position: absolute;
+    /*    position: absolute;
     bottom: 0;
     width: 105%;*/
 }
 
+
 /* animation transitions */
+
 .img-transition {
-  background-color: red;
+    background-color: red;
 }
 
 .btn-gallery {
-    border-radius: 50%;
-    border: none;
-    color: white;
-    background-color: rgba(0,0,0,0.5);
+    color: rgba(255, 255, 255, 1);
+    background-color: transparent;
     position: absolute;
-    top: 50%;
+    border: none;
+    width: 50px;
+    height: 50px;
+    font-size: 30px;
 }
 
 .btn-left {
-  left: 10px;
+    left: 10px;
+    top: 50%;
 }
 
 .btn-right {
-  right: 10px;
+    right: 10px;
+    top: 50%;
 }
 
+.btn-bottom {
+    bottom: 10px;
+    left: 50%;
+    display: none;
+}
+
+.btn-up {
+    bottom: 10px;
+    left: 40%;
+    display: none;
+}
+
+.btn-gallery .glyphicon {
+    text-shadow: 1px 1px 4px grey;
+}
+
+
 /* Loader */
+
 .loader {
     position: fixed;
     height: 100%;
     width: 100%;
-    background: rgba(10,10,10,0.05);
+    background: rgba(10, 10, 10, 0.05);
     z-index: 100;
     text-align: center;
     padding-top: 25%;
     font-size: 100px;
-
 }
 
 .blur {
-  filter: blur(5px);
+    filter: blur(5px);
 }
-
