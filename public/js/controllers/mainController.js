@@ -50,6 +50,8 @@ app.controller('mainController', function($scope, apiFactory, $http) {
     //search triggered on button click
     $scope.search = function(city) {
             console.log(city);
+            $scope.loading = true;
+            $scope.blur = 'blur'
             // give the searched city to our friend getCityInfo in the factory
             apiFactory.getCityInfo(city).then(function(allData) {
                 console.log(allData);
@@ -66,14 +68,13 @@ app.controller('mainController', function($scope, apiFactory, $http) {
                   }
                 })
                 $scope.trends = allData[4][0].trends;
-
                /* $scope.wikipedia = allData[5][2]['0'];
                 $scope.wikiLink = allData[5][3]['0'];*/
-
                 $scope.tempFahrenheit = $scope.weatherDB.main.temp;
                 $scope.tempCelsius = Math.round((($scope.weatherDB.main.temp) - 32) / 1.8);
-
                 setBackground($scope.weatherDB);
+                $scope.loading = false;
+                $scope.blur = ' '
             });
 
         } //end of search() function
